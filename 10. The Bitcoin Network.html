@@ -1,0 +1,1704 @@
+<!DOCTYPE html>
+<html><head>
+  <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+  <base target="_blank">
+  <style>
+/* latin */
+@font-face {
+  font-family: 'Comic Neue';
+  font-style: normal;
+  font-weight: 400;
+  src: url(fonts/4UaHrEJDsxBrF37olUeD96rp57F2IwM.woff2) format('woff2');
+  unicode-range: U+0000-00FF, U+0131, U+0152-0153, U+02BB-02BC, U+02C6, U+02DA, U+02DC, U+0304, U+0308, U+0329, U+2000-206F, U+2074, U+20AC, U+2122, U+2191, U+2193, U+2212, U+2215, U+FEFF, U+FFFD;
+}
+/* latin */
+@font-face {
+  font-family: 'Lexend Deca';
+  font-style: normal;
+  font-weight: 400;
+  src: url(fonts/K2FifZFYk-dHSE0UPPuwQ7CrD94i-NCKm-U48M1wqxnDirZPl3v-.woff2) format('woff2');
+  unicode-range: U+0000-00FF, U+0131, U+0152-0153, U+02BB-02BC, U+02C6, U+02DA, U+02DC, U+0304, U+0308, U+0329, U+2000-206F, U+2074, U+20AC, U+2122, U+2191, U+2193, U+2212, U+2215, U+FEFF, U+FFFD;
+}
+/* latin */
+@font-face {
+  font-family: 'Poppins';
+  font-style: normal;
+  font-weight: 400;
+  src: url(fonts/pxiEyp8kv8JHgFVrJJfecnFHGPc.woff2) format('woff2');
+  unicode-range: U+0000-00FF, U+0131, U+0152-0153, U+02BB-02BC, U+02C6, U+02DA, U+02DC, U+0304, U+0308, U+0329, U+2000-206F, U+2074, U+20AC, U+2122, U+2191, U+2193, U+2212, U+2215, U+FEFF, U+FFFD;
+}
+
+:root {
+  --fg: #000; /* foreground  */
+  --bg: #fff; /* background  */
+  --bd: #000; /* border  */
+  --lk: #006fa5; /* link */
+  --lkv: #d33bf0; /* link visited */
+  --hg: #ffff81; /* highlight  */
+}
+html {
+  overflow: overlay;
+}
+body {
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+  margin: 30px auto 0 auto;
+  padding: 10px;
+  position: relative;
+
+  color: var(--fg);
+  border-color: var(--bd);
+  background-color: var(--bg);
+}
+body[data-mode$="dark"] {
+  --lk: #0096de;
+}
+body[data-mode="light"] {
+  color-scheme: light;
+  --fg: #222;
+  --bd: #222;
+  --bg: whitesmoke;
+}
+body[data-mode="dark"] {
+  color-scheme: dark;
+  --fg: #eee;
+  --bd: #eee;
+  --bg: #333;
+}
+body[data-mode="sepia"] {
+  color-scheme: light;
+  --fg: #5b4636;
+  --bd: #5b4636;
+  --bg: #f4ecd8;
+}
+body[data-mode="solarized-light"] {
+  color-scheme: light;
+  --fg: #586e75;
+  --bd: #586e75;
+  --bg: #fdf6e3;
+}
+body[data-mode="nord-light"] {
+  color-scheme: light;
+  --fg: #2e3440;
+  --bd: #2e3440;
+  --bg: #e5e9f0;
+}
+body[data-mode="groove-dark"] {
+  color-scheme: dark;
+  --fg: #cec4ac;
+  --bd: #cec4ac;
+  --bg: #282828;
+}
+body[data-mode="solarized-dark"] {
+  color-scheme: dark;
+  --fg: #839496;
+  --bd: #839496;
+  --bg: #002b36;
+}
+body[data-mode="nord-dark"] {
+  color-scheme: dark;
+  --fg: #e5e9f0;
+  --bd: #e5e9f0;
+  --bg: #2e3440;
+}
+
+@media print {
+  body[data-mode] {
+    --fg: #000;
+    --bd: #000;
+    --bg: #fff;
+
+    width: unset;
+    padding: 0;
+    margin: 0;
+  }
+}
+body[data-loaded=true] {
+  
+}
+img {
+  max-width: 100%;
+  height: auto;
+}
+img:not([width])[src$=".svg"] {
+  max-width: 100px;
+}
+body[data-images=false] canvas,
+body[data-images=false] svg,
+body[data-images=false] img {
+  display: none;
+}
+svg:not([width]):not([height]) {
+  max-width: 25vmin;
+}
+a {
+  color: var(--lk);
+  text-decoration: none;
+}
+a:visited {
+  color: var(--lkv);
+}
+
+hr {
+  background-color: var(--bd);
+  height: 1px;
+  border: 0;
+}
+#reader-domain {
+  font-family: Helvetica, Arial, sans-serif;
+  text-decoration: none;
+  border-bottom-color: currentcolor;
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  width: 100%;
+  display: inline-block;
+  direction: ltr;
+}
+#reader-domain > span:first-child {
+  font-size: 1.1em;
+}
+#reader-domain > span:last-child {
+  font-size: 0.8em;
+}
+#reader-title {
+  font-size: 1.6em;
+  line-height: 1.25em;
+  width: 100%;
+  margin: 20px 0;
+  padding: 0;
+}
+#reader-credits,
+#doi,
+#published-time,
+#reader-estimated-time {
+  font-size: 0.85em;
+  line-height: 1.48em;
+  margin: 0 0 10px 0;
+  padding: 0;
+}
+#reader-credits:not(:empty)::after {
+  content: ' ⋮ ';
+}
+#published-time:not(:empty)::before {
+  content: ' ⋮ ';
+}
+#doi-json {
+  overflow: hidden;
+}
+#doi-json code {
+  overflow: auto;
+  max-height: 400px;
+}
+#published-time:empty,
+#reader-credits:empty {
+  display: none;
+}
+mark.hghlght {
+  background-color: var(--hg);
+}
+body:not([data-columns="1"]) .page :is(h1, h2) {
+  column-span: all;
+  background-color: rgba(125, 125, 125, 0.1);
+  padding: 10px;
+}
+.hidden {
+  display: none;
+}
+</style>
+  <style id="user-css">body {
+  padding-bottom: 64px;
+}
+pre {
+  white-space: pre-wrap;
+}
+pre code {
+  background-color: #eff0f1;
+  color: #393318;
+  font-family: monospace;
+  display: block;
+  padding: 5px 10px;
+}
+body[data-mode="dark"] pre code {
+  background-color: #585858;
+  color: #e8e8e8;
+}
+
+/* CSS for sans-serif fonts */
+body[data-font=sans-serif] {}
+/* CSS for serif fonts */
+body[data-font=serif] {}
+
+/* CSS for "sepia" theme */
+body[data-mode=sepia] {}
+/* CSS for "light" theme */
+body[data-mode=light] {}
+/* CSS for "dark" theme */
+body[data-mode=dark] {}</style>
+<title>10. The Bitcoin Network</title><title>10. The Bitcoin Network :: Reader View</title></head>
+<body tabindex="1" data-images="true" data-mode="groove-dark" data-font="serif" data-columns="1" data-loaded="true">
+  <span></span> <!-- for IntersectionObserver -->
+  <a id="reader-domain" href="https://learning.oreilly.com/library/view/mastering-bitcoin-3rd/9781098150082/ch10.html">
+    <span>learning.oreilly.com</span>
+    <span>/library/view/mastering-bitcoin-3rd/9781098150082/ch10.html</span>
+  </a>
+  <h1 dir="auto" id="reader-title">10. The Bitcoin Network</h1>
+  <span dir="auto" id="reader-credits"></span>
+  <span dir="auto" id="reader-estimated-time">52-66 minutes</span>
+  <span dir="auto" id="published-time"></span>
+  <hr>
+  <div id="readability-page-1" class="page"><div id="sbo-rt-content" data-type="chapter" epub:type="chapter" data-pdf-bookmark="Chapter 10. The Bitcoin Network">
+
+
+
+<p>Bitcoin is <a data-type="indexterm" data-primary="Bitcoin" data-secondary="as peer-to-peer network" data-seealso="Bitcoin network" data-secondary-sortas="peer-to-peer network" id="id1092" target="_blank" rel="noopener noreferrer"></a><a data-type="indexterm" data-primary="peer-to-peer networks, Bitcoin as" data-seealso="Bitcoin network" id="id1093" target="_blank" rel="noopener noreferrer"></a><a data-type="indexterm" data-primary="networks (Bitcoin)" data-see="Bitcoin network" id="id1094" target="_blank" rel="noopener noreferrer"></a><a data-type="indexterm" data-primary="Bitcoin network" id="id1095" target="_blank" rel="noopener noreferrer"></a>structured as a peer-to-peer network architecture on
+top of the internet. The term peer-to-peer, or P2P, means that the
+full nodes that participate in the network are peers to each other, that
+they can all perform the same functions, and that there are no “special” nodes.
+The network nodes
+interconnect in a mesh network with a “flat” topology. There is no
+server, no centralized service, and no hierarchy within the network.
+Nodes in a P2P network both provide and consume services at the same
+time. P2P
+networks are inherently resilient, decentralized, and open. A preeminent
+example of a P2P network architecture was the early internet itself,
+where nodes on the IP network were equal. Today’s internet architecture
+is more hierarchical, but the Internet Protocol still retains its
+flat-topology essence. Beyond Bitcoin and the internet, the largest and most successful
+application of P2P technologies is file sharing, with Napster as the
+pioneer and BitTorrent as the most recent evolution of the architecture.</p>
+
+<p>Bitcoin’s P2P network architecture is much more than a topology choice.
+Bitcoin is a P2P digital cash system by design, and the network
+architecture is both a reflection and a foundation of that core
+characteristic. Decentralization of control is a core design principle
+that can only be achieved and maintained by a flat and decentralized P2P
+consensus network.</p>
+
+<p>The term “Bitcoin network” refers to
+the collection of nodes running the Bitcoin P2P protocol. In addition to
+the Bitcoin P2P protocol, there are other protocols that
+are used for mining and lightweight wallets. These additional
+protocols are provided by gateway routing servers that access the
+Bitcoin network using the Bitcoin P2P protocol and then extend that
+network to nodes running other protocols. For example, Stratum servers
+connect Stratum mining nodes via the Stratum protocol to the main
+Bitcoin network and bridge the Stratum protocol to the Bitcoin P2P
+protocol. We will describe some of the most commonly used of those
+protocols in this chapter in addition to the base Bitcoin P2P protocol.</p>
+
+
+
+
+
+
+<div id="id155" data-type="sect1" data-pdf-bookmark="Node Types and Roles">
+<h2>Node Types and Roles</h2>
+
+<p>Although<a data-type="indexterm" data-primary="Bitcoin network" data-secondary="nodes" data-tertiary="types of" id="id1096" target="_blank" rel="noopener noreferrer"></a><a data-type="indexterm" data-primary="nodes" data-secondary="types of" id="id1097" target="_blank" rel="noopener noreferrer"></a><a data-type="indexterm" data-primary="full nodes" data-secondary="purpose of" id="id1098" target="_blank" rel="noopener noreferrer"></a><a data-type="indexterm" data-primary="peers" id="id1099" target="_blank" rel="noopener noreferrer"></a> full nodes (peers) in the Bitcoin P2P network are equal to each other,
+they may take on different roles depending on the functionality they are
+supporting. A Bitcoin full node validates blocks and may contain other
+functions, such as routing, mining, and wallet services.</p>
+
+<p>Some nodes, called <em>archival full nodes</em>, also <a data-type="indexterm" data-primary="archival full nodes" id="id1100" target="_blank" rel="noopener noreferrer"></a>maintain a
+complete and up-to-date copy of the blockchain.
+Those nodes can
+serve data to clients that store
+only a subset of the blockchain and partly verify transactions using a method
+<a data-type="indexterm" data-primary="SPV (simplified-payment-verification) clients" id="id1101" target="_blank" rel="noopener noreferrer"></a><a data-type="indexterm" data-primary="lightweight clients" id="id1102" target="_blank" rel="noopener noreferrer"></a>called <em>simplified payment verification</em>, or SPV. These clients are known as lightweight clients.</p>
+
+<p>Miners compete to create new blocks by
+running specialized hardware to solve the proof-of-work algorithm. Some
+miners operate full nodes, validating every block on the
+blockchain, while others are clients participating in pool
+mining and depending on a pool server to provide them with work.</p>
+
+<p>User wallets might connect to the user’s own full node, as is sometimes the case with
+desktop Bitcoin clients, but many user wallets, especially
+those running on resource-constrained devices such as smartphones, are
+lightweight nodes.</p>
+
+<p>In addition to the main node types on the Bitcoin P2P protocol, there
+are servers and nodes running other protocols, such as specialized
+mining pool protocols and lightweight client-access protocols.</p>
+</div>
+
+
+
+
+
+
+<div id="id263" data-type="sect1" data-pdf-bookmark="The Network">
+<h2>The Network</h2>
+
+<p>As <a data-type="indexterm" data-primary="Bitcoin network" data-secondary="nodes" data-tertiary="number of" id="id1103" target="_blank" rel="noopener noreferrer"></a><a data-type="indexterm" data-primary="nodes" data-secondary="number of" id="id1104" target="_blank" rel="noopener noreferrer"></a>of this writing, the main Bitcoin network,
+running the Bitcoin P2P protocol, consists of about 10,000
+listening nodes running various versions of Bitcoin Core and a few
+hundred nodes running various other implementations of the Bitcoin P2P
+protocol such as BitcoinJ, btcd, and bcoin. A small
+percentage of the nodes on the Bitcoin P2P network are also mining
+nodes. Various individuals and companies interface with the Bitcoin
+network by running archival full nodes,
+with full copies of the blockchain and a network node, but without
+mining or wallet functions. These nodes act as network edge routers,
+allowing various other services (exchanges, wallets, block explorers,
+merchant payment processing) to be built on top.</p>
+</div>
+
+
+
+
+
+
+<div id="id156" data-type="sect1" data-pdf-bookmark="Compact Block Relay">
+<h2>Compact Block Relay</h2>
+
+<p>When a <a data-type="indexterm" data-primary="Bitcoin network" data-secondary="nodes" data-tertiary="compact block relay" id="bitcoin-network-node-compact-relay" target="_blank" rel="noopener noreferrer"></a><a data-type="indexterm" data-primary="nodes" data-secondary="compact block relay" id="node-compact-relay" target="_blank" rel="noopener noreferrer"></a><a data-type="indexterm" data-primary="blocks" data-secondary="compact block relay" id="block-compact-relay" target="_blank" rel="noopener noreferrer"></a><a data-type="indexterm" data-primary="compact block relay" id="compact-block-relay" target="_blank" rel="noopener noreferrer"></a><a data-type="indexterm" data-primary="mining" data-secondary="blocks" data-tertiary="compact block relay" id="mining-block-compact-relay" target="_blank" rel="noopener noreferrer"></a>miner finds a new block, they announce it to the Bitcoin network
+(which includes other miners).  The miner who found that block can start
+building on top of it immediately; all other miners who haven’t learned
+about the block yet will continue building on top of the previous block
+until they do learn about it.</p>
+
+<p>If, before they learn about the new block, one of those other
+miners creates a block, their block will be in competition with the
+first miner’s new block.  Only one of the blocks will ever be included
+in the blockchain used by all full nodes, and miners only get paid for
+blocks that are widely accepted.</p>
+
+<p>Whichever block has a second block built on top of it first wins (unless
+there’s another near-tie), which is <a data-type="indexterm" data-primary="block-finding races" id="id1105" target="_blank" rel="noopener noreferrer"></a>called a <em>block-finding race</em> and is
+illustrated in <a data-type="xref" href="#mining_race" target="_blank" rel="noopener noreferrer">Figure&nbsp;10-1</a>.
+Block-finding races give the advantage to the largest miners, so they
+act in opposition to Bitcoin’s essential decentralization.  To prevent
+block-finding races and allow miners of any size to participate equally
+in the lottery that is Bitcoin mining, it’s extremely useful to minimize
+the time between when one miner announces a new block and when other
+miners receive that block.</p>
+
+<figure><div id="mining_race">
+<p><img src="https://learning.oreilly.com/api/v2/epubs/urn:orm:book:9781098150082/files/assets/mbc3_1001.png" alt="" width="572" height="286"></p><h6><span>Figure 10-1. </span>A blockchain fork requiring a mining race.</h6>
+</div></figure>
+
+<p>In 2015, a new version of Bitcoin Core added a feature called
+<em>compact block relay</em> (specified in BIP152) that allows transferring new
+blocks both faster and with less bandwidth.</p>
+
+<p>As background, full nodes that relay unconfirmed transactions also store
+many of those transactions in their mempools (see <a data-type="xref" href="#mempool" target="_blank" rel="noopener noreferrer">“Mempools and Orphan Pools”</a>).  When
+some of those transactions are confirmed in a new block, the node
+doesn’t need to receive a second copy of those transactions.</p>
+
+<p>Instead of receiving redundant unconfirmed transactions, compact blocks
+allow a peer to instead send a short 6-byte identifier for each transaction.
+When your node receives a compact block with one or more identifiers, it
+checks its mempool for those transactions and uses them if they are
+found.  For any transaction that isn’t found in your local node’s
+mempool, your node can send a request to the peer for a copy.</p>
+
+<p>Conversely, if the remote peer believes your node’s mempool doesn’t have
+some of the transactions that appear in the block, it can include a copy of
+those transactions in the compact block.  For example, Bitcoin Core
+always sends a block’s coinbase transaction.</p>
+
+<p>If the remote peer guesses correctly about what transactions your node
+has in its mempool, and which it does not, it will send a block nearly
+as efficiently as is theoretically possible (for a typical block, it’ll
+be between 97% and 99% efficient).</p>
+<div data-type="tip"><h6>Tip</h6>
+<p>Compact block relay does not decrease the size of blocks.  It just
+prevents the redundant transfer of information that a node already has.
+When a node doesn’t previously have information about a block, for
+example when a node is first started, it must receive complete copies of
+each block.</p>
+</div>
+
+<p>There are two modes that Bitcoin Core currently implements for sending
+compact blocks, illustrated in <a data-type="xref" href="#bip152_illustration" target="_blank" rel="noopener noreferrer">Figure&nbsp;10-2</a>:</p>
+<dl>
+<dt>Low-bandwidth mode</dt>
+<dd>
+<p>When your<a data-type="indexterm" data-primary="low-bandwidth mode (compact block relay)" id="id1106" target="_blank" rel="noopener noreferrer"></a> node requests that a peer use low-bandwidth mode (the default),
+that peer will tell your node the 32-byte identifier (header hash) of a
+new block but will not send your node any details about it.  If your
+node acquires that block first from another source, this avoids
+wasting any more of your bandwidth acquiring a redundant copy of that
+block.  If your node does need the block, it will request a compact
+block.</p>
+</dd>
+<dt>High-bandwidth mode</dt>
+<dd>
+<p>When your node <a data-type="indexterm" data-primary="high-bandwidth mode (compact block relay)" id="id1107" target="_blank" rel="noopener noreferrer"></a>requests that a peer use high-bandwidth mode, that peer
+will send your node a compact block for a new block even before it has
+fully verified that the block is valid.  The only validation the peer
+will perform is ensuring that the block’s header contains the correct
+amount of proof of work.  Since proof of work is expensive to generate
+(about $150,000 USD at the time of writing), it’s unlikely that a
+miner would fake it just to waste the bandwidth of relay nodes.
+Skipping validation before relay allows new blocks to travel across
+the network with minimal delays at each hop.</p>
+
+<p>The downside of high-bandwidth mode is that your node is likely to
+receive redundant information from each high-bandwidth peer it chooses.
+As of this writing, Bitcoin Core currently only asks three peers to use
+high-bandwidth mode (and it tries to choose peers that have a history of
+quickly announcing blocks).</p>
+</dd>
+</dl>
+
+<figure><div id="bip152_illustration">
+<p><img src="https://learning.oreilly.com/api/v2/epubs/urn:orm:book:9781098150082/files/assets/mbc3_1002.png" alt="" width="600" height="486"></p><h6><span>Figure 10-2. </span>BIP152 modes compared (from BIP152).  The shaded bar indicates the time it takes the node to validate the block.</h6>
+</div></figure>
+
+<p>The names of the two methods (which are taken from BIP152) can be a bit
+confusing.  Low-bandwidth mode saves bandwidth by not sending blocks in
+most cases.  High-bandwidth mode uses more bandwidth than low-bandwidth
+mode but, in most cases, much less bandwidth than was used for block
+relay before compact blocks were <a data-type="indexterm" data-primary="Bitcoin network" data-secondary="nodes" data-tertiary="compact block relay" data-startref="bitcoin-network-node-compact-relay" id="id1108" target="_blank" rel="noopener noreferrer"></a><a data-type="indexterm" data-primary="nodes" data-secondary="compact block relay" data-startref="node-compact-relay" id="id1109" target="_blank" rel="noopener noreferrer"></a><a data-type="indexterm" data-primary="blocks" data-secondary="compact block relay" data-startref="block-compact-relay" id="id1110" target="_blank" rel="noopener noreferrer"></a><a data-type="indexterm" data-primary="compact block relay" data-startref="compact-block-relay" id="id1111" target="_blank" rel="noopener noreferrer"></a><a data-type="indexterm" data-primary="mining" data-secondary="blocks" data-tertiary="compact block relay" data-startref="mining-block-compact-relay" id="id1112" target="_blank" rel="noopener noreferrer"></a>implemented.</p>
+</div>
+
+
+
+
+
+
+<div id="id157" data-type="sect1" data-pdf-bookmark="Private Block Relay Networks">
+<h2>Private Block Relay Networks</h2>
+
+<p>Although<a data-type="indexterm" data-primary="Bitcoin network" data-secondary="nodes" data-tertiary="private block relay" id="bitcoin-network-node-private-relay" target="_blank" rel="noopener noreferrer"></a><a data-type="indexterm" data-primary="nodes" data-secondary="private block relay" id="node-private-relay" target="_blank" rel="noopener noreferrer"></a><a data-type="indexterm" data-primary="blocks" data-secondary="private block relay" id="block-private-relay" target="_blank" rel="noopener noreferrer"></a><a data-type="indexterm" data-primary="private block relay" id="private-block-relay" target="_blank" rel="noopener noreferrer"></a><a data-type="indexterm" data-primary="mining" data-secondary="blocks" data-tertiary="private block relay" id="mining-block-private-relay" target="_blank" rel="noopener noreferrer"></a> compact blocks go a long way toward minimizing the time it
+takes for blocks to propagate across the network,
+it’s possible to minimize latency further.  Unlike
+compact blocks, though, the other solutions involve trade-offs that
+make them unavailable or unsuitable for the public P2P relay network.
+For that reason, there has been experimentation with private relay
+networks for blocks.</p>
+
+<p>One simple technique is to preselect a route between endpoints.  For
+example, a relay network with servers running in datacenters near major
+trans-oceanic fiber optic lines might be able to forward new blocks
+faster than waiting for the block to arrive at the node run by some home
+user many kilometers away from the fiber optic line.</p>
+
+<p>Another, more complex technique, is<a data-type="indexterm" data-primary="FEC (Forward Error Correction)" id="id1113" target="_blank" rel="noopener noreferrer"></a><a data-type="indexterm" data-primary="Forward Error Correction (FEC)" id="id1114" target="_blank" rel="noopener noreferrer"></a> Forward Error Correction (FEC).
+This allows a compact block message to be split into several parts, with
+each part having extra data appended.  If any of the parts isn’t
+received, that part can be reconstructed from the parts that are
+received.  Depending on the settings, up to several parts may be
+reconstructed if they are lost.</p>
+
+<p>FEC avoids the problem of a compact block (or some parts of it) not
+arriving due to problems with the underlying network connection.
+Those problems frequently occur but we don’t often notice them
+because we mostly use protocols that automatically re-request the
+missing data.  However, requesting missing data triples the time to
+receive it.  For example:</p>
+<ol>
+<li>
+<p>Alice sends some data to Bob.</p>
+</li>
+<li>
+<p>Bob doesn’t receive the data (or it is damaged).   Bob re-requests
+the data from Alice.</p>
+</li>
+<li>
+<p>Alice sends the data again.</p>
+</li>
+
+</ol>
+
+<p>A third technique is to assume all nodes receiving the data have
+almost all of the same transactions in their mempool, so they can all
+accept the same compact block.  That not only saves us time computing
+a compact block at each hop, but it means that each hop can simply
+relay the FEC packets to the next hop even before validating them.</p>
+
+<p>The trade-off for each of the preceding methods is that they work well with
+centralization but not in a decentralized network where individual nodes
+can’t trust other nodes.  Servers in datacenters cost money and can
+often be accessed by operators of the datacenter, making them less
+trustworthy than a secure home computer.  Relaying data before
+validating makes it easy to waste bandwidth, so it can only reasonably
+be used on a private network where there’s some level of trust and
+accountability between parties.</p>
+
+<p>The original
+<a href="https://oreil.ly/30ZKi" target="_blank" rel="noopener noreferrer">Bitcoin Relay Network</a> was<a data-type="indexterm" data-primary="Bitcoin Relay Network" id="id1115" target="_blank" rel="noopener noreferrer"></a> created by
+developer Matt Corallo in 2015 to enable fast synchronization of
+blocks between miners with very low latency. The network consisted of
+several virtual private servers (VPSes) hosted on
+infrastructure around the world and served to connect the majority of
+miners and mining pools.</p>
+
+<p>The original Bitcoin Relay Network was replaced in 2016
+with the introduction <a data-type="indexterm" data-primary="FIBRE (Fast Internet Bitcoin Relay Engine)" id="id1116" target="_blank" rel="noopener noreferrer"></a><a data-type="indexterm" data-primary="Fast Internet Bitcoin Relay Engine (FIBRE)" id="id1117" target="_blank" rel="noopener noreferrer"></a>of the <em>Fast Internet Bitcoin Relay Engine</em> or
+<a href="https://bitcoinfibre.org/" target="_blank" rel="noopener noreferrer"><em>FIBRE</em></a>, also created by developer Matt
+Corallo. FIBRE is software that allows operating a UDP-based relay network that relays blocks within a
+network of nodes. FIBRE implements FEC and the <em>compact block</em> optimization to
+further reduce the amount of data transmitted and the <a data-type="indexterm" data-primary="Bitcoin network" data-secondary="nodes" data-tertiary="private block relay" data-startref="bitcoin-network-node-private-relay" id="id1118" target="_blank" rel="noopener noreferrer"></a><a data-type="indexterm" data-primary="nodes" data-secondary="private block relay" data-startref="node-private-relay" id="id1119" target="_blank" rel="noopener noreferrer"></a><a data-type="indexterm" data-primary="blocks" data-secondary="private block relay" data-startref="block-private-relay" id="id1120" target="_blank" rel="noopener noreferrer"></a><a data-type="indexterm" data-primary="private block relay" data-startref="private-block-relay" id="id1121" target="_blank" rel="noopener noreferrer"></a><a data-type="indexterm" data-primary="mining" data-secondary="blocks" data-tertiary="private block relay" data-startref="mining-block-private-relay" id="id1122" target="_blank" rel="noopener noreferrer"></a>network latency.</p>
+</div>
+
+
+
+
+
+
+<div id="id158" data-type="sect1" data-pdf-bookmark="Network Discovery">
+<h2>Network Discovery</h2>
+
+<p>When a <a data-type="indexterm" data-primary="Bitcoin network" data-secondary="nodes" data-tertiary="network discovery" id="bitcoin-network-node-discovery" target="_blank" rel="noopener noreferrer"></a><a data-type="indexterm" data-primary="nodes" data-secondary="network discovery" id="node-discovery" target="_blank" rel="noopener noreferrer"></a><a data-type="indexterm" data-primary="network discovery" id="network-discovery" target="_blank" rel="noopener noreferrer"></a>new node boots up, it must discover other
+Bitcoin nodes on the network in order to participate. To start this
+process, a new node must discover at least one existing node on the
+network and connect to it. The geographic location of other nodes is
+irrelevant; the Bitcoin network topology is not geographically defined.
+Therefore, any existing Bitcoin nodes can be selected at random.</p>
+
+<p>To connect to a known peer, nodes establish a TCP connection, usually to
+port 8333 (the port generally known as the one used by Bitcoin), or an
+alternative port if one is provided. Upon establishing a connection, the
+node will start a “handshake” (see <a data-type="xref" href="#network_handshake" target="_blank" rel="noopener noreferrer">Figure&nbsp;10-3</a>) by
+transmitting a  <code>version</code> message, which contains basic identifying
+information, including:</p>
+<dl>
+<dt><code>Version</code></dt>
+<dd>
+<p>The Bitcoin P2P protocol version the client “speaks” (e.g., 70002)</p>
+</dd>
+<dt><code>nLocalServices</code></dt>
+<dd>
+<p>A list of local services supported by the node</p>
+</dd>
+<dt><code>nTime</code></dt>
+<dd>
+<p>The current time</p>
+</dd>
+<dt><code>addrYou</code></dt>
+<dd>
+<p>The IP address of the remote node, as seen from this node</p>
+</dd>
+<dt><code>addrMe</code></dt>
+<dd>
+<p>The IP address of the local node, as discovered by the local node</p>
+</dd>
+<dt><code>subver</code></dt>
+<dd>
+<p>A subversion showing the type of software running on this node (e.g., 
+<span><code>/Satoshi:0.9.2.1/</code></span>)</p>
+</dd>
+<dt><code>BestHeight</code></dt>
+<dd>
+<p>The block height of this node’s blockchain</p>
+</dd>
+<dt><code>fRelay</code></dt>
+<dd>
+<p>A field added by BIP37 for requesting not to receive unconfirmed transactions</p>
+</dd>
+</dl>
+
+<p>The <code>version</code> message is always the first message sent by any peer to
+another peer. The local peer receiving a <code>version</code> message will examine
+the remote peer’s reported <code>Version</code> and decide if the remote peer is
+compatible. If the remote peer is compatible, the local peer will
+acknowledge the <code>version</code> message and establish a connection by sending
+a <code>verack</code>.</p>
+
+<p>How does a new node find peers? The first method is to query DNS using a
+number of <em>DNS seeds</em>, which are<a data-type="indexterm" data-primary="DNS seeds" id="id1123" target="_blank" rel="noopener noreferrer"></a> DNS servers that provide a list of IP
+addresses of Bitcoin nodes. Some of those DNS seeds provide a static
+list of IP addresses of stable Bitcoin listening nodes. Some of the DNS
+seeds are custom implementations of BIND (Berkeley Internet Name Daemon)
+that return a random subset from a list of Bitcoin node addresses
+collected by a crawler or a long-running Bitcoin node.  The Bitcoin Core
+client contains the names of several different DNS seeds. The diversity of
+ownership and diversity of implementation of the different DNS seeds
+offers a high level of reliability for the initial bootstrapping
+process. In the Bitcoin Core client, the option to use the DNS seeds is
+controlled by the option switch <code>-dnsseed</code> (set to 1 by default, to use
+the DNS seed).</p>
+
+<p>Alternatively, a bootstrapping node that knows nothing of the network
+must be given the IP address of at least one Bitcoin node, after which
+it can establish connections through further introductions. The
+command-line argument <code>-seednode</code> can be used to connect to one node
+just for introductions using it as a seed. After the initial seed node
+is used to form introductions, the client will disconnect from it and
+use the newly discovered peers.</p>
+
+<figure><div id="network_handshake">
+<p><img src="https://learning.oreilly.com/api/v2/epubs/urn:orm:book:9781098150082/files/assets/mbc3_1003.png" alt="" width="600" height="594"></p><h6><span>Figure 10-3. </span>The initial handshake between peers.</h6>
+</div></figure>
+
+<p>Once one or more connections are established, the new node will send an
+<code>addr</code> message containing its own IP address to its neighbors. The
+neighbors will, in turn, forward the <code>addr</code> message to their neighbors,
+ensuring that the newly connected node becomes well known and better
+connected. Additionally, the newly connected node can send <code>getaddr</code> to
+its neighbors, asking them to return a list of IP addresses of other
+peers. That way, a node can find peers to connect to and advertise its
+existence on the network for other nodes to find it.
+<a data-type="xref" href="#address_propagation" target="_blank" rel="noopener noreferrer">Figure&nbsp;10-4</a> shows the address discovery protocol.</p>
+
+<figure><div id="address_propagation">
+<p><img src="https://learning.oreilly.com/api/v2/epubs/urn:orm:book:9781098150082/files/assets/mbc3_1004.png" alt="" width="600" height="584"></p><h6><span>Figure 10-4. </span>Address propagation and discovery.</h6>
+</div></figure>
+
+<p>A node must connect to a few different peers in order to establish
+diverse paths into the Bitcoin network. Paths are not reliable—nodes
+come and go—and so the node must continue to discover new nodes as it
+loses old connections as well as assist other nodes when they bootstrap.
+Only one connection is needed to bootstrap because the first node can
+offer introductions to its peer nodes and those peers can offer further
+introductions. It’s also unnecessary and wasteful of network resources
+to connect to more than a handful of nodes. After bootstrapping, a node
+will remember its most recent successful peer connections so if it
+is rebooted, it can quickly reestablish connections with its former peer
+network. If none of the former peers respond to its connection request,
+the node can use the seed nodes to bootstrap again.</p>
+
+<p>On a node running the Bitcoin Core client, you can list the peer
+connections with the command <code>getpeerinfo</code>:</p>
+
+<div data-testid="custom pre block"><pre data-type="programlisting" data-code-language="bash">$<code> </code>bitcoin-cli<code> </code>getpeerinfo<code></code></pre></div>
+
+<div data-testid="custom pre block"><pre data-type="programlisting" data-code-language="json"><code>[</code><code></code>
+<code>  </code><code>{</code><code></code>
+<code>    </code><code>"id"</code><code>:</code><code> </code><code>0</code><code>,</code><code></code>
+<code>    </code><code>"addr"</code><code>:</code><code> </code><code>"82.64.116.5:8333"</code><code>,</code><code></code>
+<code>    </code><code>"addrbind"</code><code>:</code><code> </code><code>"192.168.0.133:50564"</code><code>,</code><code></code>
+<code>    </code><code>"addrlocal"</code><code>:</code><code> </code><code>"72.253.6.11:50564"</code><code>,</code><code></code>
+<code>    </code><code>"network"</code><code>:</code><code> </code><code>"ipv4"</code><code>,</code><code></code>
+<code>    </code><code>"services"</code><code>:</code><code> </code><code>"0000000000000409"</code><code>,</code><code></code>
+<code>    </code><code>"servicesnames"</code><code>:</code><code> </code><code>[</code><code></code>
+<code>      </code><code>"NETWORK"</code><code>,</code><code></code>
+<code>      </code><code>"WITNESS"</code><code>,</code><code></code>
+<code>      </code><code>"NETWORK_LIMITED"</code><code></code>
+<code>    </code><code>],</code><code></code>
+<code>    </code><code>"lastsend"</code><code>:</code><code> </code><code>1683829947</code><code>,</code><code></code>
+<code>    </code><code>"lastrecv"</code><code>:</code><code> </code><code>1683829989</code><code>,</code><code></code>
+<code>    </code><code>"last_transaction"</code><code>:</code><code> </code><code>0</code><code>,</code><code></code>
+<code>    </code><code>"last_block"</code><code>:</code><code> </code><code>1683829989</code><code>,</code><code></code>
+<code>    </code><code>"bytessent"</code><code>:</code><code> </code><code>3558504</code><code>,</code><code></code>
+<code>    </code><code>"bytesrecv"</code><code>:</code><code> </code><code>6016081</code><code>,</code><code></code>
+<code>    </code><code>"conntime"</code><code>:</code><code> </code><code>1683647841</code><code>,</code><code></code>
+<code>    </code><code>"timeoffset"</code><code>:</code><code> </code><code>0</code><code>,</code><code></code>
+<code>    </code><code>"pingtime"</code><code>:</code><code> </code><code>0.204744</code><code>,</code><code></code>
+<code>    </code><code>"minping"</code><code>:</code><code> </code><code>0.20337</code><code>,</code><code></code>
+<code>    </code><code>"version"</code><code>:</code><code> </code><code>70016</code><code>,</code><code></code>
+<code>    </code><code>"subver"</code><code>:</code><code> </code><code>"/Satoshi:24.0.1/"</code><code>,</code><code></code>
+<code>    </code><code>"inbound"</code><code>:</code><code> </code><code>false</code><code>,</code><code></code>
+<code>    </code><code>"bip152_hb_to"</code><code>:</code><code> </code><code>true</code><code>,</code><code></code>
+<code>    </code><code>"bip152_hb_from"</code><code>:</code><code> </code><code>false</code><code>,</code><code></code>
+<code>    </code><code>"startingheight"</code><code>:</code><code> </code><code>788954</code><code>,</code><code></code>
+<code>    </code><code>"presynced_headers"</code><code>:</code><code> </code><code>-1</code><code>,</code><code></code>
+<code>    </code><code>"synced_headers"</code><code>:</code><code> </code><code>789281</code><code>,</code><code></code>
+<code>    </code><code>"synced_blocks"</code><code>:</code><code> </code><code>789281</code><code>,</code><code></code>
+<code>    </code><code>"inflight"</code><code>:</code><code> </code><code>[</code><code></code>
+<code>    </code><code>],</code><code></code>
+<code>    </code><code>"relaytxes"</code><code>:</code><code> </code><code>false</code><code>,</code><code></code>
+<code>    </code><code>"minfeefilter"</code><code>:</code><code> </code><code>0.00000000</code><code>,</code><code></code>
+<code>    </code><code>"addr_relay_enabled"</code><code>:</code><code> </code><code>false</code><code>,</code><code></code>
+<code>    </code><code>"addr_processed"</code><code>:</code><code> </code><code>0</code><code>,</code><code></code>
+<code>    </code><code>"addr_rate_limited"</code><code>:</code><code> </code><code>0</code><code>,</code><code></code>
+<code>    </code><code>"permissions"</code><code>:</code><code> </code><code>[</code><code></code>
+<code>    </code><code>],</code><code></code>
+<code>    </code><code>"bytessent_per_msg"</code><code>:</code><code> </code><code>{</code><code></code>
+<code>      </code><code>...</code><code></code>
+<code>    </code><code>},</code><code></code>
+<code>    </code><code>"bytesrecv_per_msg"</code><code>:</code><code> </code><code>{</code><code></code>
+<code>      </code><code>...</code><code></code>
+<code>    </code><code>},</code><code></code>
+<code>    </code><code>"connection_type"</code><code>:</code><code> </code><code>"block-relay-only"</code><code></code>
+<code>  </code><code>},</code><code></code>
+<code>]</code><code></code></pre></div>
+
+<p>To override the automatic management of peers and to specify a list of
+IP addresses, users can provide the option <code>-connect=&lt;IPAddress&gt;</code> and
+specify one or more IP addresses. If this option is used, the node will
+only connect to the selected IP addresses instead of discovering and
+maintaining the peer connections automatically.</p>
+
+<p>If there is no traffic on a connection, nodes will periodically send a
+message to maintain the connection. If a node has not communicated on a
+connection for too long, it is assumed to be disconnected
+and a new peer will be sought. Thus, the network dynamically adjusts to
+transient nodes and network problems and can organically grow and
+shrink as needed without any <a data-type="indexterm" data-primary="Bitcoin network" data-secondary="nodes" data-tertiary="network discovery" data-startref="bitcoin-network-node-discovery" id="id1124" target="_blank" rel="noopener noreferrer"></a><a data-type="indexterm" data-primary="nodes" data-secondary="network discovery" data-startref="node-discovery" id="id1125" target="_blank" rel="noopener noreferrer"></a><a data-type="indexterm" data-primary="network discovery" data-startref="network-discovery" id="id1126" target="_blank" rel="noopener noreferrer"></a>central control.</p>
+</div>
+
+
+
+
+
+
+<div id="id159" data-type="sect1" data-pdf-bookmark="Full Nodes">
+<h2>Full Nodes</h2>
+
+<p>Full nodes <a data-type="indexterm" data-primary="Bitcoin network" data-secondary="full nodes, purpose of" id="id1127" target="_blank" rel="noopener noreferrer"></a><a data-type="indexterm" data-primary="full nodes" data-secondary="purpose of" id="id1128" target="_blank" rel="noopener noreferrer"></a>are nodes that verify every transaction in every block on the
+valid blockchain with the most proof of work.</p>
+
+<p>Full nodes
+independently process every block, starting after the very first
+block (genesis block) and building up to the latest known block in the
+network. A full node can independently and authoritatively
+verify any transaction.
+The full node relies on the network to
+receive updates about new blocks of transactions, which it then verifies
+and incorporates into its local view of which scripts control which
+bitcoins, called the set <a data-type="indexterm" data-primary="UTXOs (unspent transaction outputs)" id="id1129" target="_blank" rel="noopener noreferrer"></a>of <em>unspent transaction outputs</em> (UTXOs).</p>
+
+<p>Running a full node gives
+you the pure Bitcoin experience: independent verification of all
+transactions without the need to rely on, or trust, any other systems.</p>
+
+<p>There are a few alternative implementations of
+full nodes, built using different programming
+languages and software architectures, or which made different design
+decisions. However, the most common
+implementation is Bitcoin Core.
+More than 95% of full nodes on the Bitcoin network run
+various versions of Bitcoin Core. It is identified as “Satoshi” in the
+subversion string sent in the <code>version</code> message and shown by the
+command <code>getpeerinfo</code> as we saw earlier; for example, 
+<span><code>/Satoshi:24.0.1/</code></span>.</p>
+</div>
+
+
+
+
+
+
+<div id="id160" data-type="sect1" data-pdf-bookmark="Exchanging “Inventory”">
+<h2>Exchanging “Inventory”</h2>
+
+<p>The first thing<a data-type="indexterm" data-primary="Bitcoin network" data-secondary="nodes" data-tertiary="syncing blockchain" id="bitcoin-network-node-sync" target="_blank" rel="noopener noreferrer"></a><a data-type="indexterm" data-primary="nodes" data-secondary="syncing blockchain" id="node-sync" target="_blank" rel="noopener noreferrer"></a><a data-type="indexterm" data-primary="full nodes" data-secondary="syncing blockchain" id="full-node-sync" target="_blank" rel="noopener noreferrer"></a><a data-type="indexterm" data-primary="blockchain" data-secondary="syncing" id="blockchain-sync" target="_blank" rel="noopener noreferrer"></a><a data-type="indexterm" data-primary="syncing blockchain" id="sync-blockchain" target="_blank" rel="noopener noreferrer"></a> a full
+node will do once it connects to peers is try to construct a complete
+chain of block headers. If it is a brand-new node and has no blockchain at all, it
+only knows one block, the genesis block, which is statically embedded in
+the client software. Starting after block #0 (the genesis block), the new
+node will have to download hundreds of thousands of blocks to
+synchronize with the network and reestablish the full blockchain.</p>
+
+<p>The
+process of syncing the blockchain starts with the <code>version</code> message
+because that contains <code>BestHeight</code>, a node’s current blockchain height
+(number of blocks). A node will see the <code>version</code> messages from its
+peers, know how many blocks they each have, and be able to compare to
+how many blocks it has in its own blockchain. Peered nodes will exchange
+a <code>getheaders</code> message that contains the hash of the top
+block on their local blockchain. One of the peers will be able to
+identify the received hash as belonging to a block that is not at the
+top, but rather belongs to an older block, thus deducing that its own
+local blockchain is longer than the remote node’s blockchain.</p>
+
+<p>The peer that has the longer blockchain has more blocks than the other
+node and can identify which headers the other node needs in order to
+“catch up.” It will identify the first 2,000 headers to share using a
+<code>headers</code> message.  The node will keep requesting additional headers
+until it has received one for every block the remote peer claims to
+have.</p>
+
+<p>In parallel, the node will begin requesting the blocks for each header
+it previously received using a <code>getdata</code> message.  The node will request
+different blocks from each of its selected peers, which allows it to drop
+connections to peers that are significantly slower than the average in
+order to find newer (and possibly faster) peers.</p>
+
+<p>Let’s assume, for example, that a node only has the genesis block. It
+will then receive a <code>headers</code> message from its peers containing the headers
+of the next 2,000 blocks in the chain. It will start requesting blocks
+from all of its connected peers, keeping a queue of up to 1,024 blocks.
+Blocks need to be validated in order, so if the oldest block in the
+queue—​the block the node next needs to validate—​hasn’t been received
+yet, the node drops the connection to the peer that was supposed to
+provide that block.  It then finds a new peer that may be able to
+provide one block before all of the node’s other peers are able to
+provide 1,023 blocks.</p>
+
+<p>As each block is received, it is added to the
+blockchain, as we will see in <a data-type="xref" href="https://learning.oreilly.com/library/view/mastering-bitcoin-3rd/9781098150082/ch11.html#blockchain" target="_blank" rel="noopener noreferrer">Chapter&nbsp;11</a>. As the local blockchain is
+gradually built up, more blocks are requested and received, and the
+process continues until the node catches up to the rest of the network.</p>
+
+<p>This process of comparing the local blockchain with the peers and
+retrieving any missing blocks happens any time a node has been offline for
+an extended period<a data-type="indexterm" data-primary="Bitcoin network" data-secondary="nodes" data-tertiary="syncing blockchain" data-startref="bitcoin-network-node-sync" id="id1130" target="_blank" rel="noopener noreferrer"></a><a data-type="indexterm" data-primary="nodes" data-secondary="syncing blockchain" data-startref="node-sync" id="id1131" target="_blank" rel="noopener noreferrer"></a><a data-type="indexterm" data-primary="full nodes" data-secondary="syncing blockchain" data-startref="full-node-sync" id="id1132" target="_blank" rel="noopener noreferrer"></a><a data-type="indexterm" data-primary="blockchain" data-secondary="syncing" data-startref="blockchain-sync" id="id1133" target="_blank" rel="noopener noreferrer"></a><a data-type="indexterm" data-primary="syncing blockchain" data-startref="sync-blockchain" id="id1134" target="_blank" rel="noopener noreferrer"></a> of time.</p>
+</div>
+
+
+
+
+
+
+<div id="spv_nodes" data-type="sect1" data-pdf-bookmark="Lightweight Clients">
+<h2>Lightweight Clients</h2>
+
+<p>Many <a data-type="indexterm" data-primary="Bitcoin network" data-secondary="lightweight clients" id="bitcoin-network-lightweight" target="_blank" rel="noopener noreferrer"></a><a data-type="indexterm" data-primary="lightweight clients" id="lightweight" target="_blank" rel="noopener noreferrer"></a><a data-type="indexterm" data-primary="SPV (simplified-payment-verification) clients" id="spv-lightweight" target="_blank" rel="noopener noreferrer"></a>Bitcoin clients are designed to run on space- and
+power-constrained devices, such as smartphones, tablets, or embedded
+systems. For such devices, a <em>simplified payment verification</em> (SPV)
+method is used to allow them to operate without validating the full
+blockchain. These types of clients are called lightweight
+clients.</p>
+
+<p>Lightweight clients download only the block headers and do not download the
+transactions included in each block. The resulting chain of headers,
+without transactions, is about 10,000 times smaller than the full blockchain.
+Lightweight clients cannot construct a full picture of all the UTXOs that are
+available for spending because they do not know about all the
+transactions on the network. Instead, they verify transactions using a
+slightly different method that relies on peers to provide partial views
+of relevant parts of the blockchain on demand.</p>
+
+<p>As an analogy, a full node is like a tourist in a strange city, equipped
+with a detailed map of every street and every address. By comparison, a
+lightweight client is like a tourist in a strange city asking random strangers for
+turn-by-turn directions while knowing only one main avenue. Although
+both tourists can verify the existence of a street by visiting it, the
+tourist without a map doesn’t know what lies down any of the side
+streets and doesn’t know what other streets exist. Positioned in front
+of 23 Church Street, the tourist without a map cannot know if there are
+a dozen other 
+<span>“23 Church</span> Street” addresses in the city and whether this
+is the right one. The mapless tourist’s best chance is to ask enough
+people and hope some of them are not trying to mug him.</p>
+
+<p>Lightweight clients verify transactions by reference to their <em>depth</em> in the blockchain. Whereas a full node will construct a fully verified chain of thousands of blocks and millions of transactions reaching down the blockchain (back in time) all the way to the genesis block, a lightweight client will verify the proof of work of all blocks (but not whether the blocks and all of their transactions are valid) and link that chain to the transaction of interest.</p>
+
+<p>For example, when examining a transaction in block 800,000, a full node
+verifies all 800,000 blocks down to the genesis block and builds a full
+database of UTXOs, establishing the validity of the transaction by
+confirming that the transaction exists and its output remains unspent. A lightweight client can
+only verify that the transaction exists. The client establishes a link
+between the transaction and the block that contains it, using a <em>merkle
+path</em> (see <a data-type="xref" href="https://learning.oreilly.com/library/view/mastering-bitcoin-3rd/9781098150082/ch11.html#merkle_trees" target="_blank" rel="noopener noreferrer">“Merkle Trees”</a>). Then, the lightweight client waits until it sees the
+six blocks 800,001 through 800,006 piled on top of the block containing
+the transaction and verifies it by establishing its depth under blocks
+800,006 to 800,001. The fact that other nodes on the network accepted
+block 800,000 and that miners did the necessary work to produce six more blocks
+on top of it is proof, by proxy, that the transaction actually exists.</p>
+
+<p>A lightweight client cannot normally be persuaded that a transaction exists in a block
+when the transaction does not in fact exist. The lightweight client establishes
+the existence of a transaction in a block by requesting a merkle path
+proof and by validating the proof of work in the chain of blocks.
+However, a transaction’s existence can be “hidden” from a lightweight client. A
+lightweight client can definitely verify that a transaction exists but cannot
+verify that a transaction, such as a double-spend of the same UTXO,
+doesn’t exist because it doesn’t have a record of all transactions. This
+vulnerability can be used in a denial-of-service attack or for a
+double-spending attack against lightweight clients. To defend against this, a lightweight
+client needs to connect randomly to several clients to increase the
+probability that it is in contact with at least one honest node. This
+need to randomly connect means that lightweight clients also are vulnerable to
+network partitioning attacks or Sybil attacks, where they are connected
+to fake nodes or fake networks and do not have access to honest nodes or
+the real Bitcoin network.</p>
+
+<p>For many practical purposes, well-connected lightweight clients are secure enough,
+striking a balance between resource needs, practicality, and security.
+For infallible security, however, nothing beats running a full
+node.</p>
+<div data-type="tip"><h6>Tip</h6>
+<p>A full node verifies a transaction by checking the entire chain of
+thousands of blocks below it in order to guarantee that the UTXO exists
+and is not spent, whereas a lightweight client only proves that a transaction
+exists and checks that the block containing that transaction is
+buried by a handful of blocks above it.</p>
+</div>
+
+<p>To get the block headers it needs to verify a transaction is part of the
+chain, lightweight clients use a <code>getheaders</code> message.
+The responding peer will send up to 2,000 block headers
+using a single <code>headers</code> message.  See the illustration in
+<a data-type="xref" href="#spv_synchronization" target="_blank" rel="noopener noreferrer">Figure&nbsp;10-5</a>.</p>
+
+<figure><div id="spv_synchronization">
+<p><img src="https://learning.oreilly.com/api/v2/epubs/urn:orm:book:9781098150082/files/assets/mbc3_1005.png" alt="" width="600" height="687"></p><h6><span>Figure 10-5. </span>Lightweight client synchronizing the block headers.</h6>
+</div></figure>
+
+<p>Block headers allow a lightweight client to verify that any individual block
+belongs to the blockchain with the most proof of work, but they don’t
+tell the client which blocks contain transactions that are interesting to
+its wallet.  The client could download every block and check, but that
+would use a large fraction of the resources it would take to run a full
+node, so developers have looked for other ways to solve the problem.</p>
+
+<p>Shortly after the introduction of lightweight clients, Bitcoin
+developers added a feature called <em>bloom filters</em> in an attempt to
+reduce the bandwidth that lightweight clients needed to use to learn about their
+incoming and outgoing transactions.
+Bloom filters allow lightweight clients to receive a subset of
+the transactions without directly revealing precisely which addresses they are
+interested in, through a filtering mechanism that uses probabilities
+rather than <a data-type="indexterm" data-primary="Bitcoin network" data-secondary="lightweight clients" data-startref="bitcoin-network-lightweight" id="id1135" target="_blank" rel="noopener noreferrer"></a><a data-type="indexterm" data-primary="lightweight clients" data-startref="lightweight" id="id1136" target="_blank" rel="noopener noreferrer"></a><a data-type="indexterm" data-primary="SPV (simplified-payment-verification) clients" data-startref="spv-lightweight" id="id1137" target="_blank" rel="noopener noreferrer"></a>fixed patterns.</p>
+</div>
+
+
+
+
+
+
+<div id="bloom_filters" data-type="sect1" data-pdf-bookmark="Bloom Filters">
+<h2>Bloom Filters</h2>
+
+<p>A bloom filter<a data-type="indexterm" data-primary="Bitcoin network" data-secondary="bloom filters" data-tertiary="operational overview" id="bitcoin-network-bloom-overview" target="_blank" rel="noopener noreferrer"></a><a data-type="indexterm" data-primary="bloom filters" data-secondary="operational overview" id="bloom-overview" target="_blank" rel="noopener noreferrer"></a> is a probabilistic search filter, a way
+to describe a desired pattern without specifying it exactly. Bloom
+filters offer an efficient way to express a search pattern while
+protecting privacy. They are used by lightweight clients to ask their peers for
+transactions matching a specific pattern without revealing exactly
+which addresses, keys, or transactions they are searching for.</p>
+
+<p>In our previous analogy, a tourist without a map is asking for
+directions to a specific address, “23 Church St.” If they ask a stranger
+for directions to this street, they inadvertently reveal their
+destination. A bloom filter is like asking, “Are there any streets in
+this neighborhood whose name ends in R-C-H?” A question like that
+reveals slightly less about the desired destination than asking for “23
+Church St.” Using this technique, a tourist could specify the desired
+address in more detail such as “ending in U-R-C-H” or less detail such as
+“ending in H.” By varying the precision of the search, the tourist
+reveals more or less information at the expense of getting more or less
+specific results. If they ask for a less specific pattern, they get a lot
+more possible addresses and better privacy, but many of the results are
+irrelevant. If they ask for a very specific pattern, they get fewer
+results but lose privacy.</p>
+
+<p>Bloom filters serve this function by allowing a lightweight client to specify a
+search pattern for transactions that can be tuned toward precision or
+privacy. A more specific bloom filter will produce accurate results, but
+at the expense of revealing what patterns the lightweight client is interested in,
+thus revealing the addresses owned by the user’s wallet. A less specific
+bloom filter will produce more data about more transactions, many
+irrelevant to the client, but will allow the client to maintain better
+privacy.</p>
+
+
+
+
+
+
+
+
+<div id="id265" data-type="sect2" data-pdf-bookmark="How Bloom Filters Work">
+<h2>How Bloom Filters Work</h2>
+
+<p>Bloom filters are implemented as a variable-size array of N binary
+digits (a bit field) and a variable number of M hash functions. The hash
+functions are designed to always produce an output that is between 1 and
+N, corresponding to the array of binary digits. The hash functions are
+generated deterministically, so that any client implementing a bloom
+filter will always use the same hash functions and get the same results
+for a specific input. By choosing different length (N) bloom filters and
+a different number (M) of hash functions, the bloom filter can be tuned,
+varying the level of accuracy and therefore privacy.</p>
+
+<p>In <a data-type="xref" href="#bloom1" target="_blank" rel="noopener noreferrer">Figure&nbsp;10-6</a>, we use a very small array of 16 bits and a set of three
+hash functions to demonstrate how bloom filters work.</p>
+
+<figure><div id="bloom1">
+<p><img src="https://learning.oreilly.com/api/v2/epubs/urn:orm:book:9781098150082/files/assets/mbc3_1006.png" alt="" width="600" height="231"></p><h6><span>Figure 10-6. </span>An example of a simplistic bloom filter, with a 16-bit field and three hash functions.</h6>
+</div></figure>
+
+<p>The bloom filter is initialized so that the array of bits is all zeros.
+To add a pattern to the bloom filter, the pattern is hashed by each hash
+function in turn. Applying the first hash function to the input results
+in a number between 1 and N. The corresponding bit in the array (indexed
+from 1 to N) is found and set to <code>1</code>, thereby recording the output of
+the hash function. Then, the next hash function is used to set another
+bit and so on. Once all M hash functions have been applied, the search
+pattern will be “recorded” in the bloom filter as M bits that have been
+changed from <code>0</code> to <code>1</code>.</p>
+
+<p><a data-type="xref" href="#bloom2" target="_blank" rel="noopener noreferrer">Figure&nbsp;10-7</a> is an example of adding a pattern “A” to the simple bloom filter shown in <a data-type="xref" href="#bloom1" target="_blank" rel="noopener noreferrer">Figure&nbsp;10-6</a>.</p>
+
+<p>Adding a second pattern is as simple as repeating this process. The
+pattern is hashed by each hash function in turn, and the result is
+recorded by setting the bits to <code>1</code>. Note that as a bloom filter is
+filled with more patterns, a hash function result might coincide with a
+bit that is already set to <code>1</code>, in which case the bit is not changed. In
+essence, as more patterns record on overlapping bits, the bloom filter
+starts to become saturated with more bits set to <code>1</code> and the accuracy of
+the filter decreases. This is why the filter is a probabilistic data
+structure—it gets less accurate as more patterns are added. The accuracy
+depends on the number of patterns added versus the size of the bit array
+(N) and number of hash functions (M). A larger bit array and more hash
+functions can record more patterns with higher accuracy. A smaller bit
+array or fewer hash functions will record fewer patterns and produce
+less accuracy.</p>
+
+<figure><div id="bloom2">
+<p><img src="https://learning.oreilly.com/api/v2/epubs/urn:orm:book:9781098150082/files/assets/mbc3_1007.png" alt="" width="600" height="332"></p><h6><span>Figure 10-7. </span>Adding a pattern “A” to our simple bloom filter.</h6>
+</div></figure>
+
+<p><a data-type="xref" href="#bloom3" target="_blank" rel="noopener noreferrer">Figure&nbsp;10-8</a> is an example of adding a second pattern “B” to the simple bloom filter.</p>
+
+<figure><div id="bloom3">
+<p><img src="https://learning.oreilly.com/api/v2/epubs/urn:orm:book:9781098150082/files/assets/mbc3_1008.png" alt="" width="600" height="331"></p><h6><span>Figure 10-8. </span>Adding a second pattern “B” to our simple bloom filter.</h6>
+</div></figure>
+
+<p>To test if a pattern is part of a bloom filter, the pattern is hashed by
+each hash function and the resulting bit pattern is tested against the
+bit array. If all the bits indexed by the hash functions are set to <code>1</code>,
+then the pattern is <em>probably</em> recorded in the bloom filter. Because the
+bits may be set because of overlap from multiple patterns, the answer is
+not certain, but is rather probabilistic. In simple terms, a bloom
+filter positive match is a “Maybe, yes.”</p>
+
+<p><a data-type="xref" href="#bloom4" target="_blank" rel="noopener noreferrer">Figure&nbsp;10-9</a> is an example of testing the existence of pattern “X” in the
+simple bloom filter. The corresponding bits are set to <code>1</code>, so the
+pattern is probably a match.</p>
+
+<figure><div id="bloom4">
+<p><img src="https://learning.oreilly.com/api/v2/epubs/urn:orm:book:9781098150082/files/assets/mbc3_1009.png" alt="" width="600" height="349"></p><h6><span>Figure 10-9. </span>Testing the existence of pattern “X” in the bloom filter. The result is a probabilistic positive match, meaning “Maybe.”</h6>
+</div></figure>
+
+<p>On the contrary, if a pattern is tested against the bloom filter and any
+one of the bits is set to <code>0</code>, this proves that the pattern was not
+recorded in the bloom filter. A negative result is not a probability, it
+is a certainty. In simple terms, a negative match on a bloom filter is a
+“Definitely not!”</p>
+
+<p><a data-type="xref" href="#bloom5" target="_blank" rel="noopener noreferrer">Figure&nbsp;10-10</a> is an example of testing the existence of pattern “Y” in the
+simple bloom filter. One of the corresponding bits is set to <code>0</code>, so the
+pattern is definitely<a data-type="indexterm" data-primary="Bitcoin network" data-secondary="bloom filters" data-tertiary="operational overview" data-startref="bitcoin-network-bloom-overview" id="id1138" target="_blank" rel="noopener noreferrer"></a><a data-type="indexterm" data-primary="bloom filters" data-secondary="operational overview" data-startref="bloom-overview" id="id1139" target="_blank" rel="noopener noreferrer"></a> not a match.</p>
+
+<figure><div id="bloom5">
+<p><img src="https://learning.oreilly.com/api/v2/epubs/urn:orm:book:9781098150082/files/assets/mbc3_1010.png" alt="" width="600" height="349"></p><h6><span>Figure 10-10. </span>Testing the existence of pattern “Y” in the bloom filter. The result is a definitive negative match, meaning “Definitely Not!”</h6>
+</div></figure>
+</div>
+
+
+
+
+
+
+
+
+<div id="id266" data-type="sect2" data-pdf-bookmark="How Lightweight Clients Use Bloom Filters">
+<h2>How Lightweight Clients Use Bloom Filters</h2>
+
+<p>Bloom filters <a data-type="indexterm" data-primary="Bitcoin network" data-secondary="bloom filters" data-tertiary="lightweight clients and" id="bitcoin-network-bloom-lightweight" target="_blank" rel="noopener noreferrer"></a><a data-type="indexterm" data-primary="bloom filters" data-secondary="lightweight clients and" id="bloom-lightweight" target="_blank" rel="noopener noreferrer"></a><a data-type="indexterm" data-primary="lightweight clients" data-secondary="bloom filters and" id="lightweight-bloom" target="_blank" rel="noopener noreferrer"></a>are used to filter the transactions (and blocks containing
+them) that a lightweight client receives from its peers, selecting only
+transactions of interest to the lightweight client without revealing exactly which
+addresses or keys it is interested in.</p>
+
+<p>A lightweight client will initialize a bloom filter
+as “empty”; in that state, the bloom filter will not match any patterns.
+The lightweight client will then make a list of all the addresses, keys, and
+hashes that it is interested in. It will do this by extracting the
+public key hash, script hash, and transaction IDs from any UTXO
+controlled by its wallet. The lightweight client then adds each of these to the
+bloom filter so that the bloom filter will “match” if these patterns
+are present in a transaction, without revealing the patterns themselves.</p>
+
+<p>The lightweight client will then send a
+<code>filterload</code> message to the peer containing the bloom filter to use on
+the connection. On the peer, bloom filters are checked against each
+incoming transaction. The full node checks several parts of the
+transaction against the bloom filter, looking for a match including:</p>
+<ul>
+<li>The transaction ID</li>
+<li>The data components from the scripts of each of the transaction outputs (every key and hash in the script)</li>
+<li>Each of the transaction inputs</li>
+<li>Each of the input signature data components (or witness scripts)</li>
+</ul>
+
+<p>By checking against all these components, bloom filters can be used to
+match public key hashes, scripts, <code>OP_RETURN</code> values, public keys in
+signatures, or any future component of a smart contract or complex
+script.</p>
+
+<p>After a filter is established, the peer will then test each
+transaction’s outputs against the bloom filter. Only transactions that
+match the filter are sent to the client.</p>
+
+<p>In response to a <code>getdata</code> message from the client, peers will send a
+<code>merkleblock</code> message that contains only block headers for blocks
+matching the filter and a merkle path (see <a data-type="xref" href="https://learning.oreilly.com/library/view/mastering-bitcoin-3rd/9781098150082/ch11.html#merkle_trees" target="_blank" rel="noopener noreferrer">“Merkle Trees”</a>) for each
+matching transaction. The peer will then also send <code>tx</code> messages
+containing the transactions matched by the filter.</p>
+
+<p>As the full node sends transactions to the lightweight client, the lightweight client
+discards any false positives and uses the correctly matched transactions
+to update its UTXO set and wallet balance. As it updates its own view of
+the UTXO set, it also modifies the bloom filter to match any future
+transactions referencing the UTXO it just found. The full node then uses
+the new bloom filter to match new transactions and the whole process
+repeats.</p>
+
+<p>The client setting the bloom filter can interactively add patterns to the
+filter by sending a <code>filteradd</code> message. To clear the bloom filter, the
+client can send a <code>filterclear</code> message. Because it is not possible to
+remove a pattern from a bloom filter, a client has to clear and resend a
+new bloom filter if a pattern is no longer desired.</p>
+
+<p>The network protocol and bloom filter mechanism for lightweight clients is defined
+in BIP37.</p>
+
+<p>Unfortunately, after the deployment of bloom filters, it became clear
+that they didn’t offer very much privacy.  A full node receiving a bloom
+filter from a peer could apply that filter to the entire blockchain to
+find all of the client’s transactions (plus false positives).  It could
+then look for patterns and relationships between the transactions.
+Randomly selected false positive transactions would be unlikely to have
+a parent-child relationship from output to input, but transactions from
+the user’s wallet would be very likely to have that relationship.  If
+all of the related transactions have certain characteristics, such as
+at least one P2PKH output, then transactions without that characteristic
+can be assumed not to belong to the wallet.</p>
+
+<p>It was also discovered that specially constructed filters could force
+the full nodes that processed them to perform a large amount of work,
+which could lead to denial-of-service attacks.</p>
+
+<p>For both of those reasons, Bitcoin Core eventually limited support for
+bloom filters to only clients on IP addresses that were explicitly
+allowed by the node operator.  This meant that an alternative method for
+helping lightweight clients find their transactions<a data-type="indexterm" data-primary="Bitcoin network" data-secondary="bloom filters" data-tertiary="lightweight clients and" data-startref="bitcoin-network-bloom-lightweight" id="id1140" target="_blank" rel="noopener noreferrer"></a><a data-type="indexterm" data-primary="bloom filters" data-secondary="lightweight clients and" data-startref="bloom-lightweight" id="id1141" target="_blank" rel="noopener noreferrer"></a><a data-type="indexterm" data-primary="lightweight clients" data-secondary="bloom filters and" data-startref="lightweight-bloom" id="id1142" target="_blank" rel="noopener noreferrer"></a> was needed.</p>
+</div>
+</div>
+
+
+
+
+
+
+<div id="id162" data-type="sect1" data-pdf-bookmark="Compact Block Filters">
+<h2>Compact Block Filters</h2>
+
+<p>An idea was <a data-type="indexterm" data-primary="Bitcoin network" data-secondary="compact block filters" id="bitcoin-network-compact-filter" target="_blank" rel="noopener noreferrer"></a><a data-type="indexterm" data-primary="compact block filters" id="compact-block-filter" target="_blank" rel="noopener noreferrer"></a><a data-type="indexterm" data-primary="blocks" data-secondary="compact block filters" id="block-compact-filter" target="_blank" rel="noopener noreferrer"></a>posted to the Bitcoin-Dev mailing list by an anonymous
+developer in 2016 of reversing the bloom filter process.  With a BIP37
+bloom filter, each client hashes their addresses to create a bloom
+filter and nodes hash parts of each transaction to attempt to match
+that filter.  In the new proposal, nodes hash parts of each transaction
+in a block to create a bloom filter and clients hash their addresses to
+attempt to match that filter.  If a client finds a match, they download
+the entire block.</p>
+<div data-type="note" epub:type="note"><h6>Note</h6>
+<p>Despite the similarities in names, BIP152 <em>compact blocks</em> and
+BIP157/158 <em>compact block filters</em> are unrelated.</p>
+</div>
+
+<p>This allows nodes to create a single filter for every block, which they
+can save to disk and serve over and over, eliminating the
+denial-of-service vulnerabilities with BIP37.  Clients don’t give full
+nodes any information about their past or future addresses.  They only
+download blocks, which may contain thousands of transactions that
+weren’t created by the client.  They can even download each matching
+block from a different peer, making it harder for full nodes to connect
+transactions belonging to a single client across multiple blocks.</p>
+
+<p>This idea for server-generated filters doesn’t offer perfect privacy;
+it still places some costs on full nodes (and it does require lightweight
+clients to use more bandwidth for the block download), and the filters can
+only be used for confirmed transactions (not unconfirmed transactions). However,
+it is much more private and reliable than BIP37 client-requested
+bloom filters.</p>
+
+<p>After the description of the original idea based on bloom filters,
+developers realized there was a better data structure for
+server-generated filters, called Golomb-Rice Coded Sets (GCS).</p>
+
+
+
+
+
+
+
+
+<div id="id163" data-type="sect2" data-pdf-bookmark="Golomb-Rice Coded Sets (GCS)">
+<h2>Golomb-Rice Coded Sets (GCS)</h2>
+
+<p>Imagine <a data-type="indexterm" data-primary="Bitcoin network" data-secondary="compact block filters" data-tertiary="GCS (Golomb-Rice coded sets)" id="bitcoin-network-compact-filter-gcs" target="_blank" rel="noopener noreferrer"></a><a data-type="indexterm" data-primary="compact block filters" data-secondary="GCS (Golomb-Rice coded sets)" id="compact-block-filter-gcs" target="_blank" rel="noopener noreferrer"></a><a data-type="indexterm" data-primary="blocks" data-secondary="compact block filters" data-tertiary="GCS (Golomb-Rice coded sets)" id="block-compact-filter-gcs" target="_blank" rel="noopener noreferrer"></a><a data-type="indexterm" data-primary="GCS (Golomb-Rice coded sets)" id="gcs-filter" target="_blank" rel="noopener noreferrer"></a>that Alice wants to send a list of numbers to Bob.  The simple
+way to do that is to just send him the entire list of numbers:</p>
+
+
+
+<p>But there’s a more efficient way.  First, Alice puts the list in
+numerical order:</p>
+
+
+
+<p>Then, Alice sends the first number.  For the remaining numbers, she
+sends the difference between that number and the preceding number.  For
+example, for the second number, she sends 97 (476 – 379); for the third
+number, she sends 177 (653 – 476); and so on:</p>
+
+
+
+<p>We can see that the differences between two numbers in an ordered list
+produces numbers that are shorter than the original numbers.  Upon
+receiving this list, Bob can reconstruct the original list by simply
+adding each number with its predecessor.  That means we save space
+without losing any information, which is <a data-type="indexterm" data-primary="lossless encoding" id="id1143" target="_blank" rel="noopener noreferrer"></a>called <em>lossless encoding</em>.</p>
+
+<p>If we randomly select numbers within a fixed range of values, then the
+more numbers we select, the smaller the average (mean) size of the
+differences.  That means the amount of data we need to transfer doesn’t
+increase as fast as the length of our list increases (up to a point).</p>
+
+<p>Even more usefully, the length of the randomly selected numbers in a
+list of differences is naturally biased toward smaller lengths.
+Consider selecting two random numbers from 1 to 6; this is the same
+as rolling two dice.  There are 36 distinct combinations of two dice:</p>
+<table><tbody><tr><td><p>1 1</p></td><td><p>1 2</p></td><td><p>1 3</p></td><td><p>1 4</p></td><td><p>1 5</p></td><td><p>1 6</p></td></tr><tr><td><p>2 1</p></td><td><p>2 2</p></td><td><p>2 3</p></td><td><p>2 4</p></td><td><p>2 5</p></td><td><p>2 6</p></td></tr><tr><td><p>3 1</p></td><td><p>3 2</p></td><td><p>3 3</p></td><td><p>3 4</p></td><td><p>3 5</p></td><td><p>3 6</p></td></tr><tr><td><p>4 1</p></td><td><p>4 2</p></td><td><p>4 3</p></td><td><p>4 4</p></td><td><p>4 5</p></td><td><p>4 6</p></td></tr><tr><td><p>5 1</p></td><td><p>5 2</p></td><td><p>5 3</p></td><td><p>5 4</p></td><td><p>5 5</p></td><td><p>5 6</p></td></tr><tr><td><p>6 1</p></td><td><p>6 2</p></td><td><p>6 3</p></td><td><p>6 4</p></td><td><p>6 5</p></td><td><p>6 6</p></td></tr></tbody></table>
+
+<p>Let’s find the difference between the larger of the numbers and the
+smaller of the numbers:</p>
+<table><tbody><tr><td><p>0</p></td><td><p>1</p></td><td><p>2</p></td><td><p>3</p></td><td><p>4</p></td><td><p>5</p></td></tr><tr><td><p>1</p></td><td><p>0</p></td><td><p>1</p></td><td><p>2</p></td><td><p>3</p></td><td><p>4</p></td></tr><tr><td><p>2</p></td><td><p>1</p></td><td><p>0</p></td><td><p>1</p></td><td><p>2</p></td><td><p>3</p></td></tr><tr><td><p>3</p></td><td><p>2</p></td><td><p>1</p></td><td><p>0</p></td><td><p>1</p></td><td><p>2</p></td></tr><tr><td><p>4</p></td><td><p>3</p></td><td><p>2</p></td><td><p>1</p></td><td><p>0</p></td><td><p>1</p></td></tr><tr><td><p>5</p></td><td><p>4</p></td><td><p>3</p></td><td><p>2</p></td><td><p>1</p></td><td><p>0</p></td></tr></tbody></table>
+
+<p>If we count the frequency of each difference occurring, we see that the
+small differences are much more likely to occur than the large
+differences:</p>
+<table><thead><tr><th>Difference</th><th>Occurrences</th></tr></thead><tbody><tr><td><p>0</p></td><td><p>6</p></td></tr><tr><td><p>1</p></td><td><p>10</p></td></tr><tr><td><p>2</p></td><td><p>8</p></td></tr><tr><td><p>3</p></td><td><p>6</p></td></tr><tr><td><p>4</p></td><td><p>4</p></td></tr><tr><td><p>5</p></td><td><p>2</p></td></tr></tbody></table>
+
+<p>If we know that we might need to store large numbers (because large
+differences can happen, even if they are rare), but we’ll most often need
+to store small numbers, we can encode each number using a system that
+uses less space for small numbers and extra space for large numbers.
+On average, that system will perform better than using the same amount
+of space for every number.</p>
+
+<p>Golomb coding provides that facility.  Rice coding is a subset of Golomb
+coding that’s more convenient to use in some situations, including the
+application of Bitcoin <a data-type="indexterm" data-primary="Bitcoin network" data-secondary="compact block filters" data-tertiary="GCS (Golomb-Rice coded sets)" data-startref="bitcoin-network-compact-filter-gcs" id="id1144" target="_blank" rel="noopener noreferrer"></a><a data-type="indexterm" data-primary="compact block filters" data-secondary="GCS (Golomb-Rice coded sets)" data-startref="compact-block-filter-gcs" id="id1145" target="_blank" rel="noopener noreferrer"></a><a data-type="indexterm" data-primary="blocks" data-secondary="compact block filters" data-tertiary="GCS (Golomb-Rice coded sets)" data-startref="block-compact-filter-gcs" id="id1146" target="_blank" rel="noopener noreferrer"></a><a data-type="indexterm" data-primary="GCS (Golomb-Rice coded sets)" data-startref="gcs-filter" id="id1147" target="_blank" rel="noopener noreferrer"></a>block filters.</p>
+</div>
+
+
+
+
+
+
+
+
+<div id="id267" data-type="sect2" data-pdf-bookmark="What Data to Include in a Block Filter">
+<h2>What Data to Include in a Block Filter</h2>
+
+<p>Our primary <a data-type="indexterm" data-primary="Bitcoin network" data-secondary="compact block filters" data-tertiary="what to include" id="bitcoin-network-compact-filter-include" target="_blank" rel="noopener noreferrer"></a><a data-type="indexterm" data-primary="compact block filters" data-secondary="what to include" id="compact-block-filter-include" target="_blank" rel="noopener noreferrer"></a><a data-type="indexterm" data-primary="blocks" data-secondary="compact block filters" data-tertiary="what to include" id="block-compact-filter-include" target="_blank" rel="noopener noreferrer"></a>goal is to allow wallets to learn whether a block contains a
+transaction affecting that wallet.  For a wallet to be effective, it
+needs to learn two types of information:</p>
+<dl>
+<dt>When it has received money</dt>
+<dd>
+<p>Specifically, when a transaction
+   output contains a script that the wallet controls (such as by
+   controlling the authorized private key)</p>
+</dd>
+<dt>When it has spent money</dt>
+<dd>
+<p>Specifically, when a transaction input
+   references a previous transaction output that the wallet controlled</p>
+</dd>
+</dl>
+
+<p>A secondary goal during the design of compact block filters was to allow
+the wallet receiving the filter to verify that it received an accurate
+filter from a peer.  For example, if the wallet downloaded the block
+from which the filter was created, the wallet could generate its own
+filter.  It could then compare its filter to the peer’s filter and
+verify that they were identical, proving the peer had generated an
+accurate filter.</p>
+
+<p>For both the primary and secondary goals to be met, a filter would need
+to reference two types of information:</p>
+
+<ul>
+<li>
+<p>The script for every output in every transaction in a block</p>
+</li>
+<li>
+<p>The outpoint for every input in every transaction in a block</p>
+</li>
+</ul>
+
+<p>An early design for compact block filters included both of those pieces
+of information, but it was realized there was a more efficient way
+to accomplish the primary goal if we sacrificed the secondary goal.  In
+the new design, a block filter would still reference two types of
+information, but they’d be more closely related:</p>
+
+<ul>
+<li>
+<p>As before, the script for every output in every transaction in a
+block.</p>
+</li>
+<li>
+<p>In a change, it would also reference the script of the output
+referenced by the outpoint for every input in every transaction in a
+block.  In other words, the output script being spent.</p>
+</li>
+</ul>
+
+<p>This had several advantages.  First, it meant that wallets didn’t need
+to track outpoints; they could instead just scan for the
+output scripts to which they expected to receive money. Second, any time a
+later transaction in a block spends the output of an earlier
+transaction in the same block, they’ll both reference the same
+output script.  More than one reference to the same output script is
+redundant in a compact block filter, so the redundant copies can be
+removed, shrinking the size of the filters.</p>
+
+<p>When full nodes validate a block, they need access to the output scripts
+for both the current transaction outputs in a block and the transaction
+outputs from previous blocks that are being referenced in inputs, so
+they’re able to build compact block filters in this simplified model.
+But a block itself doesn’t include the output scripts from transactions
+included in previous blocks, so there’s no convenient way for a client
+to verify a block filter was built correctly.  However, there is an
+alternative that can help a client detect if a peer is lying to it:
+obtaining the same filter from <a data-type="indexterm" data-primary="Bitcoin network" data-secondary="compact block filters" data-tertiary="what to include" data-startref="bitcoin-network-compact-filter-include" id="id1148" target="_blank" rel="noopener noreferrer"></a><a data-type="indexterm" data-primary="compact block filters" data-secondary="what to include" data-startref="compact-block-filter-include" id="id1149" target="_blank" rel="noopener noreferrer"></a><a data-type="indexterm" data-primary="blocks" data-secondary="compact block filters" data-tertiary="what to include" data-startref="block-compact-filter-include" id="id1150" target="_blank" rel="noopener noreferrer"></a>multiple peers.</p>
+</div>
+
+
+
+
+
+
+
+
+<div id="id164" data-type="sect2" data-pdf-bookmark="Downloading Block Filters from Multiple Peers">
+<h2>Downloading Block Filters from Multiple Peers</h2>
+
+<p>A peer <a data-type="indexterm" data-primary="Bitcoin network" data-secondary="compact block filters" data-tertiary="downloading multiple" id="bitcoin-network-compact-filter-download" target="_blank" rel="noopener noreferrer"></a><a data-type="indexterm" data-primary="compact block filters" data-secondary="downloading multiple" id="compact-block-filter-download" target="_blank" rel="noopener noreferrer"></a><a data-type="indexterm" data-primary="blocks" data-secondary="compact block filters" data-tertiary="downloading multiple" id="block-compact-filter-download" target="_blank" rel="noopener noreferrer"></a><a data-type="indexterm" data-primary="downloading multiple block filters" id="download-multiple-block" target="_blank" rel="noopener noreferrer"></a><a data-type="indexterm" data-primary="multiple block filters, downloading" id="multiple-block-download" target="_blank" rel="noopener noreferrer"></a>can provide a wallet with an inaccurate filter.  There are two ways
+to create an inaccurate filter.  The peer can create a filter that
+references transactions that don’t actually appear in the associated
+block (a false positive).  Alternatively, the peer can create a filter
+that doesn’t reference transactions that do actually appear in the
+associated block (a false negative).</p>
+
+<p>The first protection against an inaccurate filter is for a client to
+obtain a filter from multiple peers.  The BIP157 protocol allows a
+client to download just a short 32-byte commitment to a filter to
+determine whether each peer is advertising the same filter as all of the
+client’s other peers.  That minimizes the amount of bandwidth the client
+must expend to query many different peers for their filters, if all of
+those peers agree.</p>
+
+<p>If two or more different peers have different filters for the same
+block, the client can download all of them.  It can then also download
+the associated block.  If the block contains any transaction related to
+the wallet that is not part of one of the filters, then the wallet can
+be sure that whichever peer created that filter was
+inaccurate—​Golomb-Rice Coded Sets will always include a
+potential match.</p>
+
+<p>Alternatively, if the block doesn’t contain a transaction that the
+filter said might match the wallet, that isn’t proof that the filter was
+inaccurate.  To minimize the size of a GCS, we allow a certain number of
+false positives.  What the wallet can do is continue downloading
+additional filters from the peer, either randomly or when they indicate
+a match, and then track the client’s false positive rate.  If it
+differs significantly from the false positive rate that filters were
+designed to use, the wallet can stop using that peer.  In most cases,
+the only consequence of the inaccurate filter is that the wallet uses
+more bandwidth than<a data-type="indexterm" data-primary="Bitcoin network" data-secondary="compact block filters" data-tertiary="downloading multiple" data-startref="bitcoin-network-compact-filter-download" id="id1151" target="_blank" rel="noopener noreferrer"></a><a data-type="indexterm" data-primary="compact block filters" data-secondary="downloading multiple" data-startref="compact-block-filter-download" id="id1152" target="_blank" rel="noopener noreferrer"></a><a data-type="indexterm" data-primary="blocks" data-secondary="compact block filters" data-tertiary="downloading multiple" data-startref="block-compact-filter-download" id="id1153" target="_blank" rel="noopener noreferrer"></a><a data-type="indexterm" data-primary="downloading multiple block filters" data-startref="download-multiple-block" id="id1154" target="_blank" rel="noopener noreferrer"></a><a data-type="indexterm" data-primary="multiple block filters, downloading" data-startref="multiple-block-download" id="id1155" target="_blank" rel="noopener noreferrer"></a> expected.</p>
+</div>
+
+
+
+
+
+
+
+
+<div id="id165" data-type="sect2" data-pdf-bookmark="Reducing Bandwidth with Lossy Encoding">
+<h2>Reducing Bandwidth with Lossy Encoding</h2>
+
+<p>The data <a data-type="indexterm" data-primary="Bitcoin network" data-secondary="compact block filters" data-tertiary="lossy encoding" id="id1156" target="_blank" rel="noopener noreferrer"></a><a data-type="indexterm" data-primary="compact block filters" data-secondary="lossy encoding" id="id1157" target="_blank" rel="noopener noreferrer"></a><a data-type="indexterm" data-primary="blocks" data-secondary="compact block filters" data-tertiary="lossy encoding" id="id1158" target="_blank" rel="noopener noreferrer"></a><a data-type="indexterm" data-primary="lossy encoding" id="id1159" target="_blank" rel="noopener noreferrer"></a>about the transactions in a block that we want to communicate
+is an output script.  Output scripts vary in length and follow patterns,
+which means the differences between them won’t be evenly distributed
+like we want.  However, we’ve already seen in many places in this book
+that we can use a hash function to create a commitment to some data and
+also produce a value that looks like a randomly selected number.</p>
+
+<p>In other places in this book, we’ve used a cryptographically secure hash
+function that provides assurances about the strength of its commitment
+and how indistinguishable from random its output is.  However, there are
+faster and more configurable non-cryptographic hash functions, such as
+the SipHash function we’ll use for compact block filters.</p>
+
+<p>The details of the algorithm used are described in BIP158, but the gist
+is that each output script is reduced to a 64-bit commitment using
+SipHash and some arithmetic operations.  You can think of this as
+taking a set of large numbers and truncating them to shorter numbers, a
+process that loses data (so it’s called <em>lossy encoding</em>).  By losing
+some information, we don’t need to store as much information later,
+which saves space.  In this case, we go from a typical output script
+that’s 160 bits or longer down to just 64 bits.</p>
+</div>
+
+
+
+
+
+
+
+
+<div id="id166" data-type="sect2" data-pdf-bookmark="Using Compact Block Filters">
+<h2>Using Compact Block Filters</h2>
+
+<p>The 64-bit values for every commitment to an output script in a block are
+sorted, duplicate entries are removed, and the GCS is constructed by
+finding the differences (deltas) between each entry.  That compact block
+filter is then distributed by peers to their clients (such as wallets).</p>
+
+<p>A client uses the deltas to reconstruct the original commitments.  The
+client, such as a wallet, also takes all the output scripts it is
+monitoring for and generates commitments in the same way as BIP158.  It
+checks whether any of its generated commitments match the commitments in
+the filter.</p>
+
+<p>Recall our example of the lossiness of compact block filters being
+similar to truncating a number.  Imagine a client is looking for a block
+that contains the number 123456 and that an accurate (but lossy)
+compact block filter contains the number 1234.  When a client sees that
+1234, it will download the associated block.</p>
+
+<p>There’s a 100% guarantee that an accurate filter containing 1234 will
+allow a client to learn about a block containing 123456, called a <em>true
+positive</em>.  However, there’s also a chance that the block might contain
+123400, 123401, or almost a hundred other entries that are not what the
+client is looking for (in this example), <a data-type="indexterm" data-primary="false positives" id="id1160" target="_blank" rel="noopener noreferrer"></a>called a <em>false positive</em>.</p>
+
+<p>A 100% true positive match rate is great.  It means that a wallet can
+depend on compact block filters to find every transaction affecting that
+wallet.  A nonzero false positive rate means that the wallet will end
+up downloading some blocks that don’t contain transactions interesting
+to the wallet.  The main consequence of this is that the client will use
+extra bandwidth, which is not a huge problem.  The actual
+false positive rate for BIP158 compact block filters is very low, so
+it’s not a major problem.  A false positive rate can also help improve a
+client’s privacy, as it does with bloom filters, although anyone wanting
+the best possible privacy should still use their own full node.</p>
+
+<p>In the long term, some developers advocate for having blocks commit to
+the filter for that block, with the most likely scheme having each
+coinbase transaction commit to the filter for that block.  Full nodes
+would calculate the filter for each block themselves and only accept a
+block if it contained an accurate commitment.  That would allow a
+lightweight client to download an 80-byte block header, a (usually)
+small coinbase transaction, and the filter for that block to receive
+strong evidence that the filter <a data-type="indexterm" data-primary="Bitcoin network" data-secondary="compact block filters" data-startref="bitcoin-network-compact-filter" id="id1161" target="_blank" rel="noopener noreferrer"></a><a data-type="indexterm" data-primary="compact block filters" data-startref="compact-block-filter" id="id1162" target="_blank" rel="noopener noreferrer"></a><a data-type="indexterm" data-primary="blocks" data-secondary="compact block filters" data-startref="block-compact-filter" id="id1163" target="_blank" rel="noopener noreferrer"></a>was accurate.</p>
+</div>
+</div>
+
+
+
+
+
+
+<div id="id268" data-type="sect1" data-pdf-bookmark="Lightweight Clients and Privacy">
+<h2>Lightweight Clients and Privacy</h2>
+
+<p>Lightweight clients <a data-type="indexterm" data-primary="Bitcoin network" data-secondary="lightweight clients" data-tertiary="privacy" id="id1164" target="_blank" rel="noopener noreferrer"></a><a data-type="indexterm" data-primary="lightweight clients" data-secondary="privacy" id="id1165" target="_blank" rel="noopener noreferrer"></a><a data-type="indexterm" data-primary="privacy" data-secondary="lightweight clients" id="id1166" target="_blank" rel="noopener noreferrer"></a>have weaker privacy than a full node. A full
+node downloads all transactions and therefore reveals no information
+about whether it is using some address in its wallet. A lightweight client
+only downloads transactions that are related to its wallet in some way.</p>
+
+<p>Bloom filters and compact block filters are ways to reduce the loss of privacy. Without them, a
+lightweight client would have to explicitly list the addresses it was interested
+in, creating a serious breach of privacy. However, even with
+filters, an adversary monitoring the traffic of a lightweight client or
+connected to it directly as a node in the P2P network may be able to collect enough
+information over time to learn the addresses in the wallet of the lightweight
+client.</p>
+</div>
+
+
+
+
+
+
+<div id="id167" data-type="sect1" data-pdf-bookmark="Encrypted and Authenticated Connections">
+<h2>Encrypted and Authenticated Connections</h2>
+
+<p>Most new<a data-type="indexterm" data-primary="Bitcoin network" data-secondary="encryption" id="id1167" target="_blank" rel="noopener noreferrer"></a><a data-type="indexterm" data-primary="encryption" id="id1168" target="_blank" rel="noopener noreferrer"></a><a data-type="indexterm" data-primary="Tor transport" id="id1169" target="_blank" rel="noopener noreferrer"></a> users of
+Bitcoin assume that the network communications of a Bitcoin node are
+encrypted. In fact, the original implementation of Bitcoin communicates
+entirely in the clear, as does the modern implementation of Bitcoin Core
+at the time of writing.</p>
+
+<p>As a way to increase the privacy and security of the Bitcoin P2P
+network, there is a solution that provides encryption of the
+communications: <em>Tor transport</em>.</p>
+
+<p>Tor, which
+stands for <em>The Onion Routing network</em>, is a software project and
+network that offers encryption and encapsulation of data through
+randomized network paths that offer anonymity, untraceability, and
+privacy.</p>
+
+<p>Bitcoin Core <a data-type="indexterm" data-primary="Bitcoin Core" data-secondary="Tor transport" id="id1170" target="_blank" rel="noopener noreferrer"></a>offers several configuration options that allow you to run
+a Bitcoin node with its traffic transported over the Tor network. In
+addition, Bitcoin Core can also offer a Tor hidden service allowing
+other Tor nodes to connect to your node directly over Tor.</p>
+
+<p>As of Bitcoin Core version 0.12, a node will offer a hidden Tor service
+automatically if it is able to connect to a local Tor service. If you
+have Tor installed and the Bitcoin Core process runs as a user with
+adequate permissions to access the Tor authentication cookie, it should
+work automatically. Use the <code>debug</code> flag to turn on Bitcoin Core’s
+debugging for the Tor service like this:</p>
+
+<div data-testid="custom pre block"><pre data-type="programlisting">$ bitcoind --daemon --debug=tor</pre></div>
+
+<p>You should see <code>tor: ADD_ONION successful</code> in the logs, indicating that
+Bitcoin Core has added a hidden service to the Tor network.</p>
+
+<p>You can find more instructions on running Bitcoin Core as a Tor hidden
+service in the Bitcoin Core documentation (<em>docs/tor.md</em>) and various
+online tutorials.</p>
+</div>
+
+
+
+
+
+
+<div id="mempool" data-type="sect1" data-pdf-bookmark="Mempools and Orphan Pools">
+<h2>Mempools and Orphan Pools</h2>
+
+<p>Almost<a data-type="indexterm" data-primary="Bitcoin network" data-secondary="mempools" id="id1171" target="_blank" rel="noopener noreferrer"></a><a data-type="indexterm" data-primary="Bitcoin network" data-secondary="orphan pools" id="id1172" target="_blank" rel="noopener noreferrer"></a><a data-type="indexterm" data-primary="memory pool" id="id1173" target="_blank" rel="noopener noreferrer"></a><a data-type="indexterm" data-primary="orphan pools" id="id1174" target="_blank" rel="noopener noreferrer"></a><a data-type="indexterm" data-primary="unconfirmed transactions" id="id1175" target="_blank" rel="noopener noreferrer"></a><a data-type="indexterm" data-primary="transactions" data-secondary="unconfirmed" id="id1176" target="_blank" rel="noopener noreferrer"></a> every node on the Bitcoin
+network maintains a temporary list of unconfirmed transactions called
+the <em>memory pool</em> (<em>mempool</em>). Nodes use this pool
+to keep track of transactions that are known to the network but are not
+yet included in the blockchain, called <em>unconfirmed transactions</em>.</p>
+
+<p>As unconfirmed transactions are received and verified, they are added to the
+mempool and relayed to the neighboring nodes to propagate on
+the network.</p>
+
+<p>Some node
+implementations also maintain a separate pool of orphaned transactions.
+If a transaction’s inputs refer to a transaction that is not yet known,
+such as a missing parent, the orphan transaction will be stored
+temporarily in the orphan pool until the parent transaction arrives.</p>
+
+<p>When a transaction is added to the mempool, the orphan pool is
+checked for any orphans that reference this transaction’s outputs (its
+children). Any matching orphans are then validated. If valid, they are
+removed from the orphan pool and added to the mempool,
+completing the chain that started with the parent transaction. In light
+of the newly added transaction, which is no longer an orphan, the
+process is repeated recursively looking for any further descendants
+until no more descendants are found. Through this process, the arrival
+of a parent transaction triggers a cascade reconstruction of an entire
+chain of interdependent transactions by reuniting the orphans with
+their parents all the way down the chain.</p>
+
+<p>Some implementations of Bitcoin also maintain a UTXO
+database, which is the set of all unspent outputs on the
+blockchain. This represents a different set of data from the mempool. Unlike the
+mempool and orphan pools, the UTXO database
+contains millions of entries of unspent transaction outputs,
+everything that is unspent from all the way back to the genesis block.
+The UTXO database is stored as a
+table on persistent storage.</p>
+
+<p>Whereas the mempool and orphan pools represent a single node’s local
+perspective and might vary significantly from node to node depending
+on when the node was started or restarted, the UTXO database represents
+the emergent consensus of the network and therefore will not usually
+vary between nodes.</p>
+
+<p>Now that we have an understanding of many of the data types and
+structures used by nodes and clients to send data across the Bitcoin
+network, it’s time to look at the software that’s responsible for
+keeping the network secure and operational.</p>
+</div>
+</div></div>
+  <span></span> <!-- for IntersectionObserver -->
+  
+  
+  
+  
+
+
+<style id="note-styling">
+    .note {
+      position: absolute;
+      z-index: 10;
+      border: none;
+      outline: none;
+      font-family: inherit;
+      font-size: inherit;
+      padding: 5px;
+      min-width: 32px;
+      min-height: 32px;
+    }
+    .note:focus {
+      z-index: 11;
+    }
+    .note[type="0"] {
+      background-color: #fff740;
+      color: #2c2c2d;
+    }
+    .note[type="0"]::placeholder {
+      color: #868226;
+    }
+    .note[type="1"] {
+      background-color: #feff9c;
+      color: #2c2c2d;
+    }
+    .note[type="1"]::placeholder {
+      color: #6d6d3d;
+    }
+    .note[type="2"] {
+      background-color: #ff65a3;
+      color: #2c2c2d;
+    }
+    .note[type="2"]::placeholder {
+      color: #65263f;
+    }
+    .note[type="3"] {
+      background-color: #ff7eb9;
+      color: #2c2c2d;
+    }
+    .note[type="3"]::placeholder {
+      color: #562b3f;
+    }
+    .note[type="4"] {
+      background-color: #7afcff;
+      color: #295c5d;
+    }
+    .note[type="4"]::placeholder {
+      color: #377677;
+    }</style><div id="chapters-container">
+      <style>
+        #chapters {
+          display: grid;
+          grid-template-columns: 1fr 1fr;
+          margin: 2ch 0;
+        }
+        #chapters a {
+          cursor: pointer;
+        }
+        #chapters a[href=""] {
+          opacity: 0.5;
+          pointer-events: none;
+          color: inherit;
+        }
+        #chapters a:first-child {
+          justify-self: start;
+        }
+        #chapters a:last-child {
+          justify-self: end;
+        }
+      </style>
+      <hr>
+      <div id="chapters">
+        <a href="" title="move to the previous chapter (Ctrl/Command + PageUp)">Previous Chapter</a>
+        <a href="https://learning.oreilly.com/library/view/mastering-bitcoin-3rd/9781098150082/ch11.html" title="move to the next chapter (Ctrl/Command + PageDown)">Next Chapter</a>
+      </div>
+    </div></body><style>body {
+      font-size:  19px;
+      font-family: Georgia, 'Times New Roman', serif;
+      width: 600px;
+    }
+    p {
+      text-align: justify
+    }
+    .page {
+      line-height: 28.5px;
+      column-count: unset;
+    }
+    h1, h2, h3 {
+      line-height: initial;
+    }</style></html>

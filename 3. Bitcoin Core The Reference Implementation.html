@@ -1,0 +1,1701 @@
+<!DOCTYPE html>
+<html><head>
+  <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+  <base target="_blank">
+  <style>
+/* latin */
+@font-face {
+  font-family: 'Comic Neue';
+  font-style: normal;
+  font-weight: 400;
+  src: url(fonts/4UaHrEJDsxBrF37olUeD96rp57F2IwM.woff2) format('woff2');
+  unicode-range: U+0000-00FF, U+0131, U+0152-0153, U+02BB-02BC, U+02C6, U+02DA, U+02DC, U+0304, U+0308, U+0329, U+2000-206F, U+2074, U+20AC, U+2122, U+2191, U+2193, U+2212, U+2215, U+FEFF, U+FFFD;
+}
+/* latin */
+@font-face {
+  font-family: 'Lexend Deca';
+  font-style: normal;
+  font-weight: 400;
+  src: url(fonts/K2FifZFYk-dHSE0UPPuwQ7CrD94i-NCKm-U48M1wqxnDirZPl3v-.woff2) format('woff2');
+  unicode-range: U+0000-00FF, U+0131, U+0152-0153, U+02BB-02BC, U+02C6, U+02DA, U+02DC, U+0304, U+0308, U+0329, U+2000-206F, U+2074, U+20AC, U+2122, U+2191, U+2193, U+2212, U+2215, U+FEFF, U+FFFD;
+}
+/* latin */
+@font-face {
+  font-family: 'Poppins';
+  font-style: normal;
+  font-weight: 400;
+  src: url(fonts/pxiEyp8kv8JHgFVrJJfecnFHGPc.woff2) format('woff2');
+  unicode-range: U+0000-00FF, U+0131, U+0152-0153, U+02BB-02BC, U+02C6, U+02DA, U+02DC, U+0304, U+0308, U+0329, U+2000-206F, U+2074, U+20AC, U+2122, U+2191, U+2193, U+2212, U+2215, U+FEFF, U+FFFD;
+}
+
+:root {
+  --fg: #000; /* foreground  */
+  --bg: #fff; /* background  */
+  --bd: #000; /* border  */
+  --lk: #006fa5; /* link */
+  --lkv: #d33bf0; /* link visited */
+  --hg: #ffff81; /* highlight  */
+}
+html {
+  overflow: overlay;
+}
+body {
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+  margin: 30px auto 0 auto;
+  padding: 10px;
+  position: relative;
+
+  color: var(--fg);
+  border-color: var(--bd);
+  background-color: var(--bg);
+}
+body[data-mode$="dark"] {
+  --lk: #0096de;
+}
+body[data-mode="light"] {
+  color-scheme: light;
+  --fg: #222;
+  --bd: #222;
+  --bg: whitesmoke;
+}
+body[data-mode="dark"] {
+  color-scheme: dark;
+  --fg: #eee;
+  --bd: #eee;
+  --bg: #333;
+}
+body[data-mode="sepia"] {
+  color-scheme: light;
+  --fg: #5b4636;
+  --bd: #5b4636;
+  --bg: #f4ecd8;
+}
+body[data-mode="solarized-light"] {
+  color-scheme: light;
+  --fg: #586e75;
+  --bd: #586e75;
+  --bg: #fdf6e3;
+}
+body[data-mode="nord-light"] {
+  color-scheme: light;
+  --fg: #2e3440;
+  --bd: #2e3440;
+  --bg: #e5e9f0;
+}
+body[data-mode="groove-dark"] {
+  color-scheme: dark;
+  --fg: #cec4ac;
+  --bd: #cec4ac;
+  --bg: #282828;
+}
+body[data-mode="solarized-dark"] {
+  color-scheme: dark;
+  --fg: #839496;
+  --bd: #839496;
+  --bg: #002b36;
+}
+body[data-mode="nord-dark"] {
+  color-scheme: dark;
+  --fg: #e5e9f0;
+  --bd: #e5e9f0;
+  --bg: #2e3440;
+}
+
+@media print {
+  body[data-mode] {
+    --fg: #000;
+    --bd: #000;
+    --bg: #fff;
+
+    width: unset;
+    padding: 0;
+    margin: 0;
+  }
+}
+body[data-loaded=true] {
+  
+}
+img {
+  max-width: 100%;
+  height: auto;
+}
+img:not([width])[src$=".svg"] {
+  max-width: 100px;
+}
+body[data-images=false] canvas,
+body[data-images=false] svg,
+body[data-images=false] img {
+  display: none;
+}
+svg:not([width]):not([height]) {
+  max-width: 25vmin;
+}
+a {
+  color: var(--lk);
+  text-decoration: none;
+}
+a:visited {
+  color: var(--lkv);
+}
+
+hr {
+  background-color: var(--bd);
+  height: 1px;
+  border: 0;
+}
+#reader-domain {
+  font-family: Helvetica, Arial, sans-serif;
+  text-decoration: none;
+  border-bottom-color: currentcolor;
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  width: 100%;
+  display: inline-block;
+  direction: ltr;
+}
+#reader-domain > span:first-child {
+  font-size: 1.1em;
+}
+#reader-domain > span:last-child {
+  font-size: 0.8em;
+}
+#reader-title {
+  font-size: 1.6em;
+  line-height: 1.25em;
+  width: 100%;
+  margin: 20px 0;
+  padding: 0;
+}
+#reader-credits,
+#doi,
+#published-time,
+#reader-estimated-time {
+  font-size: 0.85em;
+  line-height: 1.48em;
+  margin: 0 0 10px 0;
+  padding: 0;
+}
+#reader-credits:not(:empty)::after {
+  content: ' ⋮ ';
+}
+#published-time:not(:empty)::before {
+  content: ' ⋮ ';
+}
+#doi-json {
+  overflow: hidden;
+}
+#doi-json code {
+  overflow: auto;
+  max-height: 400px;
+}
+#published-time:empty,
+#reader-credits:empty {
+  display: none;
+}
+mark.hghlght {
+  background-color: var(--hg);
+}
+body:not([data-columns="1"]) .page :is(h1, h2) {
+  column-span: all;
+  background-color: rgba(125, 125, 125, 0.1);
+  padding: 10px;
+}
+.hidden {
+  display: none;
+}
+</style>
+  <style id="user-css">body {
+  padding-bottom: 64px;
+}
+pre {
+  white-space: pre-wrap;
+}
+pre code {
+  background-color: #eff0f1;
+  color: #393318;
+  font-family: monospace;
+  display: block;
+  padding: 5px 10px;
+}
+body[data-mode="dark"] pre code {
+  background-color: #585858;
+  color: #e8e8e8;
+}
+
+/* CSS for sans-serif fonts */
+body[data-font=sans-serif] {}
+/* CSS for serif fonts */
+body[data-font=serif] {}
+
+/* CSS for "sepia" theme */
+body[data-mode=sepia] {}
+/* CSS for "light" theme */
+body[data-mode=light] {}
+/* CSS for "dark" theme */
+body[data-mode=dark] {}</style>
+<title>3. Bitcoin Core: The Reference Implementation</title><title>3. Bitcoin Core: The Reference Implementation :: Reader View</title></head>
+<body tabindex="1" data-images="true" data-mode="groove-dark" data-font="serif" data-columns="1" data-loaded="true">
+  <span></span> <!-- for IntersectionObserver -->
+  <a id="reader-domain" href="https://learning.oreilly.com/library/view/mastering-bitcoin-3rd/9781098150082/ch03.html">
+    <span>learning.oreilly.com</span>
+    <span>/library/view/mastering-bitcoin-3rd/9781098150082/ch03.html</span>
+  </a>
+  <h1 dir="auto" id="reader-title">3. Bitcoin Core: The Reference Implementation</h1>
+  <span dir="auto" id="reader-credits"></span>
+  <span dir="auto" id="reader-estimated-time">41-52 minutes</span>
+  <span dir="auto" id="published-time"></span>
+  <hr>
+  <div id="readability-page-1" class="page"><div id="sbo-rt-content" data-type="chapter" epub:type="chapter" data-pdf-bookmark="Chapter 3. Bitcoin Core: The Reference Implementation">
+
+
+
+<p>People only accept money in exchange for their valuable goods and
+services if they believe that they’ll be able to spend that money later.
+Money that is counterfeit or unexpectedly debased may not be spendable
+later, so every person accepting bitcoins has a strong incentive to
+verify the integrity of the bitcoins they receive.  The Bitcoin system
+was designed so that it’s possible for software running entirely on your
+local computer to perfectly prevent counterfeiting, debasement, and
+several other critical problems.  Software which provides that function
+is called a <em>full verification node</em> because it verifies every confirmed
+Bitcoin transaction against every rule in the system.  Full <a data-type="indexterm" data-primary="full nodes" id="id530" target="_blank" rel="noopener noreferrer"></a>verification
+nodes, <em>full nodes</em> for short, may also provide tools and data for
+understanding how Bitcoin works and what is currently happening in the
+network.</p>
+
+<p>In this chapter, we’ll install Bitcoin Core, the implementation that
+most full node operators have used since the beginning of the Bitcoin
+network.   We’ll then inspect blocks, transactions, and other data from
+your node, data which is authoritative—​not because some powerful entity
+designated it as such but because your node independently verified it.
+Throughout the rest of this book, we’ll continue using Bitcoin Core to
+create and examine data related to the blockchain and network.</p>
+
+
+
+
+
+
+<div id="id27" data-type="sect1" data-pdf-bookmark="From Bitcoin to Bitcoin Core">
+<h2>From Bitcoin to Bitcoin Core</h2>
+
+<p>Bitcoin <a data-type="indexterm" data-primary="Bitcoin Core" data-secondary="explained" id="bitcoin-core-explain" target="_blank" rel="noopener noreferrer"></a>is an <em>open
+source</em> project and the source code is available under an open (MIT)
+license, free to download and use for any purpose.  More than just being
+open source, Bitcoin is developed by
+an open community of volunteers. At first, that community consisted of
+only <a data-type="indexterm" data-primary="Nakamoto, Satoshi" id="id531" target="_blank" rel="noopener noreferrer"></a>Satoshi Nakamoto. By 2023, Bitcoin’s source code had more than 1,000
+contributors with about a dozen developers working on the code almost
+full time and several dozen more on a part-time basis. Anyone can
+contribute to the code—including you!</p>
+
+<p>When Bitcoin was created by Satoshi Nakamoto, the
+software was mostly completed before publication of the whitepaper (reproduced in
+<a data-type="xref" href="https://learning.oreilly.com/library/view/mastering-bitcoin-3rd/9781098150082/app01.html#satoshi_whitepaper" target="_blank" rel="noopener noreferrer">Appendix&nbsp;A</a>). Satoshi wanted to make sure the
+implementation worked before publishing a paper about it. That first implementation, then simply
+known as “Bitcoin,” has been heavily modified and
+improved. It has evolved into what is known as <em>Bitcoin Core</em>, to
+differentiate it from other implementations. Bitcoin Core is
+the <em>reference implementation</em> of the Bitcoin system, meaning that it
+provides a reference for how each part of the technology should be
+implemented. Bitcoin Core implements all aspects of Bitcoin, including
+wallets, a transaction and block validation engine, tools for block construction, and all modern parts
+of Bitcoin peer-to-peer communication.</p>
+
+<p><a data-type="xref" href="#bitcoin_core_architecture" target="_blank" rel="noopener noreferrer">Figure&nbsp;3-1</a> shows the architecture of Bitcoin
+Core.</p>
+
+<figure><div id="bitcoin_core_architecture">
+<p><img src="https://learning.oreilly.com/api/v2/epubs/urn:orm:book:9781098150082/files/assets/mbc3_0301.png" alt="" width="600" height="562"></p><h6><span>Figure 3-1. </span>Bitcoin Core architecture (Source: Eric Lombrozo).</h6>
+</div></figure>
+
+<p>Although Bitcoin Core serves as a reference implementation for many
+major parts of the system, the Bitcoin whitepaper describes several
+early parts of the system.  Most major parts of the system since 2011
+have been documented in a set of
+<a href="https://oreil.ly/BCXAQ" target="_blank" rel="noopener noreferrer">Bitcoin Improvement
+Proposals (BIPs)</a>.  Throughout<a data-type="indexterm" data-primary="BIPs (Bitcoin Improvement Proposals)" id="id532" target="_blank" rel="noopener noreferrer"></a><a data-type="indexterm" data-primary="Bitcoin Improvement Proposals" data-see="BIPs" id="id533" target="_blank" rel="noopener noreferrer"></a> this book, we refer to BIP specifications
+by their number; for example, BIP9 describes a mechanism used for
+several major upgrades to<a data-type="indexterm" data-primary="Bitcoin Core" data-secondary="explained" data-startref="bitcoin-core-explain" id="id534" target="_blank" rel="noopener noreferrer"></a> Bitcoin.</p>
+</div>
+
+
+
+
+
+
+<div id="id407" data-type="sect1" data-pdf-bookmark="Bitcoin Development Environment">
+<h2>Bitcoin Development Environment</h2>
+
+<p>If you’re a
+developer, you will want to set up a development environment with all
+the tools, libraries, and support software for writing Bitcoin
+applications. In this highly technical chapter, we’ll walk through that
+process step by step. If the material becomes too dense (and you’re not
+actually setting up a development environment) feel free to skip to the
+next chapter, which is less technical.</p>
+</div>
+
+
+
+
+
+
+<div id="compiling_core" data-type="sect1" data-pdf-bookmark="Compiling Bitcoin Core from the Source Code">
+<h2>Compiling Bitcoin Core from the Source Code</h2>
+
+<p>Bitcoin Core’s
+source code<a data-type="indexterm" data-primary="Bitcoin Core" data-secondary="compiling from source code" id="bitcoin-core-compile" target="_blank" rel="noopener noreferrer"></a><a data-type="indexterm" data-primary="compiling Bitcoin Core from source code" id="compile-bitcoin-core" target="_blank" rel="noopener noreferrer"></a><a data-type="indexterm" data-primary="source code, compiling Bitcoin Core" id="source-code-compile" target="_blank" rel="noopener noreferrer"></a> can be downloaded as an archive or by cloning the
+source repository from GitHub.  On the <a href="https://oreil.ly/hN9g1" target="_blank" rel="noopener noreferrer">Bitcoin Core download
+page</a>, select the most recent version and download the compressed
+archive of the source code. Alternatively, use the Git command line to create a
+local copy of the source code from the
+<a href="https://oreil.ly/BdOwl" target="_blank" rel="noopener noreferrer">GitHub Bitcoin page</a>.</p>
+<div data-type="tip"><h6>Tip</h6>
+<p>In
+many of the examples in this chapter, we will be using the operating
+system’s command-line interface (also known as a “shell”), accessed via
+a “terminal” application. The shell will display a prompt, you type a
+command, and the shell responds with some text and a new prompt for your
+next command. The prompt may look different on your system, but in the
+following examples, it is denoted by a <code>$</code> symbol. In the examples, when
+you see text after a <code>$</code> symbol, don’t type the <code>$</code> symbol but type the
+command immediately following it, then press Enter to execute the
+command. In the examples, the lines below each command are the operating
+system’s responses to that command. When you see the next <code>$</code> prefix,
+you’ll know it’s a new command and you should repeat the process.</p>
+</div>
+
+<p>Here, we use the <code>git</code> command to create a
+local copy (“clone”) of the source code:</p>
+
+<div data-testid="custom pre block"><pre data-type="programlisting">$ git clone https://github.com/bitcoin/bitcoin.git
+Cloning into 'bitcoin'...
+remote: Enumerating objects: 245912, done.
+remote: Counting objects: 100% (3/3), done.
+remote: Compressing objects: 100% (2/2), done.
+remote: Total 245912 (delta 1), reused 2 (delta 1), pack-reused 245909
+Receiving objects: 100% (245912/245912), 217.74 MiB | 13.05 MiB/s, done.
+Resolving deltas: 100% (175649/175649), done.</pre></div>
+<div data-type="tip"><h6>Tip</h6>
+<p>Git is the most widely used
+distributed version control system, an essential part of any software
+developer’s toolkit. You may need to install the <code>git</code> command, or a
+graphical user interface for Git, on your operating system if you do not
+have it already.</p>
+</div>
+
+<p>When the Git cloning operation has completed, you will have a complete
+local copy of the source code repository in the directory <em>bitcoin</em>.
+Change to this directory using the <code>cd</code> command:</p>
+
+
+
+
+
+
+
+
+
+
+<div id="id29" data-type="sect2" data-pdf-bookmark="Selecting a Bitcoin Core Release">
+<h2>Selecting a Bitcoin Core Release</h2>
+
+<p>By default,<a data-type="indexterm" data-primary="Bitcoin Core" data-secondary="compiling from source code" data-tertiary="selecting release version" id="bitcoin-core-compile-release" target="_blank" rel="noopener noreferrer"></a><a data-type="indexterm" data-primary="compiling Bitcoin Core from source code" data-secondary="selecting release version" id="compile-bitcoin-core-release" target="_blank" rel="noopener noreferrer"></a><a data-type="indexterm" data-primary="source code, compiling Bitcoin Core" data-secondary="selecting release version" id="source-code-compile-release" target="_blank" rel="noopener noreferrer"></a><a data-type="indexterm" data-primary="release version (Bitcoin Core), selecting" id="release-select" target="_blank" rel="noopener noreferrer"></a><a data-type="indexterm" data-primary="selecting" data-secondary="release version (Bitcoin Core)" id="select-release" target="_blank" rel="noopener noreferrer"></a> the local copy will be synchronized with the
+most recent code, which might be an unstable or beta version of Bitcoin.
+Before compiling the code, select a specific version by checking out a
+release <em>tag</em>. This will synchronize the local copy with a specific
+snapshot of the code repository identified by a keyword tag. Tags are
+used by the developers to mark specific releases of the code by version
+number. First, to find the available tags, we use the <code>git tag</code> command:</p>
+
+<div data-testid="custom pre block"><pre data-type="programlisting">$ git tag
+v0.1.5
+v0.1.6test1
+v0.10.0
+...
+v0.11.2
+v0.11.2rc1
+v0.12.0rc1
+v0.12.0rc2
+...</pre></div>
+
+<p>The list of tags shows all the released versions of Bitcoin. By
+convention, <em>release candidates</em>, which <a data-type="indexterm" data-primary="release candidates" id="id535" target="_blank" rel="noopener noreferrer"></a>are intended for testing, have
+the suffix “rc.” Stable releases that can be run on production systems
+have no suffix. From the preceding list, select the highest version
+release, which at the time of writing was v24.0.1. To synchronize the
+local code with this version, use the <code>git checkout</code> command:</p>
+
+<div data-testid="custom pre block"><pre data-type="programlisting">$ git checkout v24.0.1
+Note: switching to 'v24.0.1'.
+
+You are in 'detached HEAD' state. You can look around, make experimental
+changes and commit them, and you can discard any commits you make in this
+state without impacting any branches by switching back to a branch.
+
+HEAD is now at b3f866a8d Merge bitcoin/bitcoin#26647: 24.0.1 final changes</pre></div>
+
+<p>You can confirm you have the desired version “checked out” by<a data-type="indexterm" data-primary="Bitcoin Core" data-secondary="compiling from source code" data-tertiary="selecting release version" data-startref="bitcoin-core-compile-release" id="id536" target="_blank" rel="noopener noreferrer"></a><a data-type="indexterm" data-primary="compiling Bitcoin Core from source code" data-secondary="selecting release version" data-startref="compile-bitcoin-core-release" id="id537" target="_blank" rel="noopener noreferrer"></a><a data-type="indexterm" data-primary="source code, compiling Bitcoin Core" data-secondary="selecting release version" data-startref="source-code-compile-release" id="id538" target="_blank" rel="noopener noreferrer"></a><a data-type="indexterm" data-primary="release version (Bitcoin Core), selecting" data-startref="release-select" id="id539" target="_blank" rel="noopener noreferrer"></a><a data-type="indexterm" data-primary="selecting" data-secondary="release version (Bitcoin Core)" data-startref="select-release" id="id540" target="_blank" rel="noopener noreferrer"></a> issuing
+the command <code>git status</code>:</p>
+
+<div data-testid="custom pre block"><pre data-type="programlisting">HEAD detached at v24.0.1
+nothing to commit, working tree clean</pre></div>
+</div>
+
+
+
+
+
+
+
+
+<div id="id244" data-type="sect2" data-pdf-bookmark="Configuring the Bitcoin Core Build">
+<h2>Configuring the Bitcoin Core Build</h2>
+
+<p>The<a data-type="indexterm" data-primary="Bitcoin Core" data-secondary="compiling from source code" data-tertiary="configuring build" id="bitcoin-core-compile-configure" target="_blank" rel="noopener noreferrer"></a><a data-type="indexterm" data-primary="compiling Bitcoin Core from source code" data-secondary="configuring build" id="compile-bitcoin-core-configure" target="_blank" rel="noopener noreferrer"></a><a data-type="indexterm" data-primary="source code, compiling Bitcoin Core" data-secondary="configuring build" id="source-code-compile-configure" target="_blank" rel="noopener noreferrer"></a><a data-type="indexterm" data-primary="configuring" data-secondary="Bitcoin Core build" id="configure-build" target="_blank" rel="noopener noreferrer"></a> source code includes documentation, which
+can be found in a number of files. Review the main documentation located
+in <em>README.md</em> in the <em>bitcoin</em> directory.
+In this chapter, we will build the Bitcoin Core daemon
+(server), also known as <code>bitcoind</code> on Linux (a Unix-like system). Review the instructions for
+compiling the <code>bitcoind</code> command-line client on your platform by reading
+<em>doc/build-unix.md</em>.  Alternative instructions can be found in
+the <em>doc</em> directory; for example, <em>build-windows.md</em> for Windows
+instructions.  As of this writing, instructions are available for
+Android, FreeBSD, NetBSD, OpenBSD, macOS (OSX), Unix, and Windows.</p>
+
+<p>Carefully review the build prerequisites, which are in the first part of
+the build documentation. These are libraries that must be present on
+your system before you can begin to compile Bitcoin. If these
+prerequisites are missing, the build process will fail with an error. If
+this happens because you missed a prerequisite, you can install it and
+then resume the build process from where you left off. Assuming the
+prerequisites are installed, you start the build process by generating a
+set of build scripts using the <em>autogen.sh</em> script:</p>
+
+<div data-testid="custom pre block"><pre data-type="programlisting">$ ./autogen.sh
+libtoolize: putting auxiliary files in AC_CONFIG_AUX_DIR, 'build-aux'.
+libtoolize: copying file 'build-aux/ltmain.sh'
+libtoolize: putting macros in AC_CONFIG_MACRO_DIRS, 'build-aux/m4'.
+ ...
+configure.ac:58: installing 'build-aux/missing'
+src/Makefile.am: installing 'build-aux/depcomp'
+parallel-tests: installing 'build-aux/test-driver'</pre></div>
+
+<p>The <em>autogen.sh</em> script creates a set of automatic configuration scripts
+that will interrogate your system to discover the correct settings and
+ensure you have all the necessary libraries to compile the code. The
+most important of these is the <code>configure</code> script that offers a number
+of different options to customize the build process. Use the
+<code>--help</code> flag to see the various options:</p>
+
+<div data-testid="custom pre block"><pre data-type="programlisting">$ ./configure --help
+`configure' configures Bitcoin Core 24.0.1 to adapt to many kinds of systems.
+
+Usage: ./configure [OPTION]... [VAR=VALUE]...
+
+...
+Optional Features:
+  --disable-option-checking  ignore unrecognized --enable/--with options
+  --disable-FEATURE       do not include FEATURE (same as --enable-FEATURE=no)
+  --enable-FEATURE[=ARG]  include FEATURE [ARG=yes]
+  --enable-silent-rules   less verbose build output (undo: "make V=1")
+  --disable-silent-rules  verbose build output (undo: "make V=0")
+...</pre></div>
+
+<p>The <code>configure</code> script allows you to enable or disable certain features
+of <code>bitcoind</code> through the use of the <code>--enable-FEATURE</code> and
+<code>--disable-FEATURE</code> flags, where <span><code>FEATURE</code></span> is replaced by the
+feature name, as listed in the help output. In this chapter, we will
+build the <code>bitcoind</code> client with all the default features. We won’t be
+using the configuration flags, but you should review them to understand
+what optional features are part of the client. If you are in an academic
+setting, computer lab restrictions may require you to install
+applications in your home directory (e.g., using <code>--prefix=$HOME</code>).</p>
+
+<p>Here are some useful options that override the default behavior of the
+<code>configure</code> script:</p>
+<dl>
+<dt><code>--prefix=$HOME</code></dt>
+<dd><p>This overrides the default installation location (which is <em>/usr/local/</em>) for the resulting executable. Use <code>$HOME</code> to put everything in your home directory, or a different path.</p></dd>
+
+<dt><code>--disable-wallet</code></dt>
+<dd><p>This is used to disable the reference wallet implementation.</p></dd>
+
+<dt><code>--with-incompatible-bdb</code></dt>
+<dd><p>If you are building a wallet, allow the use of an incompatible version of the Berkeley DB library.</p></dd>
+
+<dt><code>--with-gui=no</code></dt>
+<dd><p>Don’t build the graphical user interface, which requires the Qt library. This builds server and command-line Bitcoin Core only.</p></dd>
+</dl>
+
+<p>Next, run the <code>configure</code> script to automatically discover all the necessary libraries and create a customized build script for your system:</p>
+
+<div data-testid="custom pre block"><pre data-type="programlisting">$ ./configure
+checking for pkg-config... /usr/bin/pkg-config
+checking pkg-config is at least version 0.9.0... yes
+checking build system type... x86_64-pc-linux-gnu
+checking host system type... x86_64-pc-linux-gnu
+checking for a BSD-compatible install... /usr/bin/install -c
+...
+[many pages of configuration tests follow]
+...</pre></div>
+
+<p>If all went well, the <code>configure</code> command will end by creating the
+customized build scripts that will allow us to compile <code>bitcoind</code>. If
+there are any missing libraries or errors, the <code>configure</code> command will
+terminate with an error instead of creating the build scripts. If an
+error occurs, it is most likely because of a missing or incompatible
+library. Review the build documentation again and make sure you install
+the missing prerequisites. Then run <code>configure</code> again and see if that
+fixes the<a data-type="indexterm" data-primary="Bitcoin Core" data-secondary="compiling from source code" data-tertiary="configuring build" data-startref="bitcoin-core-compile-configure" id="id541" target="_blank" rel="noopener noreferrer"></a><a data-type="indexterm" data-primary="compiling Bitcoin Core from source code" data-secondary="configuring build" data-startref="compile-bitcoin-core-configure" id="id542" target="_blank" rel="noopener noreferrer"></a><a data-type="indexterm" data-primary="source code, compiling Bitcoin Core" data-secondary="configuring build" data-startref="source-code-compile-configure" id="id543" target="_blank" rel="noopener noreferrer"></a><a data-type="indexterm" data-primary="configuring" data-secondary="Bitcoin Core build" data-startref="configure-build" id="id544" target="_blank" rel="noopener noreferrer"></a> error.</p>
+</div>
+
+
+
+
+
+
+
+
+<div id="id30" data-type="sect2" data-pdf-bookmark="Building the Bitcoin Core Executables">
+<h2>Building the Bitcoin Core Executables</h2>
+
+<p>Next, you
+will <a data-type="indexterm" data-primary="Bitcoin Core" data-secondary="compiling from source code" data-tertiary="building executables" id="id545" target="_blank" rel="noopener noreferrer"></a><a data-type="indexterm" data-primary="compiling Bitcoin Core from source code" data-secondary="building executables" id="id546" target="_blank" rel="noopener noreferrer"></a><a data-type="indexterm" data-primary="source code, compiling Bitcoin Core" data-secondary="building executables" id="id547" target="_blank" rel="noopener noreferrer"></a><a data-type="indexterm" data-primary="executables (Bitcoin Core), building" id="id548" target="_blank" rel="noopener noreferrer"></a>compile the source code, a process that can take up to an hour to
+complete, depending on the speed of your CPU and available memory.
+If an error
+occurs, or the compilation process is interrupted, it can be resumed any
+time by typing <code>make</code> again. Type <strong><code>make</code></strong> to start compiling the
+executable application:</p>
+
+<div data-testid="custom pre block"><pre data-type="programlisting">$ make
+Making all in src
+  CXX      bitcoind-bitcoind.o
+  CXX      libbitcoin_node_a-addrdb.o
+  CXX      libbitcoin_node_a-addrman.o
+  CXX      libbitcoin_node_a-banman.o
+  CXX      libbitcoin_node_a-blockencodings.o
+  CXX      libbitcoin_node_a-blockfilter.o
+[... many more compilation messages follow ...]</pre></div>
+
+<p>On a fast system with more than one CPU, you might want to set the
+number of parallel compile jobs. For instance, <code>make -j 2</code> will use two
+cores if they are available. If all goes well, Bitcoin Core is now
+compiled. You should run the unit test suite with <code>make check</code> to ensure
+the linked libraries are not broken in obvious ways. The final step is
+to install the various executables on your system using the <code>make
+install</code> command. You may be prompted for your user password because
+this step requires administrative privileges:</p>
+
+<div data-testid="custom pre block"><pre data-type="programlisting">$ make check &amp;&amp; sudo make install
+Password:
+Making install in src
+ ../build-aux/install-sh -c -d '/usr/local/lib'
+libtool: install: /usr/bin/install -c bitcoind /usr/local/bin/bitcoind
+libtool: install: /usr/bin/install -c bitcoin-cli /usr/local/bin/bitcoin-cli
+libtool: install: /usr/bin/install -c bitcoin-tx /usr/local/bin/bitcoin-tx
+...</pre></div>
+
+<p>The default installation of <code>bitcoind</code>
+puts it in <em>/usr/local/bin</em>. You can confirm that Bitcoin Core is
+correctly installed by asking the system for the path of the
+executables, <a data-type="indexterm" data-primary="Bitcoin Core" data-secondary="compiling from source code" data-startref="bitcoin-core-compile" id="id549" target="_blank" rel="noopener noreferrer"></a><a data-type="indexterm" data-primary="compiling Bitcoin Core from source code" data-startref="compile-bitcoin-core" id="id550" target="_blank" rel="noopener noreferrer"></a><a data-type="indexterm" data-primary="source code, compiling Bitcoin Core" data-startref="source-code-compile" id="id551" target="_blank" rel="noopener noreferrer"></a>as follows:</p>
+
+<div data-testid="custom pre block"><pre data-type="programlisting">$ which bitcoind
+/usr/local/bin/bitcoind
+
+$ which bitcoin-cli
+/usr/local/bin/bitcoin-cli</pre></div>
+</div>
+</div>
+
+
+
+
+
+
+<div id="id31" data-type="sect1" data-pdf-bookmark="Running a Bitcoin Core Node">
+<h2>Running a Bitcoin Core Node</h2>
+
+<p>Bitcoin’s <a data-type="indexterm" data-primary="Bitcoin Core" data-secondary="nodes" data-tertiary="running" id="bitcoin-core-nodes-running" target="_blank" rel="noopener noreferrer"></a><a data-type="indexterm" data-primary="nodes" data-secondary="running" id="nodes-running" target="_blank" rel="noopener noreferrer"></a><a data-type="indexterm" data-primary="running nodes" id="running-nodes" target="_blank" rel="noopener noreferrer"></a>peer-to-peer
+network is composed of network “nodes,” run mostly by individuals and
+some of the businesses that provide Bitcoin services. Those running
+Bitcoin nodes have a direct and authoritative view of the Bitcoin
+blockchain, with a local copy of all the spendable bitcoins
+independently validated by their own system. By running a node, you
+don’t have to rely on any third party to validate a transaction.
+Additionally, by using a Bitcoin node to fully validate the transactions
+you receive to your wallet, you contribute to the Bitcoin network and
+help make it more robust.</p>
+
+<p>Running a node, however, requires downloading and processing over 500 GB
+of data initially and about 400 MB of Bitcoin transactions per day.
+These figures are for 2023 and will likely increase over time.  If you
+shut down your node or get disconnected from the internet for several
+days, your node will need to download the data that it missed.  For
+example, if you close Bitcoin Core for 10 days, you will need to
+download approximately 4 GB the next time you start it.</p>
+
+<p>Depending on whether you choose to index all transactions and keep a
+full copy of the blockchain, you may also need a lot of disk space—​at
+least 1 TB if you plan to run Bitcoin Core for several years.  By
+default, Bitcoin nodes also transmit transactions and blocks to other
+nodes (called “peers”), consuming upload internet bandwidth. If your
+internet connection is limited, has a low data cap, or is metered
+(charged by the gigabit), you should probably not run a Bitcoin node on
+it, or run it in a way that constrains its bandwidth (see
+<a data-type="xref" href="#bitcoincorenode_config" target="_blank" rel="noopener noreferrer">“Configuring the Bitcoin Core Node”</a>).  You may connect your node instead to an
+alternative network, such as a free satellite data provider like
+<a href="https://oreil.ly/cIwf3" target="_blank" rel="noopener noreferrer">Blockstream Satellite</a>.</p>
+<div data-type="tip"><h6>Tip</h6>
+<p>Bitcoin Core keeps a full
+copy of the blockchain by default, with nearly every transaction that has ever
+been confirmed on the Bitcoin network since its inception in 2009. This
+dataset is hundreds of gigabytes in size and is downloaded incrementally
+over several hours or days, depending on the speed of your CPU and
+internet connection. Bitcoin Core will not be able to process
+transactions or update account balances until the full blockchain
+dataset is downloaded. Make sure you have enough disk space, bandwidth,
+and time to complete the initial synchronization. You can configure
+Bitcoin Core to reduce the size of the blockchain by discarding old
+blocks, but it will still download the
+entire dataset.</p>
+</div>
+
+<p>Despite these resource requirements, thousands of people run Bitcoin
+nodes. Some are running on systems as simple as a Raspberry Pi (a $35
+USD computer the size of a pack of cards).</p>
+
+<p>Why would you want to run a node? Here are some of the most common
+reasons:</p>
+
+<ul>
+<li>
+<p>You do not want to rely on any third party to validate the
+transactions you receive.</p>
+</li>
+<li>
+<p>You do not want to disclose to third parties which transactions belong
+to your wallet.</p>
+</li>
+<li>
+<p>You are developing Bitcoin software and need to rely on a Bitcoin
+node for programmable (API) access to the network and blockchain.</p>
+</li>
+<li>
+<p>You are building applications that must validate transactions
+according to Bitcoin’s consensus rules. Typically, Bitcoin software
+companies run several nodes.</p>
+</li>
+<li>
+<p>You want to support Bitcoin. Running a node that you use to
+validate the transactions you receive to your wallet makes the network
+more robust.</p>
+</li>
+</ul>
+
+<p>If you’re reading this book and interested in strong security, superior
+privacy, or developing Bitcoin software, you should be running your <a data-type="indexterm" data-primary="Bitcoin Core" data-secondary="nodes" data-tertiary="running" data-startref="bitcoin-core-nodes-running" id="id552" target="_blank" rel="noopener noreferrer"></a><a data-type="indexterm" data-primary="nodes" data-secondary="running" data-startref="nodes-running" id="id553" target="_blank" rel="noopener noreferrer"></a><a data-type="indexterm" data-primary="running nodes" data-startref="running-nodes" id="id554" target="_blank" rel="noopener noreferrer"></a>own
+node.</p>
+</div>
+
+
+
+
+
+
+<div id="bitcoincorenode_config" data-type="sect1" data-pdf-bookmark="Configuring the Bitcoin Core Node">
+<h2>Configuring the Bitcoin Core Node</h2>
+
+<p>Bitcoin Core will<a data-type="indexterm" data-primary="Bitcoin Core" data-secondary="nodes" data-tertiary="configuring" id="bitcoin-core-nodes-configure" target="_blank" rel="noopener noreferrer"></a><a data-type="indexterm" data-primary="nodes" data-secondary="configuring" id="nodes-configure" target="_blank" rel="noopener noreferrer"></a><a data-type="indexterm" data-primary="configuring" data-secondary="nodes" id="configure-nodes" target="_blank" rel="noopener noreferrer"></a> look for a
+configuration file in its data directory on every start. In this section
+we will examine the various configuration options and set up a
+configuration file. To locate the configuration file, run <code>bitcoind
+-printtoconsole</code> in your terminal and look for the first couple of
+lines:</p>
+
+<div data-testid="custom pre block"><pre data-type="programlisting">$ bitcoind -printtoconsole
+2023-01-28T03:21:42Z Bitcoin Core version v24.0.1
+2023-01-28T03:21:42Z Using the 'x86_shani(1way,2way)' SHA256 implementation
+2023-01-28T03:21:42Z Using RdSeed as an additional entropy source
+2023-01-28T03:21:42Z Using RdRand as an additional entropy source
+2023-01-28T03:21:42Z Default data directory /home/harding/.bitcoin
+2023-01-28T03:21:42Z Using data directory /home/harding/.bitcoin
+2023-01-28T03:21:42Z Config file: /home/harding/.bitcoin/bitcoin.conf
+...
+[a lot more debug output]
+...</pre></div>
+
+<p>You can hit Ctrl-C to shut down the node once you determine the location
+of the config file. Usually the configuration file is inside the
+<em>.bitcoin</em> data directory under your user’s home directory. Open the
+configuration file in your preferred editor.</p>
+
+<p>Bitcoin Core offers more than 100 configuration options that modify the
+behavior of the network node, the storage of the blockchain, and many
+other aspects of its operation. To see a listing of these options, run
+<code>bitcoind  --help</code>:</p>
+
+<div data-testid="custom pre block"><pre data-type="programlisting">$ bitcoind --help
+Bitcoin Core version v24.0.1
+
+Usage:  bitcoind [options]                     Start Bitcoin Core
+
+Options:
+
+  -?
+       Print this help message and exit
+
+  -alertnotify=&lt;cmd&gt;
+       Execute command when an alert is raised (%s in cmd is replaced by
+       message)
+...
+[many more options]</pre></div>
+
+<p>Here are some of
+the most important options that you can set in the configuration file,
+or as command-line parameters to <code>bitcoind</code>:</p>
+<dl>
+<dt><code>alertnotify</code></dt>
+<dd>
+<p>Run <a data-type="indexterm" data-primary="alertnotify option (bitcoind option)" id="id555" target="_blank" rel="noopener noreferrer"></a>a specified command or script to send emergency alerts
+to the owner of this node.</p>
+</dd>
+<dt><code>conf</code></dt>
+<dd>
+<p>An <a data-type="indexterm" data-primary="conf option (bitcoind option)" id="id556" target="_blank" rel="noopener noreferrer"></a>alternative location for the configuration file. This only
+makes sense as a command-line parameter to <code>bitcoind</code>, as it can’t be
+inside the configuration file it refers to.</p>
+</dd>
+<dt><code>datadir</code></dt>
+<dd>
+<p>Select<a data-type="indexterm" data-primary="datadir option (bitcoind option)" id="id557" target="_blank" rel="noopener noreferrer"></a> the directory and filesystem in which to put all the
+blockchain data. By default this is the <em>.bitcoin</em> subdirectory of your
+home directory. Depending on your configuration, this can use from about 10
+GB to almost 1 TB as of this writing, with the maximum size
+expected to increase by several hundred gigabytes per year.</p>
+</dd>
+<dt><code>prune</code></dt>
+<dd>
+<p>Reduce the<a data-type="indexterm" data-primary="prune option (bitcoind option)" id="id558" target="_blank" rel="noopener noreferrer"></a> blockchain disk space requirements to this many megabytes by
+deleting old blocks. Use this on a resource-constrained node that can’t
+fit the full blockchain.  Other parts of the system will use other disk
+space that can’t currently be pruned, so you will still need at least
+the minimum amount of space mentioned in the <code>datadir</code> option.</p>
+</dd>
+<dt><code>txindex</code></dt>
+<dd>
+<p>Maintain <a data-type="indexterm" data-primary="txindex option (bitcoind option)" id="id559" target="_blank" rel="noopener noreferrer"></a>an index of all transactions. This allows you to
+programmatically retrieve any transaction by its ID provided that the
+block containing that transaction hasn’t been pruned.</p>
+</dd>
+</dl>
+<dl>
+<dt><code>dbcache</code></dt>
+<dd>
+<p>The size<a data-type="indexterm" data-primary="dbcache option (bitcoind option)" id="id560" target="_blank" rel="noopener noreferrer"></a> of the UTXO cache. The default is 450 mebibytes (MiB). Increase
+this size on high-end hardware to read and write from your disk less
+often, or reduce the size on low-end hardware to save memory at the
+expense of using your disk more frequently.</p>
+</dd>
+<dt><code>blocksonly</code></dt>
+<dd>
+<p>Minimize <a data-type="indexterm" data-primary="blocksonly option (bitcoind option)" id="id561" target="_blank" rel="noopener noreferrer"></a>your bandwidth usage by only accepting blocks of
+confirmed transactions from your peers instead of relaying unconfirmed
+transactions.</p>
+</dd>
+<dt><code>maxmempool</code></dt>
+<dd>
+<p>Limit <a data-type="indexterm" data-primary="maxmempool option (bitcoind option)" id="id562" target="_blank" rel="noopener noreferrer"></a>the transaction memory pool to this many megabytes.
+Use it to reduce memory use on memory-constrained nodes.</p>
+</dd>
+</dl>
+
+
+<p><a data-type="xref" href="#full_index_node" target="_blank" rel="noopener noreferrer">Example&nbsp;3-1</a> shows how you might combine the preceding options
+with a fully indexed node, running as an API backend for a bitcoin
+application.</p>
+<div id="full_index_node" data-type="example">
+<h5><span>Example 3-1. </span>Sample configuration of a full-index node</h5>
+
+<div data-testid="custom pre block"><pre data-type="programlisting">alertnotify=myemailscript.sh "Alert: %s"
+datadir=/lotsofspace/bitcoin
+txindex=1</pre></div></div>
+
+<p><a data-type="xref" href="#constrained_resources" target="_blank" rel="noopener noreferrer">Example&nbsp;3-2</a> shows a resource-constrained node running on a
+smaller server.</p>
+<div id="constrained_resources" data-type="example">
+<h5><span>Example 3-2. </span>Sample configuration of a resource-constrained system</h5>
+
+<div data-testid="custom pre block"><pre data-type="programlisting">alertnotify=myemailscript.sh "Alert: %s"
+blocksonly=1
+prune=5000
+dbcache=150
+maxmempool=150</pre></div></div>
+
+<p>After you’ve edited the configuration file and set the options that best
+represent your needs, you can test <code>bitcoind</code> with this configuration.
+Run Bitcoin Core with the option <code>printtoconsole</code> to run in the
+foreground with output to the console:</p>
+
+<div data-testid="custom pre block"><pre data-type="programlisting">$ bitcoind -printtoconsole
+2023-01-28T03:43:39Z Bitcoin Core version v24.0.1
+2023-01-28T03:43:39Z Using the 'x86_shani(1way,2way)' SHA256 implementation
+2023-01-28T03:43:39Z Using RdSeed as an additional entropy source
+2023-01-28T03:43:39Z Using RdRand as an additional entropy source
+2023-01-28T03:43:39Z Default data directory /home/harding/.bitcoin
+2023-01-28T03:43:39Z Using data directory /lotsofspace/bitcoin
+2023-01-28T03:43:39Z Config file: /home/harding/.bitcoin/bitcoin.conf
+2023-01-28T03:43:39Z Config file arg: [main] blockfilterindex="1"
+2023-01-28T03:43:39Z Config file arg: [main] maxuploadtarget="1000"
+2023-01-28T03:43:39Z Config file arg: [main] txindex="1"
+2023-01-28T03:43:39Z Setting file arg: wallet = ["msig0"]
+2023-01-28T03:43:39Z Command-line arg: printtoconsole=""
+2023-01-28T03:43:39Z Using at most 125 automatic connections
+2023-01-28T03:43:39Z Using 16 MiB out of 16 MiB requested for signature cache
+2023-01-28T03:43:39Z Using 16 MiB out of 16 MiB requested for script execution
+2023-01-28T03:43:39Z Script verification uses 3 additional threads
+2023-01-28T03:43:39Z scheduler thread start
+2023-01-28T03:43:39Z [http] creating work queue of depth 16
+2023-01-28T03:43:39Z Using random cookie authentication.
+2023-01-28T03:43:39Z Generated RPC cookie /lotsofspace/bitcoin/.cookie
+2023-01-28T03:43:39Z [http] starting 4 worker threads
+2023-01-28T03:43:39Z Using wallet directory /lotsofspace/bitcoin/wallets
+2023-01-28T03:43:39Z init message: Verifying wallet(s)…
+2023-01-28T03:43:39Z Using BerkeleyDB version Berkeley DB 4.8.30
+2023-01-28T03:43:39Z Using /16 prefix for IP bucketing
+2023-01-28T03:43:39Z init message: Loading P2P addresses…
+2023-01-28T03:43:39Z Loaded 63866 addresses from peers.dat  114ms
+[... more startup messages ...]</pre></div>
+
+<p>You can hit Ctrl-C to interrupt the process once you are satisfied that
+it is loading the correct settings and running as you expect.</p>
+
+<p>To run Bitcoin Core in the background as a process, start it with the
+<code>daemon</code> option, as <code>bitcoind -daemon</code>.</p>
+
+<p>To monitor the progress and runtime status of your Bitcoin node, start
+it in daemon mode and then use the command <code>bitcoin-cli getblockchaininfo</code>:</p>
+
+<div data-testid="custom pre block"><pre data-type="programlisting">$ bitcoin-cli getblockchaininfo</pre></div>
+
+<div data-testid="custom pre block"><pre data-type="programlisting" data-code-language="json"><code>{</code><code></code>
+<code>  </code><code>"chain"</code><code>:</code><code> </code><code>"main"</code><code>,</code><code></code>
+<code>  </code><code>"blocks"</code><code>:</code><code> </code><code>0</code><code>,</code><code></code>
+<code>  </code><code>"headers"</code><code>:</code><code> </code><code>83999</code><code>,</code><code></code>
+<code>  </code><code>"bestblockhash"</code><code>:</code><code> </code><code>"[...]19d6689c085ae165831e934ff763ae46a2a6c172b3f1b60a8ce26f"</code><code>,</code><code></code>
+<code>  </code><code>"difficulty"</code><code>:</code><code> </code><code>1</code><code>,</code><code></code>
+<code>  </code><code>"time"</code><code>:</code><code> </code><code>1673379796</code><code>,</code><code></code>
+<code>  </code><code>"mediantime"</code><code>:</code><code> </code><code>1231006505</code><code>,</code><code></code>
+<code>  </code><code>"verificationprogress"</code><code>:</code><code> </code><code>3.783041623201835e-09</code><code>,</code><code></code>
+<code>  </code><code>"initialblockdownload"</code><code>:</code><code> </code><code>true</code><code>,</code><code></code>
+<code>  </code><code>"chainwork"</code><code>:</code><code> </code><code>"[...]000000000000000000000000000000000000000000000100010001"</code><code>,</code><code></code>
+<code>  </code><code>"size_on_disk"</code><code>:</code><code> </code><code>89087</code><code>,</code><code></code>
+<code>  </code><code>"pruned"</code><code>:</code><code> </code><code>false</code><code>,</code><code></code>
+<code>  </code><code>"warnings"</code><code>:</code><code> </code><code>""</code><code></code>
+<code>}</code><code></code></pre></div>
+
+<p>This shows a node with a blockchain height of 0 blocks and 83,999
+headers. The node first fetches the block headers from its peers in
+order to find the blockchain with the most proof of work and
+afterward continues to download the full blocks, validating them as it
+goes.</p>
+
+<p>Once you are happy with the configuration options you have selected, you
+should add Bitcoin Core to the startup scripts in your operating system, so
+that it runs continuously and restarts when the operating system
+restarts. You will find a number of example startup scripts for various
+operating systems in Bitcoin Core’s source directory under <em>contrib/init</em> and
+a <em>README.md</em> file showing which system uses <a data-type="indexterm" data-primary="Bitcoin Core" data-secondary="nodes" data-tertiary="configuring" data-startref="bitcoin-core-nodes-configure" id="id565" target="_blank" rel="noopener noreferrer"></a><a data-type="indexterm" data-primary="nodes" data-secondary="configuring" data-startref="nodes-configure" id="id566" target="_blank" rel="noopener noreferrer"></a><a data-type="indexterm" data-primary="configuring" data-secondary="nodes" data-startref="configure-nodes" id="id567" target="_blank" rel="noopener noreferrer"></a>which script.</p>
+</div>
+
+
+
+
+
+
+<div id="id33" data-type="sect1" data-pdf-bookmark="Bitcoin Core API">
+<h2>Bitcoin Core API</h2>
+
+<p>Bitcoin Core
+implements<a data-type="indexterm" data-primary="Bitcoin Core" data-secondary="command-line interface" data-tertiary="help command" id="bitcoin-core-command-help" target="_blank" rel="noopener noreferrer"></a><a data-type="indexterm" data-primary="command-line interface (Bitcoin Core)" data-secondary="help command" id="command-help" target="_blank" rel="noopener noreferrer"></a><a data-type="indexterm" data-primary="help command (Bitcoin Core)" id="help" target="_blank" rel="noopener noreferrer"></a><a data-type="indexterm" data-primary="RPC commands" data-see="command-line interface (Bitcoin Core)" id="id568" target="_blank" rel="noopener noreferrer"></a><a data-type="indexterm" data-primary="bitcoin-cli command" data-see="command-line interface (Bitcoin Core)" id="id569" target="_blank" rel="noopener noreferrer"></a> a JSON-RPC interface that can also be accessed using
+the command-line helper <code>bitcoin-cli</code>. The command line allows us to
+experiment interactively with the capabilities that are also available
+programmatically via the API. To start, invoke the <code>help</code> command to see a list of
+the available Bitcoin Core RPC commands:</p>
+
+<div data-testid="custom pre block"><pre id="bitcoind_commands" data-type="programlisting">$ bitcoin-cli help
++== Blockchain ==
+getbestblockhash
+getblock "blockhash" ( verbosity )
+getblockchaininfo
+...
+walletpassphrase "passphrase" timeout
+walletpassphrasechange "oldpassphrase" "newpassphrase"
+walletprocesspsbt "psbt" ( sign "sighashtype" bip32derivs finalize )</pre></div>
+
+<p>Each of these commands may take a number of parameters. To get
+additional help, a detailed description, and information on the
+parameters, add the command name after <code>help</code>. For example, to see help
+on the <code>getblockhash</code> RPC command:</p>
+
+<div data-testid="custom pre block"><pre data-type="programlisting">$ bitcoin-cli help getblockhash
+getblockhash height
+
+Returns hash of block in best-block-chain at height provided.
+
+Arguments:
+1. height    (numeric, required) The height index
+
+Result:
+"hex"    (string) The block hash
+
+Examples:
+&gt; bitcoin-cli getblockhash 1000
+&gt; curl --user myusername --data-binary '{"jsonrpc": "1.0", "id": "curltest",
+  "method": "getblockhash",
+  "params": [1000]}' -H 'content-type: text/plain;' http://127.0.0.1:8332/</pre></div>
+
+<p>At the end of the help information you will see two examples of the RPC
+command, using the <code>bitcoin-cli</code> helper or the HTTP client <code>curl</code>. These
+examples demonstrate how you might call the command. Copy the first
+example and see the result:</p>
+
+<div data-testid="custom pre block"><pre data-type="programlisting">$ bitcoin-cli getblockhash 1000
+00000000c937983704a73af28acdec37b049d214adbda81d7e2a3dd146f6ed09</pre></div>
+
+<p>The result is a block hash, which is described in more detail in the
+following chapters. But for now, this command should return the same
+result on your system, demonstrating that your Bitcoin Core node is
+running, is accepting commands, and has information about block 1,000 to
+return to you.</p>
+
+<p>In the next sections we will demonstrate some very useful RPC commands
+and their expected <a data-type="indexterm" data-primary="Bitcoin Core" data-secondary="command-line interface" data-tertiary="help command" data-startref="bitcoin-core-command-help" id="id570" target="_blank" rel="noopener noreferrer"></a><a data-type="indexterm" data-primary="command-line interface (Bitcoin Core)" data-secondary="help command" data-startref="command-help" id="id571" target="_blank" rel="noopener noreferrer"></a><a data-type="indexterm" data-primary="help command (Bitcoin Core)" data-startref="help" id="id572" target="_blank" rel="noopener noreferrer"></a>output.</p>
+
+
+
+
+
+
+
+
+<div id="id34" data-type="sect2" data-pdf-bookmark="Getting Information on Bitcoin Core’s Status">
+<h2>Getting Information on Bitcoin Core’s Status</h2>
+
+<p>Bitcoin
+Core provides<a data-type="indexterm" data-primary="Bitcoin Core" data-secondary="command-line interface" data-tertiary="status information" id="bitcoin-core-command-status" target="_blank" rel="noopener noreferrer"></a><a data-type="indexterm" data-primary="command-line interface (Bitcoin Core)" data-secondary="status information" id="command-status" target="_blank" rel="noopener noreferrer"></a><a data-type="indexterm" data-primary="status information (Bitcoin Core)" id="status-bitcoin-core" target="_blank" rel="noopener noreferrer"></a> status reports on different modules through the JSON-RPC
+interface. The most important commands include <code>getblockchaininfo</code>,
+<code>getmempoo⁠l​info</code>, <code>getnetworkinfo</code>, and <code>getwalletinfo</code>.</p>
+
+<p>Bitcoin’s <code>getblockchaininfo</code> RPC command was introduced earlier. The
+<code>getnetwor⁠k​info</code> command displays basic information about the status of
+the Bitcoin network node. Use <code>bitcoin-cli</code> to run it:</p>
+
+<div data-testid="custom pre block"><pre data-type="programlisting">$ bitcoin-cli getnetworkinfo</pre></div>
+
+<div data-testid="custom pre block"><pre data-type="programlisting" data-code-language="json"><code>{</code><code></code>
+<code>  </code><code>"version"</code><code>:</code><code> </code><code>240001</code><code>,</code><code></code>
+<code>  </code><code>"subversion"</code><code>:</code><code> </code><code>"/Satoshi:24.0.1/"</code><code>,</code><code></code>
+<code>  </code><code>"protocolversion"</code><code>:</code><code> </code><code>70016</code><code>,</code><code></code>
+<code>  </code><code>"localservices"</code><code>:</code><code> </code><code>"0000000000000409"</code><code>,</code><code></code>
+<code>  </code><code>"localservicesnames"</code><code>:</code><code> </code><code>[</code><code></code>
+<code>    </code><code>"NETWORK"</code><code>,</code><code></code>
+<code>    </code><code>"WITNESS"</code><code>,</code><code></code>
+<code>    </code><code>"NETWORK_LIMITED"</code><code></code>
+<code>  </code><code>],</code><code></code>
+<code>  </code><code>"localrelay"</code><code>:</code><code> </code><code>true</code><code>,</code><code></code>
+<code>  </code><code>"timeoffset"</code><code>:</code><code> </code><code>-1</code><code>,</code><code></code>
+<code>  </code><code>"networkactive"</code><code>:</code><code> </code><code>true</code><code>,</code><code></code>
+<code>  </code><code>"connections"</code><code>:</code><code> </code><code>10</code><code>,</code><code></code>
+<code>  </code><code>"connections_in"</code><code>:</code><code> </code><code>0</code><code>,</code><code></code>
+<code>  </code><code>"connections_out"</code><code>:</code><code> </code><code>10</code><code>,</code><code></code>
+<code>  </code><code>"networks"</code><code>:</code><code> </code><code>[</code><code></code>
+<code>    </code><code>"...detailed information about all networks..."</code><code></code>
+<code>  </code><code>],</code><code></code>
+<code>  </code><code>"relayfee"</code><code>:</code><code> </code><code>0.00001000</code><code>,</code><code></code>
+<code>  </code><code>"incrementalfee"</code><code>:</code><code> </code><code>0.00001000</code><code>,</code><code></code>
+<code>  </code><code>"localaddresses"</code><code>:</code><code> </code><code>[</code><code></code>
+<code>  </code><code>],</code><code></code>
+<code>  </code><code>"warnings"</code><code>:</code><code> </code><code>""</code><code></code>
+<code>}</code><code></code></pre></div>
+
+<p>The data is returned in JavaScript Object Notation (JSON), a format that
+can easily be “consumed” by all programming languages but is also quite
+human-readable. Among this data we see the version numbers for the
+Bitcoin Core software and Bitcoin protocol.  We see
+the current number of connections and various information about the
+Bitcoin network and the settings related to this node.</p>
+<div data-type="tip"><h6>Tip</h6>
+<p>It will take some time, perhaps more than a day, for <code>bitcoind</code>
+to catch up to the current blockchain height as it downloads blocks from
+other Bitcoin nodes and validates every transaction in those
+blocks—​almost a billion transactions as of this writing. You can check
+its progress using
+<code>getblockchaininfo</code> to see the number of known blocks.  The examples in
+the rest of this chapter assume you’re at least at block 775,072.
+Because the security of Bitcoin transactions depends on blocks, some of
+the information in the following examples will change slightly depending
+on how many blocks your <a data-type="indexterm" data-primary="Bitcoin Core" data-secondary="command-line interface" data-tertiary="status information" data-startref="bitcoin-core-command-status" id="id573" target="_blank" rel="noopener noreferrer"></a><a data-type="indexterm" data-primary="command-line interface (Bitcoin Core)" data-secondary="status information" data-startref="command-status" id="id574" target="_blank" rel="noopener noreferrer"></a><a data-type="indexterm" data-primary="status information (Bitcoin Core)" data-startref="status-bitcoin-core" id="id575" target="_blank" rel="noopener noreferrer"></a>node has.</p>
+</div>
+</div>
+
+
+
+
+
+
+
+
+<div id="exploring_and_decoding_transactions" data-type="sect2" data-pdf-bookmark="Exploring and Decoding Transactions">
+<h2>Exploring and Decoding Transactions</h2>
+
+<p>In <a data-type="xref" href="https://learning.oreilly.com/library/view/mastering-bitcoin-3rd/9781098150082/ch02.html#spending_bitcoin" target="_blank" rel="noopener noreferrer">“Buying from an Online Store”</a>, Alice <a data-type="indexterm" data-primary="Bitcoin Core" data-secondary="command-line interface" data-tertiary="exploring/decoding transactions" id="bitcoin-core-command-transaction" target="_blank" rel="noopener noreferrer"></a><a data-type="indexterm" data-primary="command-line interface (Bitcoin Core)" data-secondary="exploring/decoding transactions" id="command-transaction" target="_blank" rel="noopener noreferrer"></a><a data-type="indexterm" data-primary="transactions" data-secondary="exploring/decoding" id="transactions-explore-decode" target="_blank" rel="noopener noreferrer"></a><a data-type="indexterm" data-primary="exploring" data-secondary="transactions" id="explore-transaction" target="_blank" rel="noopener noreferrer"></a><a data-type="indexterm" data-primary="decoding" data-secondary="transactions" id="decode-transaction" target="_blank" rel="noopener noreferrer"></a>made a purchase from Bob’s store. Her
+transaction was recorded on the blockchain.
+Let’s use the API to retrieve and examine that transaction by passing
+the transaction ID (txid) as a parameter:</p>
+
+<div data-testid="custom pre block"><pre id="alice_tx_serialized" data-type="programlisting">$ bitcoin-cli getrawtransaction 466200308696215bbc949d5141a49a41\
+38ecdfdfaa2a8029c1f9bcecd1f96177
+
+01000000000101eb3ae38f27191aa5f3850dc9cad00492b88b72404f9da13569
+8679268041c54a0100000000ffffffff02204e0000000000002251203b41daba
+4c9ace578369740f15e5ec880c28279ee7f51b07dca69c7061e07068f8240100
+000000001600147752c165ea7be772b2c0acb7f4d6047ae6f4768e0141cf5efe
+2d8ef13ed0af21d4f4cb82422d6252d70324f6f4576b727b7d918e521c00b51b
+e739df2f899c49dc267c0ad280aca6dab0d2fa2b42a45182fc83e81713010000
+0000</pre></div>
+<div data-type="tip"><h6>Tip</h6>
+<p>A transaction ID (txid)
+is <a data-type="indexterm" data-primary="transaction IDs (txid)" id="id576" target="_blank" rel="noopener noreferrer"></a>not authoritative. Absence of a txid in the blockchain does not mean
+the transaction was not processed. This is known as “transaction
+malleability,” because transactions can be modified prior to
+confirmation in a block, changing their txids.  After a transaction is
+included in a block, its txid cannot change unless there is a blockchain
+reorganization where that block is removed from the best blockchain.
+Reorganizations are rare after a transaction has several confirmations.</p>
+</div>
+
+<p>The command <code>getrawtransaction</code> returns a serialized transaction in
+hexadecimal notation. To decode that, we use the <code>decoderawtransaction</code>
+command, passing the hex data as a parameter. You can copy the hex
+returned by <code>getrawtransaction</code> and paste it as a parameter to
+<code>decoderawtransaction</code>:</p>
+<div data-testid="custom pre block"><pre data-type="programlisting">$ bitcoin-cli decoderawtransaction 01000000000101eb3ae38f27191aa5f3850dc9cad0\
+0492b88b72404f9da135698679268041c54a0100000000ffffffff02204e00000000000022512\
+03b41daba4c9ace578369740f15e5ec880c28279ee7f51b07dca69c7061e07068f82401000000\
+00001600147752c165ea7be772b2c0acb7f4d6047ae6f4768e0141cf5efe2d8ef13ed0af21d4f\
+4cb82422d6252d70324f6f4576b727b7d918e521c00b51be739df2f899c49dc267c0ad280aca6\
+dab0d2fa2b42a45182fc83e817130100000000
+</pre></div>
+<div data-testid="custom pre block"><pre data-type="programlisting" data-code-language="json"><code>{</code><code></code>
+<code>  </code><code>"txid"</code><code>:</code><code> </code><code>"466200308696215bbc949d5141a49a4138ecdfdfaa2a8029c1f9bcecd1f96177"</code><code>,</code><code></code>
+<code>  </code><code>"hash"</code><code>:</code><code> </code><code>"f7cdbc7cf8b910d35cc69962e791138624e4eae7901010a6da4c02e7d238cdac"</code><code>,</code><code></code>
+<code>  </code><code>"version"</code><code>:</code><code> </code><code>1</code><code>,</code><code></code>
+<code>  </code><code>"size"</code><code>:</code><code> </code><code>194</code><code>,</code><code></code>
+<code>  </code><code>"vsize"</code><code>:</code><code> </code><code>143</code><code>,</code><code></code>
+<code>  </code><code>"weight"</code><code>:</code><code> </code><code>569</code><code>,</code><code></code>
+<code>  </code><code>"locktime"</code><code>:</code><code> </code><code>0</code><code>,</code><code></code>
+<code>  </code><code>"vin"</code><code>:</code><code> </code><code>[</code><code></code>
+<code>    </code><code>{</code><code></code>
+<code>      </code><code>"txid"</code><code>:</code><code> </code><code>"4ac541802679866935a19d4f40728bb89204d0cac90d85f3a51a19...aeb"</code><code>,</code><code></code>
+<code>      </code><code>"vout"</code><code>:</code><code> </code><code>1</code><code>,</code><code></code>
+<code>      </code><code>"scriptSig"</code><code>:</code><code> </code><code>{</code><code></code>
+<code>        </code><code>"asm"</code><code>:</code><code> </code><code>""</code><code>,</code><code></code>
+<code>        </code><code>"hex"</code><code>:</code><code> </code><code>""</code><code></code>
+<code>      </code><code>},</code><code></code>
+<code>      </code><code>"txinwitness"</code><code>:</code><code> </code><code>[</code><code></code>
+<code>        </code><code>"cf5efe2d8ef13ed0af21d4f4cb82422d6252d70324f6f4576b727b7d918e5...301"</code><code></code>
+<code>      </code><code>],</code><code></code>
+<code>      </code><code>"sequence"</code><code>:</code><code> </code><code>4294967295</code><code></code>
+<code>    </code><code>}</code><code></code>
+<code>  </code><code>],</code><code></code>
+<code>  </code><code>"vout"</code><code>:</code><code> </code><code>[</code><code></code>
+<code>    </code><code>{</code><code></code>
+<code>      </code><code>"value"</code><code>:</code><code> </code><code>0.00020000</code><code>,</code><code></code>
+<code>      </code><code>"n"</code><code>:</code><code> </code><code>0</code><code>,</code><code></code>
+<code>      </code><code>"scriptPubKey"</code><code>:</code><code> </code><code>{</code><code></code>
+<code>        </code><code>"asm"</code><code>:</code><code> </code><code>"1 3b41daba4c9ace578369740f15e5ec880c28279ee7f51b07dca...068"</code><code>,</code><code></code>
+<code>        </code><code>"desc"</code><code>:</code><code> </code><code>"rawtr(3b41daba4c9ace578369740f15e5ec880c28279ee7f51b...6ev"</code><code>,</code><code></code>
+<code>        </code><code>"hex"</code><code>:</code><code> </code><code>"51203b41daba4c9ace578369740f15e5ec880c28279ee7f51b07d...068"</code><code>,</code><code></code>
+<code>        </code><code>"address"</code><code>:</code><code> </code><code>"bc1p8dqa4wjvnt890qmfws83te0v3qxzsfu7ul63kp7u56w8q...5qn"</code><code>,</code><code></code>
+<code>        </code><code>"type"</code><code>:</code><code> </code><code>"witness_v1_taproot"</code><code></code>
+<code>      </code><code>}</code><code></code>
+<code>    </code><code>},</code><code></code>
+<code>    </code><code>{</code><code></code>
+<code>      </code><code>"value"</code><code>:</code><code> </code><code>0.00075000</code><code>,</code><code></code>
+<code>      </code><code>"n"</code><code>:</code><code> </code><code>1</code><code>,</code><code></code>
+<code>      </code><code>"scriptPubKey"</code><code>:</code><code> </code><code>{</code><code></code>
+<code>        </code><code>"asm"</code><code>:</code><code> </code><code>"0 7752c165ea7be772b2c0acb7f4d6047ae6f4768e"</code><code>,</code><code></code>
+<code>        </code><code>"desc"</code><code>:</code><code> </code><code>"addr(bc1qwafvze0200nh9vkq4jmlf4sy0tn0ga5w0zpkpg)#qq404gts"</code><code>,</code><code></code>
+<code>        </code><code>"hex"</code><code>:</code><code> </code><code>"00147752c165ea7be772b2c0acb7f4d6047ae6f4768e"</code><code>,</code><code></code>
+<code>        </code><code>"address"</code><code>:</code><code> </code><code>"bc1qwafvze0200nh9vkq4jmlf4sy0tn0ga5w0zpkpg"</code><code>,</code><code></code>
+<code>        </code><code>"type"</code><code>:</code><code> </code><code>"witness_v0_keyhash"</code><code></code>
+<code>      </code><code>}</code><code></code>
+<code>    </code><code>}</code><code></code>
+<code>  </code><code>]</code><code></code>
+<code>}</code><code></code>
+</pre></div>
+
+<p>The transaction decode shows all the components of this transaction,
+including the transaction inputs and outputs. In this case we see that
+the transaction used one input and generated two outputs. The input to
+this transaction was the output from a previously confirmed transaction
+(shown as the input <code>txid</code>). The two outputs correspond to the payment to
+Bob and the change back to Alice.</p>
+
+<p>We can further explore the blockchain by examining the previous
+transaction referenced by its <code>txid</code> in this transaction using the same
+commands (e.g., 
+<span><code>getrawtransaction</code>).</span> Jumping from transaction to
+transaction, we can follow a chain of transactions back as the coins are
+transmitted from one owner to the<a data-type="indexterm" data-primary="Bitcoin Core" data-secondary="command-line interface" data-tertiary="exploring/decoding transactions" data-startref="bitcoin-core-command-transaction" id="id577" target="_blank" rel="noopener noreferrer"></a><a data-type="indexterm" data-primary="command-line interface (Bitcoin Core)" data-secondary="exploring/decoding transactions" data-startref="command-transaction" id="id578" target="_blank" rel="noopener noreferrer"></a><a data-type="indexterm" data-primary="transactions" data-secondary="exploring/decoding" data-startref="transactions-explore-decode" id="id579" target="_blank" rel="noopener noreferrer"></a><a data-type="indexterm" data-primary="exploring" data-secondary="transactions" data-startref="explore-transaction" id="id580" target="_blank" rel="noopener noreferrer"></a><a data-type="indexterm" data-primary="decoding" data-secondary="transactions" data-startref="decode-transaction" id="id581" target="_blank" rel="noopener noreferrer"></a> next.</p>
+</div>
+
+
+
+
+
+
+
+
+<div id="id245" data-type="sect2" data-pdf-bookmark="Exploring Blocks">
+<h2>Exploring Blocks</h2>
+
+<p>Exploring
+blocks is<a data-type="indexterm" data-primary="Bitcoin Core" data-secondary="command-line interface" data-tertiary="exploring blocks" id="bitcoin-core-command-blocks" target="_blank" rel="noopener noreferrer"></a><a data-type="indexterm" data-primary="command-line interface (Bitcoin Core)" data-secondary="exploring blocks" id="command-blocks" target="_blank" rel="noopener noreferrer"></a><a data-type="indexterm" data-primary="blocks" data-secondary="exploring" id="blocks-explore" target="_blank" rel="noopener noreferrer"></a><a data-type="indexterm" data-primary="exploring" data-secondary="blocks" id="explore-blocks" target="_blank" rel="noopener noreferrer"></a> similar to exploring transactions. However, blocks can be
+referenced either by the block <em>height</em> or by the block <em>hash</em>. First,
+let’s find a block by its height.
+We use the <code>getblockhash</code> command, which takes the block height as the
+parameter and returns the block <em>header hash</em> for that block:</p>
+<div data-testid="custom pre block"><pre data-type="programlisting">$ bitcoin-cli getblockhash 123456
+0000000000002917ed80650c6174aac8dfc46f5fe36480aaef682ff6cd83c3ca
+</pre></div>
+
+<p>Now that we know the header hash for our chosen block, we can
+query that block. We use the <code>getblock</code> command with the block hash as
+the parameter:</p>
+<div data-testid="custom pre block"><pre data-type="programlisting">$ bitcoin-cli getblock 0000000000002917ed80650c6174aac8dfc46f5fe36480aaef682f\
+f6cd83c3ca
+</pre></div>
+<div data-testid="custom pre block"><pre data-type="programlisting" data-code-language="json"><code>{</code><code></code>
+<code>  </code><code>"hash"</code><code>:</code><code> </code><code>"0000000000002917ed80650c6174aac8dfc46f5fe36480aaef682ff6cd83c3ca"</code><code>,</code><code></code>
+<code>  </code><code>"confirmations"</code><code>:</code><code> </code><code>651742</code><code>,</code><code></code>
+<code>  </code><code>"height"</code><code>:</code><code> </code><code>123456</code><code>,</code><code></code>
+<code>  </code><code>"version"</code><code>:</code><code> </code><code>1</code><code>,</code><code></code>
+<code>  </code><code>"versionHex"</code><code>:</code><code> </code><code>"00000001"</code><code>,</code><code></code>
+<code>  </code><code>"merkleroot"</code><code>:</code><code> </code><code>"0e60651a9934e8f0decd1c[...]48fca0cd1c84a21ddfde95033762d86c"</code><code>,</code><code></code>
+<code>  </code><code>"time"</code><code>:</code><code> </code><code>1305200806</code><code>,</code><code></code>
+<code>  </code><code>"mediantime"</code><code>:</code><code> </code><code>1305197900</code><code>,</code><code></code>
+<code>  </code><code>"nonce"</code><code>:</code><code> </code><code>2436437219</code><code>,</code><code></code>
+<code>  </code><code>"bits"</code><code>:</code><code> </code><code>"1a6a93b3"</code><code>,</code><code></code>
+<code>  </code><code>"difficulty"</code><code>:</code><code> </code><code>157416.4018436489</code><code>,</code><code></code>
+<code>  </code><code>"chainwork"</code><code>:</code><code> </code><code>"[...]00000000000000000000000000000000000000541788211ac227bc"</code><code>,</code><code></code>
+<code>  </code><code>"nTx"</code><code>:</code><code> </code><code>13</code><code>,</code><code></code>
+<code>  </code><code>"previousblockhash"</code><code>:</code><code> </code><code>"[...]60bc96a44724fd72daf9b92cf8ad00510b5224c6253ac40095"</code><code>,</code><code></code>
+<code>  </code><code>"nextblockhash"</code><code>:</code><code> </code><code>"[...]00129f5f02be247070bf7334d3753e4ddee502780c2acaecec6d66"</code><code>,</code><code></code>
+<code>  </code><code>"strippedsize"</code><code>:</code><code> </code><code>4179</code><code>,</code><code></code>
+<code>  </code><code>"size"</code><code>:</code><code> </code><code>4179</code><code>,</code><code></code>
+<code>  </code><code>"weight"</code><code>:</code><code> </code><code>16716</code><code>,</code><code></code>
+<code>  </code><code>"tx"</code><code>:</code><code> </code><code>[</code><code></code>
+<code>    </code><code>"5b75086dafeede555fc8f9a810d8b10df57c46f9f176ccc3dd8d2fa20edd685b"</code><code>,</code><code></code>
+<code>    </code><code>"e3d0425ab346dd5b76f44c222a4bb5d16640a4247050ef82462ab17e229c83b4"</code><code>,</code><code></code>
+<code>    </code><code>"137d247eca8b99dee58e1e9232014183a5c5a9e338001a0109df32794cdcc92e"</code><code>,</code><code></code>
+<code>    </code><code>"5fd167f7b8c417e59106ef5acfe181b09d71b8353a61a55a2f01aa266af5412d"</code><code>,</code><code></code>
+<code>    </code><code>"60925f1948b71f429d514ead7ae7391e0edf965bf5a60331398dae24c6964774"</code><code>,</code><code></code>
+<code>    </code><code>"d4d5fc1529487527e9873256934dfb1e4cdcb39f4c0509577ca19bfad6c5d28f"</code><code>,</code><code></code>
+<code>    </code><code>"7b29d65e5018c56a33652085dbb13f2df39a1a9942bfe1f7e78e97919a6bdea2"</code><code>,</code><code></code>
+<code>    </code><code>"0b89e120efd0a4674c127a76ff5f7590ca304e6a064fbc51adffbd7ce3a3deef"</code><code>,</code><code></code>
+<code>    </code><code>"603f2044da9656084174cfb5812feaf510f862d3addcf70cacce3dc55dab446e"</code><code>,</code><code></code>
+<code>    </code><code>"9a4ed892b43a4df916a7a1213b78e83cd83f5695f635d535c94b2b65ffb144d3"</code><code>,</code><code></code>
+<code>    </code><code>"dda726e3dad9504dce5098dfab5064ecd4a7650bfe854bb2606da3152b60e427"</code><code>,</code><code></code>
+<code>    </code><code>"e46ea8b4d68719b65ead930f07f1f3804cb3701014f8e6d76c4bdbc390893b94"</code><code>,</code><code></code>
+<code>    </code><code>"864a102aeedf53dd9b2baab4eeb898c5083fde6141113e0606b664c41fe15e1f"</code><code></code>
+<code>  </code><code>]</code><code></code>
+<code>}</code><code></code>
+</pre></div>
+
+<p>The <code>confirmations</code> entry tells us the <em>depth</em> of this block—​how many
+blocks have been built on top of it, indicating the difficulty of
+changing any of the transactions in this block.  The <code>height</code> tells us
+how many blocks preceeded this block.  We see the block’s version, the
+time it was created (according to its miner), the median time of the 11
+blocks that precede this block (a time measurement that’s harder for
+miners to manipulate), and the size of the block in three different
+measurements (its legacy stripped size, its full size, and its size in
+weight units).  We also see some fields used for security and
+proof of work (merkle root, nonce, bits, difficulty, and chainwork);
+we’ll examine those <a data-type="indexterm" data-primary="Bitcoin Core" data-secondary="command-line interface" data-tertiary="exploring blocks" data-startref="bitcoin-core-command-blocks" id="id582" target="_blank" rel="noopener noreferrer"></a><a data-type="indexterm" data-primary="command-line interface (Bitcoin Core)" data-secondary="exploring blocks" data-startref="command-blocks" id="id583" target="_blank" rel="noopener noreferrer"></a><a data-type="indexterm" data-primary="blocks" data-secondary="exploring" data-startref="blocks-explore" id="id584" target="_blank" rel="noopener noreferrer"></a><a data-type="indexterm" data-primary="exploring" data-secondary="blocks" data-startref="explore-blocks" id="id585" target="_blank" rel="noopener noreferrer"></a>in detail in <a data-type="xref" href="https://learning.oreilly.com/library/view/mastering-bitcoin-3rd/9781098150082/ch12.html#mining" target="_blank" rel="noopener noreferrer">Chapter&nbsp;12</a>.</p>
+</div>
+
+
+
+
+
+
+
+
+<div id="id36" data-type="sect2" data-pdf-bookmark="Using Bitcoin Core’s Programmatic Interface">
+<h2>Using Bitcoin Core’s Programmatic Interface</h2>
+
+<p>The
+<code>bitcoin-cli</code> helper is <a data-type="indexterm" data-primary="Bitcoin Core" data-secondary="command-line interface" data-tertiary="API access" id="bitcoin-core-command-api" target="_blank" rel="noopener noreferrer"></a><a data-type="indexterm" data-primary="command-line interface (Bitcoin Core)" data-secondary="API access" id="command-api" target="_blank" rel="noopener noreferrer"></a><a data-type="indexterm" data-primary="API access" id="api" target="_blank" rel="noopener noreferrer"></a>very useful for exploring the Bitcoin Core API
+and testing functions. But the whole point of an API is to access functions programmatically. In this section we
+will demonstrate accessing Bitcoin Core from another program.</p>
+
+<p>Bitcoin Core’s API is a JSON-RPC interface. JSON is a very convenient way to present data that
+both humans and programs can easily read. RPC stands for remote
+
+<span>procedure</span> call, which means that we are calling procedures (functions)
+that are remote (on the Bitcoin Core node) via a network protocol. In
+this case, the network protocol is HTTP.</p>
+
+<p>When we used the <code>bitcoin-cli</code> command to get help on a command, it
+showed us an example of using <code>curl</code>, the versatile command-line HTTP
+client to construct one of these JSON-RPC calls:</p>
+
+<div data-testid="custom pre block"><pre data-type="programlisting">$ curl --user myusername --data-binary '{"jsonrpc": "1.0", "id":"curltest",
+  "method": "getblockchaininfo",
+  "params": [] }' -H 'content-type: text/plain;' http://127.0.0.1:8332/</pre></div>
+
+<p>This command shows that <code>curl</code> submits an HTTP request to the local host
+(127.0.0.1), connecting to the default Bitcoin RPC port (8332), and
+submitting a  <code>jsonrpc</code> request for the <code>getblockchaininfo</code> method using
+<code>text/plain</code> encoding.</p>
+
+<p>You might notice that <code>curl</code> will ask for credentials to be sent along
+with the request. Bitcoin Core will create a random password on each
+start and place it in the data directory under the name <code>.cookie</code>. The
+<code>bitcoin-cli</code> helper can read this password file given the data
+directory. Similarly, you can copy the password and pass it to <code>curl</code> (or
+any higher-level Bitcoin Core RPC wrappers), <a data-type="indexterm" data-primary="Bitcoin Core" data-secondary="authentication" id="id586" target="_blank" rel="noopener noreferrer"></a><a data-type="indexterm" data-primary="authentication" id="id587" target="_blank" rel="noopener noreferrer"></a>as seen in <a data-type="xref" href="#cookie_auth" target="_blank" rel="noopener noreferrer">Example&nbsp;3-3</a>.</p>
+<div id="cookie_auth" data-type="example">
+<h5><span>Example 3-3. </span>Using cookie-based authentication with Bitcoin Core</h5>
+
+<div data-testid="custom pre block"><pre data-type="programlisting">$ cat .bitcoin/.cookie
+  __cookie__:17c9b71cef21b893e1a019f4bc071950c7942f49796ed061b274031b17b19cd0
+
+$ curl
+  --user __cookie__:17c9b71cef21b893e1a019f4bc071950c7942f49796ed061b274031b17b19cd0
+  --data-binary '{"jsonrpc": "1.0", "id":"curltest",
+  "method": "getblockchaininfo",
+  "params": [] }' -H 'content-type: text/plain;' http://127.0.0.1:8332/
+
+{"result":{"chain":"main","blocks":799278,"headers":799278,
+"bestblockhash":"000000000000000000018387c50988ec705a95d6f765b206b6629971e6978879",
+"difficulty":53911173001054.59,"time":1689703111,"mediantime":1689701260,
+"verificationprogress":0.9999979206082515,"initialblockdownload":false,
+"chainwork":"00000000000000000000000000000000000000004f3e111bf32bcb47f9dfad5b",
+"size_on_disk":563894577967,"pruned":false,"warnings":""},"error":null,
+"id":"curltest"}</pre></div></div>
+
+<p>Alternatively, you can
+create a static password with the helper script provided in
+
+<span><em>./share/rpcauth/rpcauth.py</em></span> in Bitcoin Core’s source directory.</p>
+
+<p>If you’re implementing a JSON-RPC call in your own program, you can use
+a generic HTTP library to construct the call, similar to what is shown
+in the preceding <code>curl</code> example.</p>
+
+<p>However, there <a data-type="indexterm" data-primary="Bitcoin Core" data-secondary="wrapper libraries" id="id588" target="_blank" rel="noopener noreferrer"></a><a data-type="indexterm" data-primary="wrapper libraries" id="id589" target="_blank" rel="noopener noreferrer"></a>are libraries in most popular programming languages that
+“wrap” the Bitcoin Core API in a way that makes this a lot simpler. We
+will use the <code>python-bitcoinlib</code> library to simplify API access.
+This library is not part of the Bitcoin Core project and needs to be
+installed the usual way you install Python libraries.
+Remember, this requires you to have a running Bitcoin Core instance,
+which will be used to make JSON-RPC calls.</p>
+
+<p>The Python script in <a data-type="xref" href="#rpc_example" target="_blank" rel="noopener noreferrer">Example&nbsp;3-4</a> makes a simple <code>getblockchaininfo</code>
+call and prints the <code>block</code> parameter from the data returned by Bitcoin
+Core.</p>
+<div id="rpc_example" data-type="example">
+<h5><span>Example 3-4. </span>Running <code>getblockchaininfo</code> via Bitcoin Core’s JSON-RPC API</h5>
+
+<div data-testid="custom pre block"><pre data-type="programlisting" data-code-language="python"><code>from</code> <code>bitcoin.rpc</code> <code>import</code> <code>RawProxy</code>
+
+<code># Create a connection to local Bitcoin Core node</code>
+<code>p</code> <code>=</code> <code>RawProxy</code><code>()</code>
+
+<code># Run the getblockchaininfo command, store the resulting data in info</code>
+<code>info</code> <code>=</code> <code>p</code><code>.</code><code>getblockchaininfo</code><code>()</code>
+
+<code># Retrieve the 'blocks' element from the info</code>
+<code>print</code><code>(</code><code>info</code><code>[</code><code>'blocks'</code><code>])</code></pre></div></div>
+
+<p>Running it gives us the following result:</p>
+
+<div data-testid="custom pre block"><pre data-type="programlisting">$ python rpc_example.py
+773973</pre></div>
+
+<p>It tells us how many blocks our local Bitcoin Core node has in its
+blockchain. Not a spectacular result, but it demonstrates the basic use
+of the library as a simplified interface to Bitcoin Core’s JSON-RPC API.</p>
+
+<p>Next, let’s<a data-type="indexterm" data-primary="Bitcoin Core" data-secondary="command-line interface" data-tertiary="exploring/decoding transactions" id="bitcoin-core-command-transaction2" target="_blank" rel="noopener noreferrer"></a><a data-type="indexterm" data-primary="command-line interface (Bitcoin Core)" data-secondary="exploring/decoding transactions" id="command-transaction2" target="_blank" rel="noopener noreferrer"></a><a data-type="indexterm" data-primary="transactions" data-secondary="exploring/decoding" id="transactions-explore-decode2" target="_blank" rel="noopener noreferrer"></a><a data-type="indexterm" data-primary="exploring" data-secondary="transactions" id="explore-transaction2" target="_blank" rel="noopener noreferrer"></a><a data-type="indexterm" data-primary="decoding" data-secondary="transactions" id="decode-transaction2" target="_blank" rel="noopener noreferrer"></a> use the <code>getrawtransaction</code> and <code>decodetransaction</code> calls to
+retrieve the details of Alice’s payment to Bob. In <a data-type="xref" href="#rpc_transaction" target="_blank" rel="noopener noreferrer">Example&nbsp;3-5</a>,
+we retrieve Alice’s transaction and list the transaction’s outputs. For
+each output, we show the recipient address and value. As a reminder,
+Alice’s transaction had one output paying Bob and one output for
+change back to Alice.</p>
+<div id="rpc_transaction" data-type="example">
+<h5><span>Example 3-5. </span>Retrieving a transaction and iterating its outputs</h5>
+
+<div data-testid="custom pre block"><pre data-type="programlisting" data-code-language="python"><code>from</code> <code>bitcoin.rpc</code> <code>import</code> <code>RawProxy</code>
+
+<code>p</code> <code>=</code> <code>RawProxy</code><code>()</code>
+
+<code># Alice's transaction ID</code>
+<code>txid</code> <code>=</code> <code>"466200308696215bbc949d5141a49a4138ecdfdfaa2a8029c1f9bcecd1f96177"</code>
+
+<code># First, retrieve the raw transaction in hex</code>
+<code>raw_tx</code> <code>=</code> <code>p</code><code>.</code><code>getrawtransaction</code><code>(</code><code>txid</code><code>)</code>
+
+<code># Decode the transaction hex into a JSON object</code>
+<code>decoded_tx</code> <code>=</code> <code>p</code><code>.</code><code>decoderawtransaction</code><code>(</code><code>raw_tx</code><code>)</code>
+
+<code># Retrieve each of the outputs from the transaction</code>
+<code>for</code> <code>output</code> <code>in</code> <code>decoded_tx</code><code>[</code><code>'vout'</code><code>]:</code>
+    <code>print</code><code>(</code><code>output</code><code>[</code><code>'scriptPubKey'</code><code>][</code><code>'address'</code><code>],</code> <code>output</code><code>[</code><code>'value'</code><code>])</code></pre></div></div>
+
+<p>Running this code, we get:</p>
+
+<div data-testid="custom pre block"><pre data-type="programlisting">$ python rpc_transaction.py
+bc1p8dqa4wjvnt890qmfws83te0v3qxzsfu7ul63kp7u56w8qc0qwp5qv995qn 0.00020000
+bc1qwafvze0200nh9vkq4jmlf4sy0tn0ga5w0zpkpg 0.00075000</pre></div>
+
+<p>Both of the <a data-type="indexterm" data-primary="Bitcoin Core" data-secondary="command-line interface" data-tertiary="exploring/decoding transactions" data-startref="bitcoin-core-command-transaction2" id="id590" target="_blank" rel="noopener noreferrer"></a><a data-type="indexterm" data-primary="command-line interface (Bitcoin Core)" data-secondary="exploring/decoding transactions" data-startref="command-transaction2" id="id591" target="_blank" rel="noopener noreferrer"></a><a data-type="indexterm" data-primary="transactions" data-secondary="exploring/decoding" data-startref="transactions-explore-decode2" id="id592" target="_blank" rel="noopener noreferrer"></a><a data-type="indexterm" data-primary="exploring" data-secondary="transactions" data-startref="explore-transaction2" id="id593" target="_blank" rel="noopener noreferrer"></a><a data-type="indexterm" data-primary="decoding" data-secondary="transactions" data-startref="decode-transaction2" id="id594" target="_blank" rel="noopener noreferrer"></a>preceding examples are rather simple. You don’t really need
+a program to run them; you could just as easily use the <code>bitcoin-cli</code>
+helper. The next example, however, requires several hundred RPC calls
+and more clearly demonstrates the use of a programmatic interface.</p>
+
+<p>In <a data-type="xref" href="#rpc_block" target="_blank" rel="noopener noreferrer">Example&nbsp;3-6</a>, we first <a data-type="indexterm" data-primary="Bitcoin Core" data-secondary="command-line interface" data-tertiary="exploring blocks" id="bitcoin-core-command-blocks2" target="_blank" rel="noopener noreferrer"></a><a data-type="indexterm" data-primary="command-line interface (Bitcoin Core)" data-secondary="exploring blocks" id="command-blocks2" target="_blank" rel="noopener noreferrer"></a><a data-type="indexterm" data-primary="blocks" data-secondary="exploring" id="blocks-explore2" target="_blank" rel="noopener noreferrer"></a><a data-type="indexterm" data-primary="exploring" data-secondary="blocks" id="explore-blocks2" target="_blank" rel="noopener noreferrer"></a>retrieve a block, then retrieve each of
+the transactions within it by reference to each transaction ID. Next,
+we iterate through each of the transaction’s outputs and add up the
+value.</p>
+<div id="rpc_block" data-type="example">
+<h5><span>Example 3-6. </span>Retrieving a block and adding all the transaction outputs</h5>
+
+<div data-testid="custom pre block"><pre data-type="programlisting" data-code-language="python"><code>from</code> <code>bitcoin.rpc</code> <code>import</code> <code>RawProxy</code>
+
+<code>p</code> <code>=</code> <code>RawProxy</code><code>()</code>
+
+<code># The block height where Alice's transaction was recorded</code>
+<code>blockheight</code> <code>=</code> <code>775072</code>
+
+<code># Get the block hash of the block at the given height</code>
+<code>blockhash</code> <code>=</code> <code>p</code><code>.</code><code>getblockhash</code><code>(</code><code>blockheight</code><code>)</code>
+
+<code># Retrieve the block by its hash</code>
+<code>block</code> <code>=</code> <code>p</code><code>.</code><code>getblock</code><code>(</code><code>blockhash</code><code>)</code>
+
+<code># Element tx contains the list of all transaction IDs in the block</code>
+<code>transactions</code> <code>=</code> <code>block</code><code>[</code><code>'tx'</code><code>]</code>
+
+<code>block_value</code> <code>=</code> <code>0</code>
+
+<code># Iterate through each transaction ID in the block</code>
+<code>for</code> <code>txid</code> <code>in</code> <code>transactions</code><code>:</code>
+    <code>tx_value</code> <code>=</code> <code>0</code>
+    <code># Retrieve the raw transaction by ID</code>
+    <code>raw_tx</code> <code>=</code> <code>p</code><code>.</code><code>getrawtransaction</code><code>(</code><code>txid</code><code>)</code>
+    <code># Decode the transaction</code>
+    <code>decoded_tx</code> <code>=</code> <code>p</code><code>.</code><code>decoderawtransaction</code><code>(</code><code>raw_tx</code><code>)</code>
+    <code># Iterate through each output in the transaction</code>
+    <code>for</code> <code>output</code> <code>in</code> <code>decoded_tx</code><code>[</code><code>'vout'</code><code>]:</code>
+        <code># Add up the value of each output</code>
+        <code>tx_value</code> <code>=</code> <code>tx_value</code> <code>+</code> <code>output</code><code>[</code><code>'value'</code><code>]</code>
+
+    <code># Add the value of this transaction to the total</code>
+    <code>block_value</code> <code>=</code> <code>block_value</code> <code>+</code> <code>tx_value</code>
+
+<code>print</code><code>(</code><code>"Total value in block: "</code><code>,</code> <code>block_value</code><code>)</code></pre></div></div>
+
+<p>Running this code, we get:</p>
+
+<div data-testid="custom pre block"><pre data-type="programlisting">$ python rpc_block.py
+
+Total value in block:  10322.07722534</pre></div>
+
+<p>Our example code calculates that the total value transacted in this
+block is 10,322.07722534 BTC (including 25 BTC reward and 0.0909 BTC in
+fees). Compare that to the amount reported by a block explorer site by
+searching for the block hash or height. Some block explorers report the
+total value excluding the reward and excluding the fees. See if you can
+spot the <a data-type="indexterm" data-primary="Bitcoin Core" data-secondary="command-line interface" data-tertiary="API access" data-startref="bitcoin-core-command-api" id="id595" target="_blank" rel="noopener noreferrer"></a><a data-type="indexterm" data-primary="command-line interface (Bitcoin Core)" data-secondary="API access" data-startref="command-api" id="id596" target="_blank" rel="noopener noreferrer"></a><a data-type="indexterm" data-primary="API access" data-startref="api" id="id597" target="_blank" rel="noopener noreferrer"></a><a data-type="indexterm" data-primary="Bitcoin Core" data-secondary="command-line interface" data-tertiary="exploring blocks" data-startref="bitcoin-core-command-blocks2" id="id598" target="_blank" rel="noopener noreferrer"></a><a data-type="indexterm" data-primary="command-line interface (Bitcoin Core)" data-secondary="exploring blocks" data-startref="command-blocks2" id="id599" target="_blank" rel="noopener noreferrer"></a><a data-type="indexterm" data-primary="blocks" data-secondary="exploring" data-startref="blocks-explore2" id="id600" target="_blank" rel="noopener noreferrer"></a><a data-type="indexterm" data-primary="exploring" data-secondary="blocks" data-startref="explore-blocks2" id="id601" target="_blank" rel="noopener noreferrer"></a>difference.</p>
+</div>
+</div>
+
+
+
+
+
+
+<div id="alt_libraries" data-type="sect1" data-pdf-bookmark="Alternative Clients, Libraries, and Toolkits">
+<h2>Alternative Clients, Libraries, and Toolkits</h2>
+
+<p>There
+are many alternative clients, libraries, toolkits, and even full-node
+implementations in the Bitcoin ecosystem. These are implemented in a
+variety of programming languages, offering programmers native interfaces
+in their preferred language.</p>
+
+<p>The following sections list some of the best libraries, clients, and
+toolkits, organized by programming languages.</p>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<div id="id38" data-type="sect2" data-pdf-bookmark="JavaScript">
+<h2>JavaScript</h2>
+<dl>
+<dt><a href="https://bcoin.io/" target="_blank" rel="noopener noreferrer">bcoin</a></dt>
+<dd>
+<p>A modular<a data-type="indexterm" data-primary="JavaScript toolkits" id="id604" target="_blank" rel="noopener noreferrer"></a><a data-type="indexterm" data-primary="bcoin" id="id605" target="_blank" rel="noopener noreferrer"></a><a data-type="indexterm" data-primary="Bitcore" id="id606" target="_blank" rel="noopener noreferrer"></a> and scalable full-node implementation with API</p>
+</dd>
+<dt><a href="https://bitcore.io/" target="_blank" rel="noopener noreferrer">Bitcore</a> </dt>
+<dd>
+<p>Full node, API, and library by Bitpay</p>
+</dd>
+<dt><a href="https://oreil.ly/4iqf2" target="_blank" rel="noopener noreferrer">BitcoinJS</a> </dt>
+<dd>
+<p>A pure JavaScript Bitcoin library for node.js and browsers</p>
+</dd>
+</dl>
+</div>
+
+
+
+
+
+
+
+
+<div id="id39" data-type="sect2" data-pdf-bookmark="Java">
+<h2>Java</h2>
+<dl>
+<dt><a href="https://bitcoinj.github.io/" target="_blank" rel="noopener noreferrer">bitcoinj</a></dt>
+<dd>
+<p>A <a data-type="indexterm" data-primary="Java toolkits" id="id607" target="_blank" rel="noopener noreferrer"></a><a data-type="indexterm" data-primary="bitcoinj" id="id608" target="_blank" rel="noopener noreferrer"></a>Java full-node client library</p>
+</dd>
+</dl>
+</div>
+
+
+
+
+
+
+
+
+<div id="id40" data-type="sect2" data-pdf-bookmark="Python">
+<h2>Python</h2>
+<dl>
+<dt><a href="https://oreil.ly/xn_rg" target="_blank" rel="noopener noreferrer">python-bitcoinlib</a></dt>
+<dd>
+<p>A <a data-type="indexterm" data-primary="Python toolkits" id="id609" target="_blank" rel="noopener noreferrer"></a><a data-type="indexterm" data-primary="python-bitcoinlib" id="id610" target="_blank" rel="noopener noreferrer"></a><a data-type="indexterm" data-primary="pycoin" id="id611" target="_blank" rel="noopener noreferrer"></a>Python bitcoin library, consensus library, and node by Peter Todd</p>
+</dd>
+<dt><a href="https://oreil.ly/wcpXP" target="_blank" rel="noopener noreferrer">pycoin</a></dt>
+<dd>
+<p>A Python bitcoin library by Richard Kiss</p>
+</dd>
+</dl>
+</div>
+
+
+
+
+
+
+
+
+<div id="id41" data-type="sect2" data-pdf-bookmark="Go">
+<h2>Go</h2>
+<dl>
+<dt><a href="https://oreil.ly/h5MEI" target="_blank" rel="noopener noreferrer">btcd</a></dt>
+<dd>
+<p>A <a data-type="indexterm" data-primary="Go toolkits" id="id612" target="_blank" rel="noopener noreferrer"></a><a data-type="indexterm" data-primary="btcd" id="id613" target="_blank" rel="noopener noreferrer"></a>Go language, full-node Bitcoin client</p>
+</dd>
+</dl>
+</div>
+
+
+
+
+
+
+
+
+<div id="id42" data-type="sect2" data-pdf-bookmark="Rust">
+<h2>Rust</h2>
+<dl>
+<dt><a href="https://oreil.ly/me6gf" target="_blank" rel="noopener noreferrer">rust-bitcoin</a></dt>
+<dd>
+<p>Rust <a data-type="indexterm" data-primary="Rust toolkits" id="id614" target="_blank" rel="noopener noreferrer"></a><a data-type="indexterm" data-primary="rust-bitcoin" id="id615" target="_blank" rel="noopener noreferrer"></a>bitcoin library for serialization, parsing, and API calls</p>
+</dd>
+</dl>
+</div>
+
+
+
+
+
+
+
+
+<div id="id43" data-type="sect2" data-pdf-bookmark="Scala">
+<h2>Scala</h2>
+<dl>
+<dt><a href="https://bitcoin-s.org/" target="_blank" rel="noopener noreferrer">bitcoin-s</a></dt>
+<dd>
+<p>A <a data-type="indexterm" data-primary="Scala toolkits" id="id616" target="_blank" rel="noopener noreferrer"></a><a data-type="indexterm" data-primary="bitcoin-s" id="id617" target="_blank" rel="noopener noreferrer"></a>Bitcoin implementation in Scala</p>
+</dd>
+</dl>
+</div>
+
+
+
+
+
+
+
+
+<div id="id44" data-type="sect2" data-pdf-bookmark="C#">
+<h2>C#</h2>
+<dl>
+<dt><a href="https://oreil.ly/Qfjgq" target="_blank" rel="noopener noreferrer">NBitcoin</a></dt>
+<dd>
+<p>Comprehensive<a data-type="indexterm" data-primary="C# toolkits" id="id618" target="_blank" rel="noopener noreferrer"></a><a data-type="indexterm" data-primary="NBitcoin" id="id619" target="_blank" rel="noopener noreferrer"></a> bitcoin library for the .NET framework</p>
+</dd>
+</dl>
+
+<p>Many more libraries exist in a variety of other programming languages,
+and more are created all the time.</p>
+
+<p>If you followed the instructions in this chapter, you now have Bitcoin
+Core running and have begun exploring the network and blockchain using
+your own full node.  From now on you can independently use software you
+control—on a computer you control—to verify that any bitcoins you receive
+follow every rule in the Bitcoin system without having to trust any
+outside authority.  In the coming chapters, we’ll learn more about the
+rules of the system and how your node and your wallet use them to secure
+your money, protect your privacy, and make spending and receiving
+
+<span>convenient.</span></p>
+</div>
+</div>
+</div></div>
+  <span></span> <!-- for IntersectionObserver -->
+  
+  
+  
+  
+
+
+<style id="note-styling">
+    .note {
+      position: absolute;
+      z-index: 10;
+      border: none;
+      outline: none;
+      font-family: inherit;
+      font-size: inherit;
+      padding: 5px;
+      min-width: 32px;
+      min-height: 32px;
+    }
+    .note:focus {
+      z-index: 11;
+    }
+    .note[type="0"] {
+      background-color: #fff740;
+      color: #2c2c2d;
+    }
+    .note[type="0"]::placeholder {
+      color: #868226;
+    }
+    .note[type="1"] {
+      background-color: #feff9c;
+      color: #2c2c2d;
+    }
+    .note[type="1"]::placeholder {
+      color: #6d6d3d;
+    }
+    .note[type="2"] {
+      background-color: #ff65a3;
+      color: #2c2c2d;
+    }
+    .note[type="2"]::placeholder {
+      color: #65263f;
+    }
+    .note[type="3"] {
+      background-color: #ff7eb9;
+      color: #2c2c2d;
+    }
+    .note[type="3"]::placeholder {
+      color: #562b3f;
+    }
+    .note[type="4"] {
+      background-color: #7afcff;
+      color: #295c5d;
+    }
+    .note[type="4"]::placeholder {
+      color: #377677;
+    }</style><div id="chapters-container">
+      <style>
+        #chapters {
+          display: grid;
+          grid-template-columns: 1fr 1fr;
+          margin: 2ch 0;
+        }
+        #chapters a {
+          cursor: pointer;
+        }
+        #chapters a[href=""] {
+          opacity: 0.5;
+          pointer-events: none;
+          color: inherit;
+        }
+        #chapters a:first-child {
+          justify-self: start;
+        }
+        #chapters a:last-child {
+          justify-self: end;
+        }
+      </style>
+      <hr>
+      <div id="chapters">
+        <a href="" title="move to the previous chapter (Ctrl/Command + PageUp)">Previous Chapter</a>
+        <a href="https://learning.oreilly.com/library/view/mastering-bitcoin-3rd/9781098150082/ch04.html" title="move to the next chapter (Ctrl/Command + PageDown)">Next Chapter</a>
+      </div>
+    </div></body><style>body {
+      font-size:  19px;
+      font-family: Georgia, 'Times New Roman', serif;
+      width: 600px;
+    }
+    p {
+      text-align: justify
+    }
+    .page {
+      line-height: 28.5px;
+      column-count: unset;
+    }
+    h1, h2, h3 {
+      line-height: initial;
+    }</style></html>

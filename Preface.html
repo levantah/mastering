@@ -1,0 +1,821 @@
+<!DOCTYPE html>
+<html><head>
+  <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+  <base target="_blank">
+  <style>
+/* latin */
+@font-face {
+  font-family: 'Comic Neue';
+  font-style: normal;
+  font-weight: 400;
+  src: url(fonts/4UaHrEJDsxBrF37olUeD96rp57F2IwM.woff2) format('woff2');
+  unicode-range: U+0000-00FF, U+0131, U+0152-0153, U+02BB-02BC, U+02C6, U+02DA, U+02DC, U+0304, U+0308, U+0329, U+2000-206F, U+2074, U+20AC, U+2122, U+2191, U+2193, U+2212, U+2215, U+FEFF, U+FFFD;
+}
+/* latin */
+@font-face {
+  font-family: 'Lexend Deca';
+  font-style: normal;
+  font-weight: 400;
+  src: url(fonts/K2FifZFYk-dHSE0UPPuwQ7CrD94i-NCKm-U48M1wqxnDirZPl3v-.woff2) format('woff2');
+  unicode-range: U+0000-00FF, U+0131, U+0152-0153, U+02BB-02BC, U+02C6, U+02DA, U+02DC, U+0304, U+0308, U+0329, U+2000-206F, U+2074, U+20AC, U+2122, U+2191, U+2193, U+2212, U+2215, U+FEFF, U+FFFD;
+}
+/* latin */
+@font-face {
+  font-family: 'Poppins';
+  font-style: normal;
+  font-weight: 400;
+  src: url(fonts/pxiEyp8kv8JHgFVrJJfecnFHGPc.woff2) format('woff2');
+  unicode-range: U+0000-00FF, U+0131, U+0152-0153, U+02BB-02BC, U+02C6, U+02DA, U+02DC, U+0304, U+0308, U+0329, U+2000-206F, U+2074, U+20AC, U+2122, U+2191, U+2193, U+2212, U+2215, U+FEFF, U+FFFD;
+}
+
+:root {
+  --fg: #000; /* foreground  */
+  --bg: #fff; /* background  */
+  --bd: #000; /* border  */
+  --lk: #006fa5; /* link */
+  --lkv: #d33bf0; /* link visited */
+  --hg: #ffff81; /* highlight  */
+}
+html {
+  overflow: overlay;
+}
+body {
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+  margin: 30px auto 0 auto;
+  padding: 10px;
+  position: relative;
+
+  color: var(--fg);
+  border-color: var(--bd);
+  background-color: var(--bg);
+}
+body[data-mode$="dark"] {
+  --lk: #0096de;
+}
+body[data-mode="light"] {
+  color-scheme: light;
+  --fg: #222;
+  --bd: #222;
+  --bg: whitesmoke;
+}
+body[data-mode="dark"] {
+  color-scheme: dark;
+  --fg: #eee;
+  --bd: #eee;
+  --bg: #333;
+}
+body[data-mode="sepia"] {
+  color-scheme: light;
+  --fg: #5b4636;
+  --bd: #5b4636;
+  --bg: #f4ecd8;
+}
+body[data-mode="solarized-light"] {
+  color-scheme: light;
+  --fg: #586e75;
+  --bd: #586e75;
+  --bg: #fdf6e3;
+}
+body[data-mode="nord-light"] {
+  color-scheme: light;
+  --fg: #2e3440;
+  --bd: #2e3440;
+  --bg: #e5e9f0;
+}
+body[data-mode="groove-dark"] {
+  color-scheme: dark;
+  --fg: #cec4ac;
+  --bd: #cec4ac;
+  --bg: #282828;
+}
+body[data-mode="solarized-dark"] {
+  color-scheme: dark;
+  --fg: #839496;
+  --bd: #839496;
+  --bg: #002b36;
+}
+body[data-mode="nord-dark"] {
+  color-scheme: dark;
+  --fg: #e5e9f0;
+  --bd: #e5e9f0;
+  --bg: #2e3440;
+}
+
+@media print {
+  body[data-mode] {
+    --fg: #000;
+    --bd: #000;
+    --bg: #fff;
+
+    width: unset;
+    padding: 0;
+    margin: 0;
+  }
+}
+body[data-loaded=true] {
+  
+}
+img {
+  max-width: 100%;
+  height: auto;
+}
+img:not([width])[src$=".svg"] {
+  max-width: 100px;
+}
+body[data-images=false] canvas,
+body[data-images=false] svg,
+body[data-images=false] img {
+  display: none;
+}
+svg:not([width]):not([height]) {
+  max-width: 25vmin;
+}
+a {
+  color: var(--lk);
+  text-decoration: none;
+}
+a:visited {
+  color: var(--lkv);
+}
+
+hr {
+  background-color: var(--bd);
+  height: 1px;
+  border: 0;
+}
+#reader-domain {
+  font-family: Helvetica, Arial, sans-serif;
+  text-decoration: none;
+  border-bottom-color: currentcolor;
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  width: 100%;
+  display: inline-block;
+  direction: ltr;
+}
+#reader-domain > span:first-child {
+  font-size: 1.1em;
+}
+#reader-domain > span:last-child {
+  font-size: 0.8em;
+}
+#reader-title {
+  font-size: 1.6em;
+  line-height: 1.25em;
+  width: 100%;
+  margin: 20px 0;
+  padding: 0;
+}
+#reader-credits,
+#doi,
+#published-time,
+#reader-estimated-time {
+  font-size: 0.85em;
+  line-height: 1.48em;
+  margin: 0 0 10px 0;
+  padding: 0;
+}
+#reader-credits:not(:empty)::after {
+  content: ' ⋮ ';
+}
+#published-time:not(:empty)::before {
+  content: ' ⋮ ';
+}
+#doi-json {
+  overflow: hidden;
+}
+#doi-json code {
+  overflow: auto;
+  max-height: 400px;
+}
+#published-time:empty,
+#reader-credits:empty {
+  display: none;
+}
+mark.hghlght {
+  background-color: var(--hg);
+}
+body:not([data-columns="1"]) .page :is(h1, h2) {
+  column-span: all;
+  background-color: rgba(125, 125, 125, 0.1);
+  padding: 10px;
+}
+.hidden {
+  display: none;
+}
+</style>
+  <style id="user-css">body {
+  padding-bottom: 64px;
+}
+pre {
+  white-space: pre-wrap;
+}
+pre code {
+  background-color: #eff0f1;
+  color: #393318;
+  font-family: monospace;
+  display: block;
+  padding: 5px 10px;
+}
+body[data-mode="dark"] pre code {
+  background-color: #585858;
+  color: #e8e8e8;
+}
+
+/* CSS for sans-serif fonts */
+body[data-font=sans-serif] {}
+/* CSS for serif fonts */
+body[data-font=serif] {}
+
+/* CSS for "sepia" theme */
+body[data-mode=sepia] {}
+/* CSS for "light" theme */
+body[data-mode=light] {}
+/* CSS for "dark" theme */
+body[data-mode=dark] {}</style>
+<title>Preface</title><title>Preface :: Reader View</title></head>
+<body tabindex="1" data-images="true" data-mode="groove-dark" data-font="serif" data-columns="1" data-loaded="true">
+  <span></span> <!-- for IntersectionObserver -->
+  <a id="reader-domain" href="https://learning.oreilly.com/library/view/mastering-bitcoin-3rd/9781098150082/preface01.html">
+    <span>learning.oreilly.com</span>
+    <span>/library/view/mastering-bitcoin-3rd/9781098150082/preface01.html</span>
+  </a>
+  <h1 dir="auto" id="reader-title">Preface</h1>
+  <span dir="auto" id="reader-credits"></span>
+  <span dir="auto" id="reader-estimated-time">20-26 minutes</span>
+  <span dir="auto" id="published-time"></span>
+  <hr>
+  <div id="readability-page-1" class="page"><div id="sbo-rt-content" data-type="preface" epub:type="preface" data-pdf-bookmark="Preface">
+
+
+
+
+
+
+
+
+<div id="id392" data-type="sect1" data-pdf-bookmark="Writing the Bitcoin Book">
+<h2>Writing the Bitcoin Book</h2>
+
+<p>I (Andreas) first stumbled upon Bitcoin in mid-2011. My immediate reaction was more or less “Pfft! Nerd money!” and I ignored it for another six months, failing to grasp its importance. This is a reaction that I have seen repeated among many of the smartest people I know, which gives me some consolation. The second time I came across Bitcoin, in a mailing list discussion, I decided to read the whitepaper written by Satoshi Nakamoto and see what it was all about. I still remember the moment I finished reading those nine pages, when I realized that Bitcoin was not simply a digital currency, but a network of trust that could also provide the basis for so much more than just currencies. The realization that “this isn’t money, it’s a decentralized trust network,” started me on a four-month journey to devour every scrap of information about Bitcoin I could find. I became obsessed and enthralled, spending 12 or more hours each day glued to a screen, reading, writing, coding, and learning as much as I could. I emerged from this state of fugue, more than 20 pounds lighter from lack of consistent meals, determined to dedicate myself to working on Bitcoin.</p>
+
+<p>Two years later, after creating a number of small startups to explore various Bitcoin-related services and products, I decided that it was time to write my first book. Bitcoin was the topic that had driven me into a frenzy of creativity and consumed my thoughts; it was the most exciting technology I had encountered since the internet. It was now time to share my passion about this amazing technology with a broader audience.</p>
+</div>
+
+
+
+
+
+
+<div id="id393" data-type="sect1" data-pdf-bookmark="Intended Audience">
+<h2>Intended Audience</h2>
+
+<p>This book is mostly intended for coders. If you can use a programming language, this book will teach you how cryptographic currencies work, how to use them, and how to develop software that works with them. The first few chapters are also suitable as an in-depth introduction to Bitcoin for noncoders—those trying to understand the inner workings of Bitcoin and cryptocurrencies.</p>
+</div>
+
+
+
+
+
+
+<div id="id394" data-type="sect1" data-pdf-bookmark="Why Are There Bugs on the Cover?">
+<h2>Why Are There Bugs on the Cover?</h2>
+
+<p>The leafcutter ant is a species that exhibits highly complex behavior in a colony super-organism, but each individual ant operates on a set of simple rules driven by social interaction and the exchange of chemical scents (pheromones). Per Wikipedia: “Next to humans, leafcutter ants form the largest and most complex animal societies on Earth.” Leafcutter ants don’t actually eat leaves, but rather use them to farm a fungus, which is the central food source for the colony. Get that? These ants are farming!</p>
+
+<p>Although ants form a caste-based society and have a queen for producing offspring, there is no central authority or leader in an ant colony. The highly intelligent and sophisticated behavior exhibited by a multimillion-member colony is an emergent property from the interaction of the individuals in a social network.</p>
+
+<p>Nature demonstrates that decentralized systems can be resilient and can produce emergent complexity and incredible sophistication without the need for a central authority, hierarchy, or complex parts.</p>
+
+<p>Bitcoin is a highly sophisticated decentralized trust network that can support myriad financial processes. Yet, each node in the Bitcoin network follows a few simple rules. The interaction between many nodes is what leads to the emergence of the sophisticated behavior, not any inherent complexity or trust in any single node. Like an ant colony, the Bitcoin network is a resilient network of simple nodes following simple rules that together can do amazing things without any central coordination.</p>
+</div>
+
+
+
+
+
+
+<div id="id395" data-type="sect1" data-pdf-bookmark="Conventions Used in This Book">
+<h2>Conventions Used in This Book</h2>
+
+<p>The following typographical conventions are used in this book:</p>
+<dl>
+<dt><em>Italic</em></dt>
+<dd>
+<p>Indicates new terms, URLs, email addresses, filenames, and file extensions.</p>
+</dd>
+<dt><code>Constant width</code></dt>
+<dd>
+<p>Used for program listings, as well as within paragraphs to refer to program elements such as variable or function names, databases, data types, environment variables, statements, and keywords.</p>
+</dd>
+<dt><strong><code>Constant width bold</code></strong></dt>
+<dd>
+<p>Shows commands or other text that should be typed literally by the user.</p>
+</dd>
+<dt><em><code>Constant width italic</code></em></dt>
+<dd>
+<p>Shows text that should be replaced with user-supplied values or by values determined by context.</p>
+</dd>
+</dl>
+<div data-type="tip"><h6>Tip</h6>
+<p>This element signifies a tip or suggestion.</p>
+</div>
+<div data-type="note" epub:type="note"><h6>Note</h6>
+<p>This element signifies a general note.</p>
+</div>
+<div data-type="warning" epub:type="warning"><h6>Warning</h6>
+<p>This element indicates a warning or caution.</p>
+</div>
+</div>
+
+
+
+
+
+
+<div id="id396" data-type="sect1" data-pdf-bookmark="Code Examples">
+<h2>Code Examples</h2>
+
+<p>All the code snippets can be replicated on most operating systems with a minimal installation of compilers and interpreters for the corresponding languages. Where necessary, we provide basic installation instructions and step-by-step examples of the output of those instructions.</p>
+
+<p>Some of the code snippets and code output have been reformatted for print. In all such cases, the lines have been split by a backslash (\) character, followed by a newline character. When transcribing the examples, remove those two characters and join the lines again and you should see identical results as shown in the example.</p>
+
+<p>All the code snippets use real values and calculations where possible, so that you can build from example to example and see the same results in any code you write to calculate the same values.</p>
+</div>
+
+
+
+
+
+
+<div id="id397" data-type="sect1" data-pdf-bookmark="Using Code Examples">
+<h2>Using Code Examples</h2>
+
+<p>This book is here to help you get your job done. In general, if example code is offered with this book, you may use it in your programs and documentation. You do not need to contact us for permission unless you’re reproducing a significant portion of the code. For example, writing a program that uses several chunks of code from this book does not require permission. Selling or distributing examples from O’Reilly books does require permission. Answering a question by citing this book and quoting example code does not require permission. Incorporating a significant amount of example code from this book into your product’s documentation does require permission.</p>
+
+<p>We appreciate, but do not require, attribution. An attribution usually includes 
+<span>the title,</span> author, publisher, and ISBN. For example: “<em>Mastering Bitcoin</em>, 3rd ed., by 
+<span>Andreas M.</span> Antonopoulos and David A. Harding (O’Reilly). Copyright 2024 David Harding, ISBN 978-1-098-15009-9.”</p>
+
+<p>Some editions of this book are offered under an open source license, such as <a href="https://oreil.ly/RzUHE" target="_blank" rel="noopener noreferrer">CC-BY-NC</a>, in which case the terms of that license apply.</p>
+
+<p>If you feel your use of code examples falls outside fair use or the permission given above, feel free to contact us at <a href="mailto:permissions@oreilly.com" target="_blank" rel="noopener noreferrer">permissions@oreilly.com</a>.</p>
+</div>
+
+
+
+
+
+
+<div id="id398" data-type="sect1" data-pdf-bookmark="Changes Since the Previous Edition">
+<h2>Changes Since the Previous Edition</h2>
+
+<p>A particular focus in the third edition has been modernizing the 2017
+second edition text and the remaining 2014 first edition text.  In
+addition, many concepts that are relevant to contempory Bitcoin
+development in 2023 have been added:</p>
+<dl>
+<dt><a data-type="xref" href="https://learning.oreilly.com/library/view/mastering-bitcoin-3rd/9781098150082/ch04.html#ch04_keys_addresses" target="_blank" rel="noopener noreferrer">Chapter&nbsp;4</a></dt>
+<dd>
+<p>We rearranged the address info so that we work through everything in
+historical order, adding a new section with P2PK (where “address” was “IP
+address”), refreshed the previous P2PKH and P2SH sections, and then added new
+sections for segwit/bech32 and taproot/bech32m.</p>
+</dd>
+<dt>Old Chapters 6 and 7</dt>
+<dd>
+<p>Text from previous versions of Chapter 6, “Transactions,” and Chapter 7,
+“Advanced Transactions,” has been rearranged and expanded across four
+new chapters:  <a data-type="xref" data-xrefstyle="chap-num-title" href="https://learning.oreilly.com/library/view/mastering-bitcoin-3rd/9781098150082/ch06.html#c_transactions" target="_blank" rel="noopener noreferrer">Chapter&nbsp;6, “Transactions”</a>  (the structure of transactions), <a data-type="xref" data-xrefstyle="chap-num-title" href="https://learning.oreilly.com/library/view/mastering-bitcoin-3rd/9781098150082/ch07.html#c_authorization_authentication" target="_blank" rel="noopener noreferrer">Chapter&nbsp;7, “Authorization and Authentication”</a>, <a data-type="xref" data-xrefstyle="chap-num-title" href="https://learning.oreilly.com/library/view/mastering-bitcoin-3rd/9781098150082/ch08.html#c_signatures" target="_blank" rel="noopener noreferrer">Chapter&nbsp;8, “Digital Signatures”</a>, and
+ <a data-type="xref" data-xrefstyle="chap-num-title" href="https://learning.oreilly.com/library/view/mastering-bitcoin-3rd/9781098150082/ch09.html#tx_fees" target="_blank" rel="noopener noreferrer">Chapter&nbsp;9, “Transaction Fees”</a>.</p>
+</dd>
+<dt><a data-type="xref" href="https://learning.oreilly.com/library/view/mastering-bitcoin-3rd/9781098150082/ch06.html#c_transactions" target="_blank" rel="noopener noreferrer">Chapter&nbsp;6</a></dt>
+<dd>
+<p>We added almost entirely new text describing the structure of a transaction.</p>
+</dd>
+<dt><a data-type="xref" href="https://learning.oreilly.com/library/view/mastering-bitcoin-3rd/9781098150082/ch07.html#c_authorization_authentication" target="_blank" rel="noopener noreferrer">Chapter&nbsp;7</a></dt>
+<dd>
+<p>We added new text about MAST, P2C, scriptless multisignatures, taproot, and
+tapscript.</p>
+</dd>
+<dt><a data-type="xref" href="https://learning.oreilly.com/library/view/mastering-bitcoin-3rd/9781098150082/ch08.html#c_signatures" target="_blank" rel="noopener noreferrer">Chapter&nbsp;8</a></dt>
+<dd>
+<p>We revised the  ECDSA text and added new text about schnorr signatures,
+multisignatures, and threshold signatures.</p>
+</dd>
+<dt><a data-type="xref" href="https://learning.oreilly.com/library/view/mastering-bitcoin-3rd/9781098150082/ch09.html#tx_fees" target="_blank" rel="noopener noreferrer">Chapter&nbsp;9</a></dt>
+<dd>
+<p>We added almost entirely new text about fees, RBF and CPFP fee
+bumping, transaction pinning, package relay, and CPFP carve-out.</p>
+</dd>
+<dt><a data-type="xref" href="https://learning.oreilly.com/library/view/mastering-bitcoin-3rd/9781098150082/ch10.html#bitcoin_network_ch08" target="_blank" rel="noopener noreferrer">Chapter&nbsp;10</a></dt>
+<dd>
+<p>We added text about compact block relay, added a significant update to bloom filters that better describes their privacy problems, and new text about compact block filters.</p>
+</dd>
+<dt><a data-type="xref" href="https://learning.oreilly.com/library/view/mastering-bitcoin-3rd/9781098150082/ch11.html#blockchain" target="_blank" rel="noopener noreferrer">Chapter&nbsp;11</a></dt>
+<dd>
+<p>We added text about signet.</p>
+</dd>
+<dt><a data-type="xref" href="https://learning.oreilly.com/library/view/mastering-bitcoin-3rd/9781098150082/ch12.html#mining" target="_blank" rel="noopener noreferrer">Chapter&nbsp;12</a></dt>
+<dd>
+<p>We added text about BIP8 and speedy trial.</p>
+</dd>
+<dt>Appendixes</dt>
+<dd>
+<p>We removed library-specific appendixes. After the appendix containing the original whitepaper, we added a new appendix describing how the implementation and properties of Bitcoin differ from those proposed in the whitepaper.</p>
+</dd>
+</dl>
+</div>
+
+
+
+
+
+
+<div id="id399" data-type="sect1" data-pdf-bookmark="Bitcoin Addresses and Transactions in This Book">
+<h2>Bitcoin Addresses and Transactions in This Book</h2>
+
+<p>The Bitcoin addresses, transactions, keys, QR codes, and blockchain data used in this book are, for the most part, real. That means you can browse the blockchain, look at the transactions offered as examples, retrieve them with your own scripts or programs, etc.</p>
+
+<p>However, note that the private keys used to construct addresses are either printed in this book or have been “burned.” That means if you send money to any of these addresses, the money will either be lost forever, or in some cases everyone who can read the book can take it using the private keys printed in here.</p>
+<div data-type="warning" epub:type="warning"><h6>Warning</h6>
+<p>DO NOT SEND MONEY TO ANY OF THE ADDRESSES IN THIS BOOK. Your money will be taken by another reader or lost forever.</p>
+</div>
+</div>
+
+
+
+
+
+
+<div id="id400" data-type="sect1" data-pdf-bookmark="O’Reilly Online Learning">
+<h2>O’Reilly Online Learning</h2>
+<div data-type="note" epub:type="note"><h6>Note</h6>
+<p>For more than 40 years, <a href="https://oreilly.com/" target="_blank" rel="noopener noreferrer"><em>O’Reilly Media</em></a> has provided technology and business training, knowledge, and insight to help companies succeed.</p>
+</div>
+
+<p>Our unique network of experts and innovators share their knowledge and expertise through books, articles, and our online learning platform. O’Reilly’s online learning platform gives you on-demand access to live training courses, in-depth learning paths, interactive coding environments, and a vast collection of text and video from O’Reilly and 200+ other publishers. For more information, visit <a href="https://oreilly.com/" target="_blank" rel="noopener noreferrer"><em>https://oreilly.com</em></a>.</p>
+</div>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<div id="id403" data-type="sect1" data-pdf-bookmark="Acknowledgments for the First and Second Editions">
+<h2>Acknowledgments for the First and Second Editions</h2>
+
+<p><em>By Andreas M. Antonopoulos</em></p>
+
+<p>This book represents the efforts and contributions of many people. I am grateful for all the help I received from friends, colleagues, and even complete strangers, who joined me in this effort to write the definitive technical book on cryptocurrencies and Bitcoin.</p>
+
+<p>It is impossible to make a distinction between the Bitcoin technology and the Bitcoin community, and this book is as much a product of that community as it is a book on the technology. My work on this book was encouraged, cheered on, supported, and rewarded by the entire Bitcoin community from the very beginning until the very end. More than anything, this book has allowed me to be part of a wonderful community for two years and I can’t thank you enough for accepting me into this community. There are far too many people to mention by name—people I’ve met at conferences, events, seminars, meetups, pizza gatherings, and small private gatherings, as well as many who communicated with me by Twitter, on reddit, on bitcointalk.org, and on GitHub who have had an impact on this book. Every idea, analogy, question, answer, and explanation you find in this book was at some point inspired, tested, or improved through my interactions with the community. Thank you all for your support; without you this book would not have happened. I am forever grateful.</p>
+
+<p>The journey to becoming an author starts long before the first book, of course. My first language (and schooling) was Greek, so I had to take a remedial English writing course in my first year of university. I owe thanks to Diana Kordas, my English writing teacher, who helped me build confidence and skills that year. Later, as a professional, I developed my technical writing skills on the topic of data centers, writing for <em>Network World</em> magazine. I owe thanks to John Dix and John Gallant, who gave me my first writing job as a columnist at <em>Network World</em> and to my editor Michael Cooney and my colleague Johna Till Johnson who edited my columns and made them fit for publication. Writing 500 words a week for four years gave me enough experience to eventually consider becoming an author.</p>
+
+<p>Thanks also to those who supported me when I submitted my book proposal to O’Reilly by providing references and reviewing the proposal. Specifically, thanks to John Gallant, Gregory Ness, Richard Stiennon, Joel Snyder, Adam B. Levine, Sandra Gittlen, John Dix, Johna Till Johnson, Roger Ver, and Jon Matonis. Special thanks to Richard Kagan and Tymon Mattoszko, who reviewed early versions of the proposal and Matthew Taylor, who copyedited the proposal.</p>
+
+<p>Thanks to Cricket Liu, author of the O’Reilly title <em>DNS and BIND</em>, who introduced me to O’Reilly. Thanks also to Michael Loukides and Allyson MacDonald at O’Reilly, who worked for months to help make this book happen. Allyson was especially patient when deadlines were missed and deliverables delayed as life intervened in our planned schedule. For the second edition, I thank Timothy McGovern for guiding the process, Kim Cofer for patiently editing, and Rebecca Panzer for illustrating many new diagrams.</p>
+
+<p>The first few drafts of the first few chapters were the hardest, because Bitcoin is a difficult subject to unravel. Every time I pulled on one thread of the Bitcoin technology, I had to pull on the whole thing. I repeatedly got stuck and a bit despondent as I struggled to make the topic easy to understand and create a narrative around such a dense technical subject. Eventually, I decided to tell the story of Bitcoin through the stories of the people using Bitcoin and the whole book became a lot easier to write. I owe thanks to my friend and mentor, Richard Kagan, who helped me unravel the story and get past the moments of writer’s block. I thank Pamela Morgan, who reviewed early drafts of each chapter in the first and second edition of the book and asked the hard questions to make them better. Also, thanks to the developers of the San Francisco Bitcoin Developers Meetup group as well as Taariq Lewis and Denise Terry for helping test the early material. Thanks also to Andrew Naugler for infographic design.</p>
+
+<p>During the development of the book, I made early drafts available on GitHub and invited public comments. More than a hundred comments, suggestions, corrections, and contributions were submitted in response. Those contributions are explicitly acknowledged, with my thanks, in <a data-type="xref" href="#github_contrib" target="_blank" rel="noopener noreferrer">“Early Release Draft (GitHub Contributions)”</a>. Most of all, my sincere thanks to my volunteer GitHub editors Ming T. Nguyen (1st edition) and Will Binns (2nd edition), who worked tirelessly to curate, manage, and resolve pull requests, issue reports, and perform bug fixes on GitHub.</p>
+
+<p>Once the book was drafted, it went through several rounds of technical review. Thanks to Cricket Liu and Lorne Lantz for their thorough review, comments, and support.</p>
+
+<p>Several Bitcoin developers contributed code samples, reviews, comments, and encouragement. Thanks to Amir Taaki and Eric Voskuil for example code snippets and many great comments; Chris Kleeschulte for contributing information about Bitcore; Vitalik Buterin and Richard Kiss for help with elliptic curve math and code contributions; Gavin Andresen for corrections, comments, and encouragement; Michalis Kargakis for comments, contributions, and btcd writeup; and Robin Inge for errata submissions improving the second print. In the second edition, I again received a lot of help from many Bitcoin Core developers, including Eric Lombrozo who demystified segregated witness, Luke Dashjr who helped improve the chapter on transactions, Johnson Lau who reviewed segregated witness and other chapters, and many others. I owe thanks to Joseph Poon, Tadge Dryja, and Olaoluwa Osuntokun who explained Lightning Network, reviewed my writing, and answered questions when I got stuck.</p>
+
+<p>I owe my love of words and books to my mother, Theresa, who raised me in a house with books lining every wall. My mother also bought me my first computer in 1982, despite being a self-described technophobe. My father, Menelaos, a civil engineer who just published his first book at 80 years old, was the one who taught me logical and analytical thinking and a love of science and engineering.</p>
+
+<p>Thank you all for supporting me throughout this journey.</p>
+</div>
+
+
+
+
+
+
+<div id="id404" data-type="sect1" data-pdf-bookmark="Acknowledgments for the Third Edition">
+<h2>Acknowledgments for the Third Edition</h2>
+
+<p><em>By David A. Harding</em></p>
+
+<p>The introduction to the noninteractive schnorr signature protocol that
+starts with first describing the interactive schnorr identity protocol
+in <a data-type="xref" href="https://learning.oreilly.com/library/view/mastering-bitcoin-3rd/9781098150082/ch08.html#schnorr_signatures" target="_blank" rel="noopener noreferrer">“Schnorr Signatures”</a> was heavily influenced by the introduction to
+the subject in “Borrommean Ring Signatures” (2015) by Gregory Maxwell and
+Andrew Poelstra.  I am deeply indebted to each of them for all of their
+freely provided assistance over the past decade.</p>
+
+<p>Invaluable technical reviews on drafts of this manuscript were provided
+by Jorge Lesmes, Olaoluwa Osuntokun, René Pickhardt, and Mark “Murch”
+Erhardt.  In particular, Murch’s incredibly in-depth and insightful
+review, and his willingness to evaluate multiple iterations of the same
+text, have elevated the quality of this book beyond my highest
+expectations.</p>
+
+<p>I also owe a debt of gratitude to Jimmy Song for suggesting me for this
+project, to my coauthor Andreas for allowing me to update his
+bestselling text, to Angela Rufino for guiding me through the O’Reilly
+authorship process, and to all of the other staff at O’Reilly for making
+the writing of the third edition a pleasant and productive experience.</p>
+
+<p>Finally, I don’t know how I can thank all of the Bitcoin contributors
+who have helped me on my journey—​from creating the software I use, to
+teaching me how it works, to helping me pass on what little knowledge
+I’ve gained.  There are too many of you to list your names, but I think
+of you often and know that my contributions to this book would not have
+been possible without all that you’ve done for me.</p>
+</div>
+
+
+
+
+
+
+<div id="github_contrib" data-type="sect1" data-pdf-bookmark="Early Release Draft (GitHub Contributions)">
+<h2>Early Release Draft (GitHub Contributions)</h2>
+
+<p>Many contributors offered comments, corrections, and additions to the early-release draft on GitHub. Thank you all for your contributions to this book.</p>
+
+<p>Following is a list of notable GitHub contributors, including their GitHub ID in parentheses:</p>
+<ul>
+<li><p>Abdussamad Abdurrazzaq <span>(AbdussamadA)</span></p></li>
+<li>Adán SDPC (aesedepece)</li>
+<li>Akira Chiku (achiku)</li>
+<li>Alex Waters (alexwaters)</li>
+<li>Andrew Donald Kennedy (grkvlt)</li>
+<li>Andrey Esaulov (andremaha)</li>
+<li>andronoob</li>
+<li>AnejaBK</li>
+<li>Appaji (CITIZENDOT)</li>
+<li>ariesunny</li>
+<li>Arthur O’Dwyer (Quuxplusone)</li>
+<li>bargitta</li>
+<li>Basem Alasi (Bamskki)</li>
+<li>bisqfan</li>
+<li>bitcoinctf</li>
+<li>blip151</li>
+<li>Bryan Gmyrek (physicsdude)</li>
+<li>Carlos Sims (simsbluebox)</li>
+<li>Casey Flynn (cflynn07)</li>
+<li>cclauss</li>
+<li>Chapman Shoop (belovachap)</li>
+<li>chrisd95</li>
+<li>Christie D’Anna (avocadobreath)</li>
+<li>Cihat Imamoglu (cihati)</li>
+<li>Cody Scott (Siecje)</li>
+<li>coinradar</li>
+<li>Cragin Godley (cgodley)</li>
+<li>Craig Dodd (cdodd)</li>
+<li>dallyshalla</li>
+<li>Dan Nolan (Dan-Nolan)</li>
+<li>Dan Raviv (danra)</li>
+<li>Darius Kramer (dkrmr)</li>
+<li>Darko Janković (trulex)</li>
+<li>David Huie (DavidHuie)</li>
+<li>didongke</li>
+<li>Diego Viola (diegoviola)</li>
+<li>Dimitris Tsapakidis (dimitris-t)</li>
+<li>Dirk Jäckel (biafra23)</li>
+<li>Dmitry Marakasov (AMDmi3)</li>
+<li>drakos (Jolly-Pirate)</li>
+<li>drstrangeM</li>
+<li>Ed Eykholt (edeykholt)</li>
+<li>Ed Leafe (EdLeafe)</li>
+<li>Edward Posnak (edposnak)</li>
+<li>Elias Rodrigues (elias19r)</li>
+<li>Eric Voskuil (evoskuil)</li>
+<li>Eric Winchell (winchell)</li>
+<li>Erik Wahlström (erikwam)</li>
+<li>effectsToCause (vericoin)</li>
+<li>Esteban Ordano (eordano)</li>
+<li>ethers</li>
+<li>Evlix</li>
+<li>fabienhinault</li>
+<li>Fan (whiteath)</li>
+<li>Felix Filozov (ffilozov)</li>
+<li>Francis Ballares (fballares)</li>
+<li>François Wirion (wirion)</li>
+<li>Frank Höger (francyi)</li>
+<li>Gabriel Montes (gabmontes)</li>
+<li>Gaurav Rana (bitcoinsSG)</li>
+<li>genjix</li>
+<li>Geremia</li>
+<li>Gerry Smith (Hermetic)</li>
+<li>gmr81</li>
+<li>Greg (in3rsha)</li>
+<li>Gregory Trubetskoy (grisha)</li>
+<li>Gus (netpoe)</li>
+<li>halseth</li>
+<li>harelw</li>
+<li>Harry Moreno (morenoh149)</li>
+<li>Hennadii Stepanov (hebasto)</li>
+<li>Holger Schinzel (schinzelh)</li>
+<li>Ioannis Cherouvim (cherouvim)</li>
+<li>Ish Ot Jr. (ishotjr)</li>
+<li>ivangreene</li>
+<li>James Addison (jayaddison)</li>
+<li>Jameson Lopp (jlopp)</li>
+<li>Jason Bisterfeldt (jbisterfeldt)</li>
+<li>Javier Rojas (fjrojasgarcia)</li>
+<li>Jordan Baczuk (JBaczuk)</li>
+<li>Jeremy Bokobza (bokobza)</li>
+<li>JerJohn15</li>
+<li>jerzybrzoska</li>
+<li>Jimmy DeSilva (jimmydesilva)</li>
+<li>Jo Wo (jowo-io)</li>
+<li>Joe Bauers (joebauers)</li>
+<li>joflynn</li>
+<li>Johnson Lau (jl2012)</li>
+<li>Jonathan Cross (jonathancross)</li>
+<li>Jorgeminator</li>
+<li>jwbats</li>
+<li>Kai Bakker (kaibakker)</li>
+<li>kollokollo</li>
+<li>krupawan5618</li>
+<li>kynnjo</li>
+<li>Liangzx</li>
+<li>lightningnetworkstores</li>
+<li>lilianrambu</li>
+<li>Liu Yue (lyhistory)</li>
+<li>Lobbelt</li>
+<li>Lucas Betschart (lclc)</li>
+<li>Matt Wesley (MatthewWesley)</li>
+<li>Magomed Aliev (30mb1)</li>
+<li>Mai-Hsuan Chia (mhchia)</li>
+<li>Marco Falke (MarcoFalke)</li>
+<li>María Martín (mmartinbar)</li>
+<li>Marcus Kiisa (mkiisa)</li>
+<li>Mark Erhardt (Xekyo)</li>
+<li>Mark Pors (pors)</li>
+<li>Martin Harrigan (harrigan)</li>
+<li>Martin Vseticka (MartyIX)</li>
+<li>Marzig (marzig76)</li>
+<li>Matt McGivney (mattmcgiv)</li>
+<li>Matthijs Roelink (Matthiti)</li>
+<li>Maximilian Reichel (phramz)</li>
+<li>MG-ng (MG-ng)</li>
+<li>Michalis Kargakis (kargakis)</li>
+<li><p>Michael C. Ippolito <span>(michaelcippolito)</span></p></li>
+<li>Michael Galero (mikong)</li>
+<li><p>Michael Newman <span>(michaelbnewman)</span></p></li>
+<li>Mihail Russu (MihailRussu)</li>
+<li>mikew (mikew)</li>
+<li>milansismanovic</li>
+<li>Minh T. Nguyen (enderminh)</li>
+<li>montvid</li>
+<li>Morfies (morfies)</li>
+<li>Nagaraj Hubli (nagarajhubli)</li>
+<li>Nekomata (nekomata-3)</li>
+<li>nekonenene</li>
+<li>Nhan Vu (jobnomade)</li>
+<li>Nicholas Chen (nickycutesc)</li>
+<li>Ning Shang (syncom)</li>
+<li>Oge Nnadi (ogennadi)</li>
+<li>Oliver Maerz (OliverMaerz)</li>
+<li>Omar Boukli-Hacene (oboukli)</li>
+<li>Óscar Nájera (Titan-C)</li>
+<li>Parzival (Parz-val)</li>
+<li><p>Paul Desmond Parker <span>(sunwukonga)</span></p></li>
+<li>Philipp Gille (philippgille)</li>
+<li>ratijas</li>
+<li>rating89us</li>
+<li>Raul Siles (raulsiles)</li>
+<li><p>Reproducibility Matters <span>(TheCharlatan)</span></p></li>
+<li>Reuben Thomas (rrthomas)</li>
+<li>Robert Furse (Rfurse)</li>
+<li>Roberto Mannai (robermann)</li>
+<li>Richard Kiss (richardkiss)</li>
+<li>rszheng</li>
+<li>Ruben Alexander (hizzvizz)</li>
+<li>Sam Ritchie (sritchie)</li>
+<li>Samir Sadek (netsamir)</li>
+<li>Sandro Conforto (sandroconforto)</li>
+<li>Sanjay Sanathanan (sanjays95)</li>
+<li>Sebastian Falbesoner (theStack)</li>
+<li>Sergei Tikhomirov (s-tikhomirov)</li>
+<li>Sergej Kotliar (ziggamon)</li>
+<li>Seiichi Uchida (topecongiro)</li>
+<li>shaysw</li>
+<li>Simon de la Rouviere (simondlr)</li>
+<li>simone-cominato</li>
+<li>sindhoor7</li>
+<li>Stacie (staciewaleyko)</li>
+<li>Stephan Oeste (Emzy)</li>
+<li>Stéphane Roche (Janaka-Steph)</li>
+<li>takaya-imai</li>
+<li>Thiago Arrais (thiagoarrais)</li>
+<li>Thomas Kerin (afk11)</li>
+<li>Tochi Obudulu (tochicool)</li>
+<li>Tosin (tkuye)</li>
+<li>Vasil Dimov (vasild)</li>
+<li>venzen</li>
+<li>Vlad Stan (motorina0)</li>
+<li>Vijay Chavda (VijayChavda)</li>
+<li>Vincent Déniel (vincentdnl)</li>
+<li>weinim</li>
+<li>wenxiaolong (QingShiLuoGu)</li>
+<li>wenzhenxiang</li>
+<li>Will Binns (wbnns)</li>
+<li>wintercooled</li>
+<li>wjx</li>
+<li>wll2007</li>
+<li>Wojciech Langiewicz (wlk)</li>
+<li>Yancy Ribbens (yancyribbens)</li>
+<li>yjjnls</li>
+<li>Yoshimasa Tanabe (emag)</li>
+<li>yuntai</li>
+<li>yurigeorgiev4</li>
+<li>Zheng Jia (zhengjia)</li>
+<li>Zhou Liang (zhouguoguo)</li>
+</ul>
+</div>
+</div></div>
+  <span></span> <!-- for IntersectionObserver -->
+  
+  
+  
+  
+
+
+<style id="note-styling">
+    .note {
+      position: absolute;
+      z-index: 10;
+      border: none;
+      outline: none;
+      font-family: inherit;
+      font-size: inherit;
+      padding: 5px;
+      min-width: 32px;
+      min-height: 32px;
+    }
+    .note:focus {
+      z-index: 11;
+    }
+    .note[type="0"] {
+      background-color: #fff740;
+      color: #2c2c2d;
+    }
+    .note[type="0"]::placeholder {
+      color: #868226;
+    }
+    .note[type="1"] {
+      background-color: #feff9c;
+      color: #2c2c2d;
+    }
+    .note[type="1"]::placeholder {
+      color: #6d6d3d;
+    }
+    .note[type="2"] {
+      background-color: #ff65a3;
+      color: #2c2c2d;
+    }
+    .note[type="2"]::placeholder {
+      color: #65263f;
+    }
+    .note[type="3"] {
+      background-color: #ff7eb9;
+      color: #2c2c2d;
+    }
+    .note[type="3"]::placeholder {
+      color: #562b3f;
+    }
+    .note[type="4"] {
+      background-color: #7afcff;
+      color: #295c5d;
+    }
+    .note[type="4"]::placeholder {
+      color: #377677;
+    }</style></body><style>body {
+      font-size:  19px;
+      font-family: Georgia, 'Times New Roman', serif;
+      width: 600px;
+    }
+    p {
+      text-align: justify
+    }
+    .page {
+      line-height: 28.5px;
+      column-count: unset;
+    }
+    h1, h2, h3 {
+      line-height: initial;
+    }</style></html>

@@ -1,0 +1,1684 @@
+<!DOCTYPE html>
+<html><head>
+  <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+  <base target="_blank">
+  <style>
+/* latin */
+@font-face {
+  font-family: 'Comic Neue';
+  font-style: normal;
+  font-weight: 400;
+  src: url(fonts/4UaHrEJDsxBrF37olUeD96rp57F2IwM.woff2) format('woff2');
+  unicode-range: U+0000-00FF, U+0131, U+0152-0153, U+02BB-02BC, U+02C6, U+02DA, U+02DC, U+0304, U+0308, U+0329, U+2000-206F, U+2074, U+20AC, U+2122, U+2191, U+2193, U+2212, U+2215, U+FEFF, U+FFFD;
+}
+/* latin */
+@font-face {
+  font-family: 'Lexend Deca';
+  font-style: normal;
+  font-weight: 400;
+  src: url(fonts/K2FifZFYk-dHSE0UPPuwQ7CrD94i-NCKm-U48M1wqxnDirZPl3v-.woff2) format('woff2');
+  unicode-range: U+0000-00FF, U+0131, U+0152-0153, U+02BB-02BC, U+02C6, U+02DA, U+02DC, U+0304, U+0308, U+0329, U+2000-206F, U+2074, U+20AC, U+2122, U+2191, U+2193, U+2212, U+2215, U+FEFF, U+FFFD;
+}
+/* latin */
+@font-face {
+  font-family: 'Poppins';
+  font-style: normal;
+  font-weight: 400;
+  src: url(fonts/pxiEyp8kv8JHgFVrJJfecnFHGPc.woff2) format('woff2');
+  unicode-range: U+0000-00FF, U+0131, U+0152-0153, U+02BB-02BC, U+02C6, U+02DA, U+02DC, U+0304, U+0308, U+0329, U+2000-206F, U+2074, U+20AC, U+2122, U+2191, U+2193, U+2212, U+2215, U+FEFF, U+FFFD;
+}
+
+:root {
+  --fg: #000; /* foreground  */
+  --bg: #fff; /* background  */
+  --bd: #000; /* border  */
+  --lk: #006fa5; /* link */
+  --lkv: #d33bf0; /* link visited */
+  --hg: #ffff81; /* highlight  */
+}
+html {
+  overflow: overlay;
+}
+body {
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+  margin: 30px auto 0 auto;
+  padding: 10px;
+  position: relative;
+
+  color: var(--fg);
+  border-color: var(--bd);
+  background-color: var(--bg);
+}
+body[data-mode$="dark"] {
+  --lk: #0096de;
+}
+body[data-mode="light"] {
+  color-scheme: light;
+  --fg: #222;
+  --bd: #222;
+  --bg: whitesmoke;
+}
+body[data-mode="dark"] {
+  color-scheme: dark;
+  --fg: #eee;
+  --bd: #eee;
+  --bg: #333;
+}
+body[data-mode="sepia"] {
+  color-scheme: light;
+  --fg: #5b4636;
+  --bd: #5b4636;
+  --bg: #f4ecd8;
+}
+body[data-mode="solarized-light"] {
+  color-scheme: light;
+  --fg: #586e75;
+  --bd: #586e75;
+  --bg: #fdf6e3;
+}
+body[data-mode="nord-light"] {
+  color-scheme: light;
+  --fg: #2e3440;
+  --bd: #2e3440;
+  --bg: #e5e9f0;
+}
+body[data-mode="groove-dark"] {
+  color-scheme: dark;
+  --fg: #cec4ac;
+  --bd: #cec4ac;
+  --bg: #282828;
+}
+body[data-mode="solarized-dark"] {
+  color-scheme: dark;
+  --fg: #839496;
+  --bd: #839496;
+  --bg: #002b36;
+}
+body[data-mode="nord-dark"] {
+  color-scheme: dark;
+  --fg: #e5e9f0;
+  --bd: #e5e9f0;
+  --bg: #2e3440;
+}
+
+@media print {
+  body[data-mode] {
+    --fg: #000;
+    --bd: #000;
+    --bg: #fff;
+
+    width: unset;
+    padding: 0;
+    margin: 0;
+  }
+}
+body[data-loaded=true] {
+  
+}
+img {
+  max-width: 100%;
+  height: auto;
+}
+img:not([width])[src$=".svg"] {
+  max-width: 100px;
+}
+body[data-images=false] canvas,
+body[data-images=false] svg,
+body[data-images=false] img {
+  display: none;
+}
+svg:not([width]):not([height]) {
+  max-width: 25vmin;
+}
+a {
+  color: var(--lk);
+  text-decoration: none;
+}
+a:visited {
+  color: var(--lkv);
+}
+
+hr {
+  background-color: var(--bd);
+  height: 1px;
+  border: 0;
+}
+#reader-domain {
+  font-family: Helvetica, Arial, sans-serif;
+  text-decoration: none;
+  border-bottom-color: currentcolor;
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  width: 100%;
+  display: inline-block;
+  direction: ltr;
+}
+#reader-domain > span:first-child {
+  font-size: 1.1em;
+}
+#reader-domain > span:last-child {
+  font-size: 0.8em;
+}
+#reader-title {
+  font-size: 1.6em;
+  line-height: 1.25em;
+  width: 100%;
+  margin: 20px 0;
+  padding: 0;
+}
+#reader-credits,
+#doi,
+#published-time,
+#reader-estimated-time {
+  font-size: 0.85em;
+  line-height: 1.48em;
+  margin: 0 0 10px 0;
+  padding: 0;
+}
+#reader-credits:not(:empty)::after {
+  content: ' ⋮ ';
+}
+#published-time:not(:empty)::before {
+  content: ' ⋮ ';
+}
+#doi-json {
+  overflow: hidden;
+}
+#doi-json code {
+  overflow: auto;
+  max-height: 400px;
+}
+#published-time:empty,
+#reader-credits:empty {
+  display: none;
+}
+mark.hghlght {
+  background-color: var(--hg);
+}
+body:not([data-columns="1"]) .page :is(h1, h2) {
+  column-span: all;
+  background-color: rgba(125, 125, 125, 0.1);
+  padding: 10px;
+}
+.hidden {
+  display: none;
+}
+</style>
+  <style id="user-css">body {
+  padding-bottom: 64px;
+}
+pre {
+  white-space: pre-wrap;
+}
+pre code {
+  background-color: #eff0f1;
+  color: #393318;
+  font-family: monospace;
+  display: block;
+  padding: 5px 10px;
+}
+body[data-mode="dark"] pre code {
+  background-color: #585858;
+  color: #e8e8e8;
+}
+
+/* CSS for sans-serif fonts */
+body[data-font=sans-serif] {}
+/* CSS for serif fonts */
+body[data-font=serif] {}
+
+/* CSS for "sepia" theme */
+body[data-mode=sepia] {}
+/* CSS for "light" theme */
+body[data-mode=light] {}
+/* CSS for "dark" theme */
+body[data-mode=dark] {}</style>
+<title>5. Wallet Recovery</title><title>5. Wallet Recovery :: Reader View</title></head>
+<body tabindex="1" data-images="true" data-mode="groove-dark" data-font="serif" data-columns="1" data-loaded="true">
+  <span></span> <!-- for IntersectionObserver -->
+  <a id="reader-domain" href="https://learning.oreilly.com/library/view/mastering-bitcoin-3rd/9781098150082/ch05.html">
+    <span>learning.oreilly.com</span>
+    <span>/library/view/mastering-bitcoin-3rd/9781098150082/ch05.html</span>
+  </a>
+  <h1 dir="auto" id="reader-title">5. Wallet Recovery</h1>
+  <span dir="auto" id="reader-credits"></span>
+  <span dir="auto" id="reader-estimated-time">50-64 minutes</span>
+  <span dir="auto" id="published-time"></span>
+  <hr>
+  <div id="readability-page-1" class="page"><div id="root"><p><a href="#main">Skip to Content</a></p><header data-usage-meter-ignored="true"></header><nav></nav><main role="main" id="main" data-testid="muiShellMain"><section><article><div id="book-content" data-type="chapter" epub:type="chapter" data-pdf-bookmark="Chapter 5. Wallet Recovery" tabindex="-1" data-testid="contentViewer">
+<h2><span>Chapter 5. </span>Wallet Recovery</h2>
+
+
+<p>Creating pairs of private and public keys is a crucial part of allowing
+Bitcoin wallets to receive and spend bitcoins.  But losing access to a
+private key can make it impossible for anyone to ever spend the bitcoins
+received to the corresponding public key.  Wallet and protocol
+developers over the years have worked to design systems that allow users
+to recover access to their bitcoins after a problem without compromising
+security the rest of the time.</p>
+
+<p>In<a data-type="indexterm" data-primary="wallets" data-secondary="key generation" data-tertiary="independent" id="wallet-keygen-independent" target="_blank" rel="noopener noreferrer"></a><a data-type="indexterm" data-primary="key generation" data-secondary="independent" id="keygen-independent" target="_blank" rel="noopener noreferrer"></a><a data-type="indexterm" data-primary="independent key generation" id="independent-keygen" target="_blank" rel="noopener noreferrer"></a><a data-type="indexterm" data-primary="public key cryptography" data-secondary="wallet recovery key generation" data-see="key generation" id="id695" target="_blank" rel="noopener noreferrer"></a> this chapter, we’ll examine some of the different methods employed by
+wallets to prevent the loss of data from becoming a loss of money.
+Some solutions have almost no downsides and are universally adopted by
+modern wallets.  We’ll simply recommend those solutions as best
+practices.  Other solutions have both advantages and disadvantages,
+leading different wallet authors to make different trade-offs.
+In those cases, we’ll describe the various options available.</p>
+
+
+
+
+
+
+<div id="id63" data-type="sect1" data-pdf-bookmark="Independent Key Generation">
+<h2>Independent Key Generation</h2>
+<p>
+Wallets for physical cash hold that cash,
+so it’s unsurprising that many people mistakenly believe that
+Bitcoin wallets contain bitcoins.  In fact, what many people call a
+Bitcoin wallet—which we call a <em>wallet database</em> to distinguish it
+from wallet applications—contains only keys.  Those keys are associated
+with bitcoins recorded on the blockchain.  By proving to Bitcoin full nodes that you
+control the keys, you can spend the associated bitcoins.
+</p>
+
+<p>Simple wallet databases contain both the public keys to which bitcoins
+are received and the private keys that allow creating the signatures
+necessary to authorize spending those bitcoins.  Other wallets’ databases
+may contain only public keys, or only some of the private keys necessary
+to authorize a spending transaction.  Their wallet applications produce
+the necessary signatures by working with external tools, such as
+hardware signing devices or other wallets in a multisignature scheme.</p>
+
+<p>It’s possible for a wallet application to independently generate each of
+the wallet keys it later plans to use, as illustrated in
+<a data-type="xref" href="#Type0_wallet" target="_blank" rel="noopener noreferrer">Figure&nbsp;5-1</a>.  All early Bitcoin wallet applications did
+this, but it required users to back up the wallet database each time they
+generated and distributed new keys, which could be as often as each time
+they generated a new address to receive a new payment.  Failure to back
+up the wallet database on time would lead to the user losing access to
+any funds received to keys that had not been backed up.</p>
+
+<p>For each independently generated key, the user would need to back up
+about 32 bytes, plus overhead.  Some users and wallet applications tried
+to minimize the amount of data that needed to be backed up
+by only using a single key.  Although that can be secure, it severely
+reduces the privacy of that user and all of the people with whom they
+transact.  People who valued their privacy and those of their peers
+created new key pairs for each transaction, producing wallet databases
+that could only reasonably be backed up using digital media.</p>
+
+<figure><div id="Type0_wallet">
+<p><img src="https://learning.oreilly.com/api/v2/epubs/urn:orm:book:9781098150082/files/assets/mbc3_0501.png" alt="" width="600" height="412"></p><h6><span>Figure 5-1. </span>Nondeterministic key generation: a collection of independently generated keys stored in a wallet database.</h6>
+</div></figure>
+
+<p>Modern wallet applications don’t independently generate keys but instead
+derive them from a single random seed using a <a data-type="indexterm" data-primary="wallets" data-secondary="key generation" data-tertiary="independent" data-startref="wallet-keygen-independent" id="id696" target="_blank" rel="noopener noreferrer"></a><a data-type="indexterm" data-primary="key generation" data-secondary="independent" data-startref="keygen-independent" id="id697" target="_blank" rel="noopener noreferrer"></a><a data-type="indexterm" data-primary="independent key generation" data-startref="independent-keygen" id="id698" target="_blank" rel="noopener noreferrer"></a>repeatable (deterministic)
+algorithm.</p>
+
+
+
+
+
+
+
+
+<div id="id64" data-type="sect2" data-pdf-bookmark="Deterministic Key Generation">
+<h2>Deterministic Key Generation</h2>
+
+<p>A hash function<a data-type="indexterm" data-primary="wallets" data-secondary="key generation" data-tertiary="deterministic" id="wallet-keygen-determine" target="_blank" rel="noopener noreferrer"></a><a data-type="indexterm" data-primary="key generation" data-secondary="deterministic" id="keygen-determine" target="_blank" rel="noopener noreferrer"></a><a data-type="indexterm" data-primary="deterministic key generation" id="determine-keygen" target="_blank" rel="noopener noreferrer"></a><a data-type="indexterm" data-primary="hash functions" data-secondary="deterministic key generation" id="hash-determine" target="_blank" rel="noopener noreferrer"></a> will always produce the same output when given the same
+input, but if the input is changed even slightly, the output will be
+different.  If the function is cryptographically secure, nobody should
+be able to predict the new output—​not even if they know the new input.</p>
+
+<p>This allows us to take one random value and transform it into a
+practically unlimited number of seemingly random values.  Even more
+useful, later using the same hash function with the same <a data-type="indexterm" data-primary="seeds" id="id699" target="_blank" rel="noopener noreferrer"></a>input
+(called a <em>seed</em>) will produce the same seemingly random values:</p>
+
+<div data-testid="custom pre block"><pre data-type="programlisting"># Collect some entropy (randomness)
+$ dd if=/dev/random count=1 status=none | sha256sum
+f1cc3bc03ef51cb43ee7844460fa5049e779e7425a6349c8e89dfbb0fd97bb73  -
+
+# Set our seed to the random value
+$ seed=f1cc3bc03ef51cb43ee7844460fa5049e779e7425a6349c8e89dfbb0fd97bb73
+
+# Deterministically generate derived values
+$ for i in {0..2} ; do echo "$seed + $i" | sha256sum ; done
+50b18e0bd9508310b8f699bad425efdf67d668cb2462b909fdb6b9bd2437beb3  -
+a965dbcd901a9e3d66af11759e64a58d0ed5c6863e901dfda43adcd5f8c744f3  -
+19580c97eb9048599f069472744e51ab2213f687d4720b0efc5bb344d624c3aa  -</pre></div>
+
+<p>If we use the derived values as our private keys, we can later generate
+exactly those same private keys by using our seed value with the
+algorithm we used before.  A user of deterministic key generation can
+back up every key in their wallet by simply recording their seed and
+a reference to the deterministic algorithm they used.  For example, even
+if Alice has a million bitcoins received to a million different
+addresses, all she needs to back up in order to later recover access to
+those bitcoins is:</p>
+
+<div data-testid="custom pre block"><pre data-type="programlisting">f1cc 3bc0 3ef5 1cb4 3ee7 8444 60fa 5049
+e779 e742 5a63 49c8 e89d fbb0 fd97 bb73</pre></div>
+
+<p>A logical diagram of basic sequential deterministic key generation is
+shown in <a data-type="xref" href="#Type1_wallet" target="_blank" rel="noopener noreferrer">Figure&nbsp;5-2</a>.  However, modern wallet applications have a
+more clever way of accomplishing this that allows public keys to be
+derived separately from their corresponding private keys, making it
+possible to store private keys more securely than <a data-type="indexterm" data-primary="wallets" data-secondary="key generation" data-tertiary="deterministic" data-startref="wallet-keygen-determine" id="id700" target="_blank" rel="noopener noreferrer"></a><a data-type="indexterm" data-primary="key generation" data-secondary="deterministic" data-startref="keygen-determine" id="id701" target="_blank" rel="noopener noreferrer"></a><a data-type="indexterm" data-primary="deterministic key generation" data-startref="determine-keygen" id="id702" target="_blank" rel="noopener noreferrer"></a><a data-type="indexterm" data-primary="hash functions" data-secondary="deterministic key generation" data-startref="hash-determine" id="id703" target="_blank" rel="noopener noreferrer"></a>public keys.</p>
+
+<figure><div id="Type1_wallet">
+<p><img src="https://learning.oreilly.com/api/v2/epubs/urn:orm:book:9781098150082/files/assets/mbc3_0502.png" alt="" width="600" height="412"></p><h6><span>Figure 5-2. </span>Deterministic key generation: a deterministic sequence of keys derived from a seed for a wallet database.</h6>
+</div></figure>
+</div>
+
+
+
+
+
+
+
+
+<div id="public_child_key_derivation" data-type="sect2" data-pdf-bookmark="Public Child Key Derivation">
+<h2>Public Child Key Derivation</h2>
+
+<p>In <a data-type="xref" href="https://learning.oreilly.com/library/view/mastering-bitcoin-3rd/9781098150082/ch04.html#public_key_derivation" target="_blank" rel="noopener noreferrer">“Public Keys”</a>, we learned<a data-type="indexterm" data-primary="wallets" data-secondary="key generation" data-tertiary="public child key derivation" id="wallet-keygen-public-child" target="_blank" rel="noopener noreferrer"></a><a data-type="indexterm" data-primary="key generation" data-secondary="public child key derivation" id="keygen-public-child" target="_blank" rel="noopener noreferrer"></a><a data-type="indexterm" data-primary="public child key derivation" id="public-child-derive" target="_blank" rel="noopener noreferrer"></a><a data-type="indexterm" data-primary="child key pair derivation" id="child-key-pair" target="_blank" rel="noopener noreferrer"></a> how to create a public key from a private key
+using elliptic curve cryptography (ECC).  Although operations on an
+elliptic curve are not intuitive, they are analogous to the addition,
+subtraction, and multiplication operations used in regular
+arithmetic.  In other words, it’s possible to add or subtract from a
+public key, or to multiply it.  Consider the operation we used in
+<a data-type="xref" href="https://learning.oreilly.com/library/view/mastering-bitcoin-3rd/9781098150082/ch04.html#public_key_derivation" target="_blank" rel="noopener noreferrer">“Public Keys”</a> for
+generating a public key (<em>K</em>) from a private key (<em>k</em>) using the generator
+point (<em>G</em>):</p>
+
+
+<p>It’s possible to create a derived key pair, called a child key pair, by
+simply adding the same value to both sides of the equation:</p>
+
+<div data-type="tip"><h6>Tip</h6>
+<p>In equations throughout this book, we use a single equals sign for
+operations such as <em>K</em> = <em>k</em> × <em>G</em> where the value of a variable is
+calculated.  We use a double equals sign to show both sides of an
+equation are equivalent, or that an operation should return false (not
+true) if the two sides aren’t equivalent.</p>
+</div>
+
+<p>An interesting consequence of this is that adding 123 to the public
+key can be done using entirely public information.  For example, Alice
+generates public key <em>K</em> and gives it to Bob.  Bob doesn’t know the
+private key, but he does know the global constant <em>G</em>, so he can add any
+value to the public key to produce a derived public child key.  If he
+then tells Alice the value he added to the public key, she can add the
+same value to the private key, producing a derived private child key
+that corresponds to the public child key Bob created.</p>
+
+<p>In other words, it’s possible to create child public keys even if you
+don’t know anything about the parent private key.  The value added to a
+public key is <a data-type="indexterm" data-primary="key tweaks" id="id704" target="_blank" rel="noopener noreferrer"></a>known as a <em>key tweak.</em>  If a deterministic algorithm is
+used for generating the key tweaks, then it’s possible for someone
+who doesn’t know the private key to create an essentially unlimited
+sequence of public child keys from a single public parent key. The
+person who controls the private parent key can then use the same key
+tweaks to create all the corresponding private child keys.</p>
+
+<p>This technique is commonly used to separate wallet application
+frontends (which don’t require private keys) from signing operations
+(which do require private keys).  For example, Alice’s frontend
+distributes her public keys to people wanting to pay her.  Later, when
+she wants to spend the received money, she can provide the key tweaks
+she used<a data-type="indexterm" data-primary="hardware signing devices" id="id705" target="_blank" rel="noopener noreferrer"></a> to a <em>hardware signing device</em> (sometimes confusingly called a
+<em>hardware wallet</em>) that securely stores her original private key.  The
+hardware signer uses the tweaks to derive the necessary child private
+keys and uses them to sign the transactions, returning the signed
+transactions to the less-secure frontend for broadcast to the Bitcoin
+network.</p>
+
+<p>Public child key derivation can produce a linear sequence of keys
+similar to the previously seen <a data-type="xref" href="#Type1_wallet" target="_blank" rel="noopener noreferrer">Figure&nbsp;5-2</a>, but modern wallet
+applications use one more trick to provide a tree of keys instead a
+single sequence, as described in the<a data-type="indexterm" data-primary="wallets" data-secondary="key generation" data-tertiary="public child key derivation" data-startref="wallet-keygen-public-child" id="id706" target="_blank" rel="noopener noreferrer"></a><a data-type="indexterm" data-primary="key generation" data-secondary="public child key derivation" data-startref="keygen-public-child" id="id707" target="_blank" rel="noopener noreferrer"></a><a data-type="indexterm" data-primary="public child key derivation" data-startref="public-child-derive" id="id708" target="_blank" rel="noopener noreferrer"></a><a data-type="indexterm" data-primary="child key pair derivation" data-startref="child-key-pair" id="id709" target="_blank" rel="noopener noreferrer"></a> following section.</p>
+</div>
+
+
+
+
+
+
+
+
+<div id="hd_wallets" data-type="sect2" data-pdf-bookmark="Hierarchical Deterministic (HD) Key Generation (BIP32)">
+<h2>Hierarchical Deterministic (HD) Key Generation (BIP32)</h2>
+
+<p>Every <a data-type="indexterm" data-primary="wallets" data-secondary="key generation" data-tertiary="HD (hierarchical deterministic)" id="id710" target="_blank" rel="noopener noreferrer"></a><a data-type="indexterm" data-primary="key generation" data-secondary="HD (hierarchical deterministic)" id="id711" target="_blank" rel="noopener noreferrer"></a><a data-type="indexterm" data-primary="HD (hierarchical deterministic) key generation" id="id712" target="_blank" rel="noopener noreferrer"></a><a data-type="indexterm" data-primary="BIP32 HD (hierarchical deterministic) key generation" data-primary-sortas="BIP032" id="id713" target="_blank" rel="noopener noreferrer"></a>modern Bitcoin wallet of which we’re aware uses hierarchical
+deterministic (HD) key generation by default.  This standard, defined in
+BIP32, uses deterministic key generation and optional public child key
+derivation with an algorithm that produces a tree of keys.
+In this tree, any key can be the parent of a sequence of child keys, and
+any of those child keys can be a parent for another sequence of
+child keys (grandchildren of the original key).  There’s no arbitrary
+limit on the depth of the tree.  This tree structure is illustrated in
+<a data-type="xref" href="#Type2_wallet" target="_blank" rel="noopener noreferrer">Figure&nbsp;5-3</a>.</p>
+
+<figure><div id="Type2_wallet">
+<p><img src="https://learning.oreilly.com/api/v2/epubs/urn:orm:book:9781098150082/files/assets/mbc3_0503.png" alt="" width="600" height="411"></p><h6><span>Figure 5-3. </span>HD wallet: a tree of keys generated from a single seed.</h6>
+</div></figure>
+
+<p>The tree structure can be used to express additional
+organizational meaning, such as when a specific branch of subkeys is
+used to receive incoming payments and a different branch is used to
+receive change from outgoing payments. Branches of keys can also be used
+in corporate settings, allocating different branches to departments,
+subsidiaries, specific functions, or accounting categories.</p>
+
+<p>We’ll provide a detailed exploration of HD wallets in <a data-type="xref" href="#hd_wallet_details" target="_blank" rel="noopener noreferrer">“Creating an HD Wallet from the Seed”</a>.</p>
+</div>
+
+
+
+
+
+
+
+
+<div id="id67" data-type="sect2" data-pdf-bookmark="Seeds and Recovery Codes">
+<h2>Seeds and Recovery Codes</h2>
+
+<p>HD wallets<a data-type="indexterm" data-primary="wallets" data-secondary="recovery codes" id="wallet-recovery2" target="_blank" rel="noopener noreferrer"></a><a data-type="indexterm" data-primary="recovery codes" id="recovery-code2" target="_blank" rel="noopener noreferrer"></a> are a very powerful mechanism for managing many
+keys all derived from a single seed.  If your wallet database
+is ever corrupted or lost, you can regenerate all of the private keys
+for your wallet using your <a data-type="indexterm" data-primary="seeds" id="id714" target="_blank" rel="noopener noreferrer"></a>original seed.  But, if someone else gets
+your seed, they can also generate all of the private keys, allowing them
+to steal all of the bitcoins from a single-sig wallet and reduce the
+security of bitcoins in multisignature wallets.  In this section, we’ll
+look at several <em>recovery codes</em>, which are intended to make backups
+easier and safer.</p>
+
+<p>Although seeds are large random numbers, usually 128 to 256 bits, most
+recovery codes use human-language words.  A large part of the motivation
+for using words was to make a recovery code easy to remember.  For
+example, consider the recovery code encoded using both hexadecimal and
+words in <a data-type="xref" href="#hex_seed_vs_recovery_words" target="_blank" rel="noopener noreferrer">Example&nbsp;5-1</a>.</p>
+<div id="hex_seed_vs_recovery_words" data-type="example">
+<h5><span>Example 5-1. </span>A seed encoded in hex and in English words</h5>
+
+<div data-testid="custom pre block"><pre data-type="programlisting">Hex-encoded:
+0C1E 24E5 9177 79D2 97E1 4D45 F14E 1A1A
+
+Word-encoded:
+army van defense carry jealous true
+garbage claim echo media make crunch</pre></div></div>
+
+<p>There may be cases where <a data-type="indexterm" data-primary="memorizing recovery codes" id="id715" target="_blank" rel="noopener noreferrer"></a>remembering a recovery code is a powerful
+feature, such as when you are unable to transport physical belongings
+(like a recovery code written on paper) without them being seized or
+inspected by an outside party that might steal your bitcoins.  However,
+most of the time, relying on memory alone is dangerous:</p>
+
+<ul>
+<li>
+<p>If you forget your recovery code and lose access to your original
+wallet database, your bitcoins are lost to you forever.</p>
+</li>
+<li>
+<p>If you die or suffer a severe injury, and your heirs don’t have access
+to your original wallet database, they won’t be able to inherit your
+bitcoins.</p>
+</li>
+<li>
+<p>If someone thinks you have a recovery code memorized that will give
+them access to bitcoins, they may attempt to coerce you into
+disclosing that code.  As of this writing, Bitcoin contributor Jameson
+Lopp has
+<a href="https://oreil.ly/aw5XM" target="_blank" rel="noopener noreferrer">documented</a>
+over 100 physical attacks against suspected owners of bitcoin and
+other digital assets, including at least three deaths and numerous
+occasions where someone was tortured, held hostage, or had their
+family threatened.</p>
+</li>
+</ul>
+<div data-type="tip"><h6>Tip</h6>
+<p>Even if you use a type of recovery code that was designed for easy
+memorization, we very strongly encourage you to consider writing it down.</p>
+</div>
+
+<p>Several <a data-type="indexterm" data-primary="wallets" data-secondary="recovery codes" data-tertiary="types of" id="wallet-recovery-type" target="_blank" rel="noopener noreferrer"></a><a data-type="indexterm" data-primary="recovery codes" data-secondary="types of" id="recovery-code-type" target="_blank" rel="noopener noreferrer"></a>different types of recovery codes are in wide use as of this
+writing:</p>
+<dl>
+<dt>BIP39</dt>
+<dd>
+<p>The most <a data-type="indexterm" data-primary="BIP39 recovery codes" data-primary-sortas="BIP039" id="id716" target="_blank" rel="noopener noreferrer"></a>popular method for generating recovery codes for the
+past decade, BIP39 involves generating a random sequence of bytes,
+adding a checksum to it, and encoding the data into a series of 12 to
+24 words (which may be localized to a user’s native language).  The
+words (plus an optional passphrase) are run through a <em>key-stretching
+function</em>, and the output is used as a seed.  BIP39 recovery codes have
+several shortcomings, which later schemes attempt to address.</p>
+</dd>
+<dt>Electrum v2</dt>
+<dd>
+<p>Used in<a data-type="indexterm" data-primary="Electrum v2 recovery codes" id="id717" target="_blank" rel="noopener noreferrer"></a> the Electrum wallet (version 2.0 and above), this word-based
+recovery code has several advantages over BIP39.  It doesn’t rely on a
+global word list that must be implemented by every version of every
+compatible program, plus its recovery codes include a version number that
+improves reliability and efficiency.  Like BIP39, it supports an optional
+passphrase (which Electrum calls a <em>seed extension</em>) and uses the same
+key-stretching function.</p>
+</dd>
+<dt>Aezeed</dt>
+<dd>
+<p>Used in <a data-type="indexterm" data-primary="Aezeed recovery codes" id="id718" target="_blank" rel="noopener noreferrer"></a>the LND wallet, this is another word-based recovery code that
+offers improvements over BIP39.  It includes two version numbers: one
+is internal and eliminates several issues with upgrading wallet
+applications (like Electrum v2’s version number); the other version
+number is external, which can be incremented to change the underlying
+cryptographic properties of the recovery code.
+It also includes a <em>wallet birthday</em>
+in the recovery code, a reference to the date when the user created
+the wallet database. This allows a restoration process to find all of
+the funds associated with a wallet without scanning the entire
+blockchain, which is especially useful for privacy-focused lightweight clients.
+It includes support for changing the passphrase or changing other
+aspects of the recovery code without needing to move funds to a new
+seed—​the user need only back up a new recovery code.  One
+disadvantage compared to Electrum v2 is that, like BIP39, it depends
+on both the backup and the recovery software supporting the same
+word list.</p>
+</dd>
+</dl>
+<dl>
+<dt>Muun</dt>
+<dd>
+<p>Used in <a data-type="indexterm" data-primary="Muun recovery codes" id="id719" target="_blank" rel="noopener noreferrer"></a>the Muun wallet, which defaults to requiring spending
+transactions be signed by multiple keys, this is a nonword code that
+must be accompanied by additional information (which Muun currently
+provides in a PDF).  This recovery code is unrelated to the seed and
+is instead used to decrypt the private keys 
+<span>contained</span> in the PDF.
+Although this is unwieldy compared to the BIP39, Electrum v2, and
+Aezeed recovery codes, it provides support for new technologies and
+standards that are becoming more common in new wallets, such as
+Lightning Network (LN) support, output script descriptors, and miniscript.</p>
+</dd>
+<dt>SLIP39</dt>
+<dd>
+<p>A successor <a data-type="indexterm" data-primary="SLIP39 recovery codes" id="id720" target="_blank" rel="noopener noreferrer"></a>to BIP39 with some of the same authors, SLIP39 allows
+a single seed to be distributed using multiple recovery codes that can
+be stored in different places (or by different people).  When you
+create the recovery codes, you can specify how many will be required
+to recover the seed.  For example, you create five recovery codes but
+only require three of them to recover the seed.  SLIP39 provides
+support for an optional passphrase, depends on a global word list, and
+doesn’t directly provide versioning.</p>
+</dd>
+</dl>
+<div data-type="note" epub:type="note"><h6>Note</h6>
+<p>A new system<a data-type="indexterm" data-primary="Codex32 recovery codes" id="id721" target="_blank" rel="noopener noreferrer"></a> for distributing recovery codes with similarities to SLIP39
+was proposed during the writing of this book.  Codex32 allows creating
+and validating recovery codes with nothing except printed instructions,
+scissors, a precision knife, brass fasteners, and a pen—​plus privacy
+and a few hours of spare time.  Alternatively, those who trust computers can create recovery codes
+instantly using software on a digital device.  You can create up to 31
+recovery codes to be stored in different places, specifying how many of
+them will be required in order to recover the seed.  As a new proposal,
+details about Codex32 may change significantly before this book is
+published, so we encourage <a data-type="indexterm" data-primary="wallets" data-secondary="recovery codes" data-tertiary="types of" data-startref="wallet-recovery-type" id="id722" target="_blank" rel="noopener noreferrer"></a><a data-type="indexterm" data-primary="recovery codes" data-secondary="types of" data-startref="recovery-code-type" id="id723" target="_blank" rel="noopener noreferrer"></a>any readers interested in distributed
+recovery codes to investigate its <a href="https://oreil.ly/Xx_Zq" target="_blank" rel="noopener noreferrer">current
+status</a>.</p>
+</div>
+
+</div>
+
+
+
+
+
+
+
+
+<div id="id68" data-type="sect2" data-pdf-bookmark="Backing Up Nonkey Data">
+<h2>Backing Up Nonkey Data</h2>
+
+<p>The <a data-type="indexterm" data-primary="wallets" data-secondary="nonkey data, backing up" id="wallet-nonkey-backups" target="_blank" rel="noopener noreferrer"></a><a data-type="indexterm" data-primary="nonkey data, backing up" id="nonkey-backups" target="_blank" rel="noopener noreferrer"></a><a data-type="indexterm" data-primary="backing up" data-secondary="nonkey data" id="backup-nonkey" target="_blank" rel="noopener noreferrer"></a>most important data in a wallet database is its private keys.  If
+you lose access to the private keys, you lose the ability to spend your
+bitcoins.  Deterministic key derivation and recovery codes provide a
+reasonably robust solution for backing up and recovering your keys and
+the bitcoins they control.  However, it’s important to consider that
+many wallet databases store more than
+just keys—​they also store user-provided information about every
+transaction they sent or received.</p>
+
+<p>For example, when Bob creates a new address as part of sending an
+invoice to Alice, he <a data-type="indexterm" data-primary="labels, backing up" id="label-backup" target="_blank" rel="noopener noreferrer"></a>adds a <em>label</em> to the address he generates
+so that he can distinguish her payment
+from other payments he receives.  When Alice pays Bob’s address, she
+labels the transaction as paying Bob for the same reason.  Some wallets
+also add other useful information to transactions, such as the current
+exchange rate, which can be useful for calculating taxes in some
+jurisdictions.  These labels are stored entirely within their own
+wallets—​not shared with the network—​protecting their privacy
+and keeping unnecessary personal data out of the blockchain.  For
+an example, see <a data-type="xref" href="#alice_tx_labels" target="_blank" rel="noopener noreferrer">Table&nbsp;5-1</a>.</p>
+<table id="alice_tx_labels"><caption><span>Table 5-1. </span>Alice’s transaction history with each transaction labeled</caption><thead><tr><th>Date</th><th>Label</th><th>BTC</th></tr></thead><tbody><tr><td><p>2023-01-01</p></td><td><p>Bought bitcoins from Joe</p></td><td><p>+0.00100</p></td></tr><tr><td><p>2023-01-02</p></td><td><p>Paid Bob for podcast</p></td><td><p>−0.00075</p></td></tr></tbody></table>
+
+<p>However, because address and transaction labels are stored only in each
+user’s wallet database and because they aren’t deterministic, they can’t
+be restored by using just a recovery code.  If the only recovery is
+seed-based, then all the user will see is a list of approximate
+transaction times and bitcoin amounts.  This can make it quite difficult
+to figure out how you used your money in the past.  Imagine reviewing a
+bank or credit card statement from a year ago that had the date and
+amount of every transaction listed but a blank entry for the
+“description” field.</p>
+
+<p>Wallets should provide their users with a convenient way to back up
+label data.  That seems obvious, but there are a number of
+widely used wallet applications that make it easy to create and use
+recovery codes but that provide no way to back up or restore label
+data.</p>
+
+<p>Additionally, it may be useful for wallet applications to provide a
+standardized format to export labels so that they can be used in other
+applications (e.g., accounting software).  A standard for that format is
+proposed in BIP329.</p>
+
+<p>Wallet applications implementing additional protocols beyond basic
+Bitcoin support may also need or want to store other data.  For example,
+as of 2023, an increasing number of applications have added support for
+sending and receiving transactions over the Lightning Network (LN).
+Although the LN protocol provides a method to recover
+funds in the event of a data loss, called <em>static channel backups</em>, it
+can’t guarantee results.  If the node your wallet connects to realizes
+you’ve lost data, it may be able to steal bitcoins from you.  If it
+loses its wallet database at the same time you lose your database, and
+neither of you has an adequate backup, you’ll both lose funds.</p>
+
+<p>Again, this means users and wallet applications need to do more than just back up a
+recovery code.</p>
+
+<p>One solution implemented by a few wallet applications is to frequently
+and automatically create complete backups of their wallet database
+encrypted by one of the keys derived from their seed.  Bitcoin keys must
+be unguessable and modern encryption algorithms are considered very
+secure, so nobody should be able to open the encrypted backup except
+someone who can generate the seed. This makes it safe to store the backup on
+untrusted computers such as cloud hosting services or even random
+network peers.</p>
+
+<p>Later, if the original wallet database is lost, the user can enter their
+recovery code into the wallet application to restore their seed.  The
+application can then retrieve the latest backup file, regenerate the
+encryption key, decrypt the backup, and restore all of the user’s labels
+and additional <a data-type="indexterm" data-primary="wallets" data-secondary="nonkey data, backing up" data-startref="wallet-nonkey-backups" id="id730" target="_blank" rel="noopener noreferrer"></a><a data-type="indexterm" data-primary="nonkey data, backing up" data-startref="nonkey-backups" id="id731" target="_blank" rel="noopener noreferrer"></a><a data-type="indexterm" data-primary="backing up" data-secondary="nonkey data" data-startref="backup-nonkey" id="id732" target="_blank" rel="noopener noreferrer"></a>protocol data.</p>
+</div>
+
+
+
+
+
+
+
+
+<div id="id69" data-type="sect2" data-pdf-bookmark="Backing Up Key Derivation Paths">
+<h2>Backing Up Key Derivation Paths</h2>
+
+<p>In a <a data-type="indexterm" data-primary="wallets" data-secondary="key generation" data-tertiary="backing up derivation paths" id="wallet-keygen-backups" target="_blank" rel="noopener noreferrer"></a><a data-type="indexterm" data-primary="key generation" data-secondary="backing up derivation paths" id="keygen-backups" target="_blank" rel="noopener noreferrer"></a><a data-type="indexterm" data-primary="backing up" data-secondary="key derivation paths" id="backup-key-derive" target="_blank" rel="noopener noreferrer"></a>BIP32 tree of keys, there are approximately four billion first-level
+keys; each of those keys can have its own four billion children, with
+those children each potentially having four billion children of their
+own, and so on.  It’s not possible for a wallet application to generate
+even a small fraction of every possible key in a BIP32 tree, which means
+that recovering from data loss requires knowing more than just the
+recovery code, the algorithm for obtaining your seed (e.g., BIP39), and
+the deterministic key derivation algorithm
+(e.g., BIP32)—it also requires knowing what paths in the tree of keys
+your wallet application used for generating the specific keys it distributed.</p>
+
+<p>Two solutions to this problem have been adopted.  The first is using
+standard paths.  Every time there’s a change related to the addresses
+that wallet applications might want to generate, someone creates a BIP
+defining what key derivation path to use.  For example, BIP44 defines
+<code>m/44'/0'/0'</code> as the path to use for keys in P2PKH scripts (a
+legacy address).  A wallet application implementing this standard uses
+the keys in that path both when it is first started and after a
+restoration from a recovery code.  We call<a data-type="indexterm" data-primary="implicit paths" id="implicit-path" target="_blank" rel="noopener noreferrer"></a> this solution <em>implicit
+paths</em>. Several popular implicit paths defined by BIPs are shown in <a data-type="xref" href="#bip_implicit_paths" target="_blank" rel="noopener noreferrer">Table&nbsp;5-2</a></p>
+<table id="bip_implicit_paths"><caption><span>Table 5-2. </span>Implicit script paths defined by various BIPs</caption><thead><tr><th>Standard</th><th>Script</th><th>BIP32 path</th></tr></thead><tbody><tr><td><p>BIP44</p></td><td><p>P2PKH</p></td><td><p><code>m/44'/0'/0'</code></p></td></tr><tr><td><p>BIP49</p></td><td><p>Nested P2WPKH</p></td><td><p><code>m/49'/1'/0'</code></p></td></tr><tr><td><p>BIP84</p></td><td><p>P2WPKH</p></td><td><p><code>m/84'/0'/0'</code></p></td></tr><tr><td><p>BIP86</p></td><td><p>P2TR Single-key</p></td><td><p><code>m/86'/0'/0'</code></p></td></tr></tbody></table>
+
+<p>The second solution is to back up the path information with the recovery
+code, making it clear which path is used with which scripts.  We <a data-type="indexterm" data-primary="explicit paths" id="explicit-path" target="_blank" rel="noopener noreferrer"></a>call
+this <em>explicit paths</em>.</p>
+
+<p>The advantage of implicit paths is that users don’t need to keep a record
+of what paths they use.  If the user enters their recovery code into the
+same wallet application they previously used, of the same version or
+higher, it will automatically regenerate keys for the same paths it
+previously used.</p>
+
+<p>The disadvantage of implicit scripts is their inflexibility.  When a
+recovery code is entered, a wallet application must generate the keys
+for every path it supports and it must scan the blockchain for
+transactions involving those keys, otherwise it might not find all of a
+user’s transactions.  This is wasteful in wallets that support many
+features each with their own path if the user only tried a few of those
+features.</p>
+
+<p>For implicit path recovery codes that don’t include a version number,
+such as BIP39 and SLIP39, a new version of a wallet application that drops support
+for an older path can’t warn users during the restore process that some
+of their funds may not be found.  The same problem happens in reverse if
+a user enters their recovery code into older software: it won’t find
+newer paths to which the user may have received funds.  Recovery codes
+that include version information, such as Electrum v2 and Aezeed, can
+detect that a user is entering an older or newer recovery code and
+direct them to appropriate resources.</p>
+
+<p>The final consequence of implicit paths is that they can only include
+information that is either universal (such as a standardized path) or
+derived from the seed (such as keys).  Important nondeterministic
+information that’s specific to a certain user can’t be restored using
+a recovery code.  For example, Alice, Bob, and Carol receive funds that
+can only be spent with signatures from two out of three of them.  Although
+Alice only needs either Bob’s or Carol’s signature to spend, she needs
+both of their public keys in order to find their joint funds on the
+blockchain.  That means each of them must back up the public keys for
+all three of them.  As multisignature and other advanced scripts become
+more common on Bitcoin, the inflexibility of implicit paths becomes more
+significant.</p>
+
+<p>The advantage of explicit paths is that they can describe exactly what
+keys should be used with what scripts.  There’s no need to support
+outdated scripts, no problems with backward or forward compatibility,
+and any extra information (like the public keys of other users) can be
+included directly.  Their disadvantage is that they require users to back
+up additional information along with their recovery code.  The
+additional information usually can’t compromise a user’s security, so it
+doesn’t require as much protection as the recovery code, although it can
+reduce their privacy and does require some protection.</p>
+
+<p>Almost all wallet applications that use explicit paths as of this
+writing use the <em>output script descriptors</em> standard (called
+<em>descriptors</em> for short) as specified in BIPs 380, 381, 382, 383, 384,
+385, 386, and 389.  Descriptors
+describe a script and the keys (or key paths) to be used with it.
+A few example descriptors are shown in <a data-type="xref" href="#sample_descriptors" target="_blank" rel="noopener noreferrer">Table&nbsp;5-3</a>.</p>
+<table id="sample_descriptors"><caption><span>Table 5-3. </span>Sample descriptors from Bitcoin Core documentation (with elision)</caption><thead><tr><th>Descriptor</th><th>Explanation</th></tr></thead><tbody><tr><td><p><code>pkh(02c6…​9ee5)</code></p></td><td><p>P2PKH script for the provided public key</p></td></tr><tr><td><p><code>sh(multi(2,022f…​2a01,03ac…​ccbe))</code></p></td><td><p>P2SH multisignature requiring two signatures corresponding to these two keys</p></td></tr><tr><td><p><code>pkh([d34db33f/44'/0'/0']xpub6ERA…​RcEL/1/*)</code></p></td><td><p>P2PKH scripts for the BIP32 <code>d34db33f</code> with the extended public key (xpub) at the path <code>M/44'/0'/0'</code>, which is <code>xpub6ERA…​RcEL</code>, using the keys at <code>M/1/*</code> of that xpub</p></td></tr></tbody></table>
+
+<p>It has long been the trend for wallet applications designed only for
+single signature scripts to use implicit paths.  Wallet applications
+designed for multiple signatures or other advanced scripts are
+increasingly adopting support for explicit paths using descriptors.
+Applications that do both will usually conform to the standards for
+implicit paths and also provide <a data-type="indexterm" data-primary="wallets" data-secondary="key generation" data-tertiary="backing up derivation paths" data-startref="wallet-keygen-backups" id="id733" target="_blank" rel="noopener noreferrer"></a><a data-type="indexterm" data-primary="key generation" data-secondary="backing up derivation paths" data-startref="keygen-backups" id="id734" target="_blank" rel="noopener noreferrer"></a><a data-type="indexterm" data-primary="backing up" data-secondary="key derivation paths" data-startref="backup-key-derive" id="id735" target="_blank" rel="noopener noreferrer"></a><a data-type="indexterm" data-primary="implicit paths" data-startref="implicit-path" id="id736" target="_blank" rel="noopener noreferrer"></a><a data-type="indexterm" data-primary="explicit paths" data-startref="explicit-path" id="id737" target="_blank" rel="noopener noreferrer"></a>descriptors.</p>
+</div>
+</div>
+
+
+
+
+
+
+<div id="id410" data-type="sect1" data-pdf-bookmark="A Wallet Technology Stack in Detail">
+<h2>A Wallet Technology Stack in Detail</h2>
+
+<p>Developers of modern wallets can choose from a variety of different
+technologies to help users create and use backups—​and new solutions
+appear every year.  Instead of going into detail about each of the
+options we described earlier in this chapter, we’ll focus the rest of
+this chapter on the stack of technologies we think is most widely
+used in wallets as of early 2023:</p>
+
+<ul>
+<li>
+<p>BIP39 recovery codes</p>
+</li>
+<li>
+<p>BIP32 HD key derivation</p>
+</li>
+<li>
+<p>BIP44-style implicit paths</p>
+</li>
+</ul>
+
+<p>All of these standards have been around since 2014 or earlier, and
+you’ll have no problem finding additional resources for using them.
+However, if you’re feeling bold, we do encourage you to investigate more
+modern standards that may provide additional features or safety.</p>
+
+
+
+
+
+
+
+
+<div id="recovery_code_words" data-type="sect2" data-pdf-bookmark="BIP39 Recovery Codes">
+<h2>BIP39 Recovery Codes</h2>
+
+<p>BIP39 <a data-type="indexterm" data-primary="wallets" data-secondary="recovery codes" id="wallet-recovery-bip39" target="_blank" rel="noopener noreferrer"></a><a data-type="indexterm" data-primary="recovery codes" id="recovery-code-bip39" target="_blank" rel="noopener noreferrer"></a><a data-type="indexterm" data-primary="BIP39 recovery codes" data-primary-sortas="BIP039" id="bip39-recovery" target="_blank" rel="noopener noreferrer"></a>recovery codes are word
+sequences that represent (encode) a random number used as a seed to
+derive a deterministic wallet. The sequence of words is sufficient to
+re-create the seed and from there, re-create all the
+derived keys. A wallet application that implements deterministic wallets
+with a BIP39 recovery code will show the user a sequence of 12 to 24 words when
+first creating a wallet. That sequence of words is the wallet backup and
+can be used to recover and re-create all the keys in the same or any
+compatible wallet application. Recovery codes make it easier for users
+to back up because they are easy to read and correctly
+transcribe.</p>
+<div data-type="tip"><h6>Tip</h6>
+<p>Recovery codes<a data-type="indexterm" data-primary="brainwallets" id="id738" target="_blank" rel="noopener noreferrer"></a> are often confused with
+“brainwallets.” They are not the same. The primary difference is that a
+brainwallet consists of words chosen by the user, whereas recovery codes
+are created randomly by the wallet and presented to the user. This
+important difference makes recovery codes much more secure because
+humans are very poor sources of randomness.</p>
+</div>
+
+<p>Note that BIP39 is one implementation of a recovery code standard.
+BIP39 was proposed by the company behind the Trezor hardware wallet and
+is compatible with many other wallets applications, although certainly
+not all.</p>
+
+<p>BIP39 defines the creation of a recovery code and seed, which we
+describe here in nine steps. For clarity, the process is split into two
+parts: steps 1 through 6 are shown in <a data-type="xref" href="#generating_recovery_words" target="_blank" rel="noopener noreferrer">“Generating a recovery code”</a> and
+steps 7 through 9 are shown in <a data-type="xref" href="#recovery_to_seed" target="_blank" rel="noopener noreferrer">“From recovery code to seed”</a>.</p>
+
+
+
+
+
+
+
+
+
+
+<div id="generating_recovery_words" data-type="sect3" data-pdf-bookmark="Generating a recovery code">
+<h3>Generating a recovery code</h3>
+
+<p>Recovery<a data-type="indexterm" data-primary="wallets" data-secondary="recovery codes" data-tertiary="generating" id="wallet-recovery-bip39-generate" target="_blank" rel="noopener noreferrer"></a><a data-type="indexterm" data-primary="recovery codes" data-secondary="generating" id="recovery-code-bip39-generate" target="_blank" rel="noopener noreferrer"></a><a data-type="indexterm" data-primary="BIP39 recovery codes" data-secondary="generating" data-primary-sortas="BIP039" id="bip39-recovery-generate" target="_blank" rel="noopener noreferrer"></a><a data-type="indexterm" data-primary="entropy" data-secondary="recovery code generation" id="entropy-recovery-generate" target="_blank" rel="noopener noreferrer"></a> codes are generated automatically by the wallet application using the
+standardized process defined in BIP39. The wallet starts from a source
+of entropy, adds a checksum, and then maps the entropy to a word list:</p>
+<ol>
+<li>
+<p>Create a random sequence (entropy) of 128 to 256 bits.</p>
+</li>
+<li>
+<p>Create a checksum of the random sequence by taking the first
+(entropy-length/32) bits of its SHA256 hash.</p>
+</li>
+<li>
+<p>Add the checksum to the end of the random sequence.</p>
+</li>
+<li>
+<p>Split the result into 11-bit length segments.</p>
+</li>
+<li>
+<p>Map each 11-bit value to a word from the predefined dictionary of
+2,048 words.</p>
+</li>
+<li>
+<p>The recovery code is the sequence of words.</p>
+</li>
+
+</ol>
+
+<p><a data-type="xref" href="#generating_entropy_and_encoding" target="_blank" rel="noopener noreferrer">Figure&nbsp;5-4</a> shows how entropy is used to
+generate a BIP39 recovery code.</p>
+
+<figure><div id="generating_entropy_and_encoding">
+<p><img src="https://learning.oreilly.com/api/v2/epubs/urn:orm:book:9781098150082/files/assets/mbc3_0504.png" alt="" width="600" height="632"></p><h6><span>Figure 5-4. </span>Generating entropy and encoding as a recovery code.</h6>
+</div></figure>
+
+<p><a data-type="xref" href="#table_4-5" target="_blank" rel="noopener noreferrer">Table&nbsp;5-4</a> shows the relationship between the size of the entropy
+data and the length of recovery code in<a data-type="indexterm" data-primary="wallets" data-secondary="recovery codes" data-tertiary="generating" data-startref="wallet-recovery-bip39-generate" id="id739" target="_blank" rel="noopener noreferrer"></a><a data-type="indexterm" data-primary="recovery codes" data-secondary="generating" data-startref="recovery-code-bip39-generate" id="id740" target="_blank" rel="noopener noreferrer"></a><a data-type="indexterm" data-primary="BIP39 recovery codes" data-secondary="generating" data-primary-sortas="BIP039" data-startref="bip39-recovery-generate" id="id741" target="_blank" rel="noopener noreferrer"></a><a data-type="indexterm" data-primary="entropy" data-secondary="recovery code generation" data-startref="entropy-recovery-generate" id="id742" target="_blank" rel="noopener noreferrer"></a> words.</p>
+<table id="table_4-5"><caption><span>Table 5-4. </span>BIP39: entropy and word length</caption><thead><tr><th>Entropy (bits)</th><th>Checksum (bits)</th><th>Entropy <strong>+</strong> checksum (bits)</th><th>Recovery code words</th></tr></thead><tbody><tr><td><p>128</p></td><td><p>4</p></td><td><p>132</p></td><td><p>12</p></td></tr><tr><td><p>160</p></td><td><p>5</p></td><td><p>165</p></td><td><p>15</p></td></tr><tr><td><p>192</p></td><td><p>6</p></td><td><p>198</p></td><td><p>18</p></td></tr><tr><td><p>224</p></td><td><p>7</p></td><td><p>231</p></td><td><p>21</p></td></tr><tr><td><p>256</p></td><td><p>8</p></td><td><p>264</p></td><td><p>24</p></td></tr></tbody></table>
+</div>
+
+
+
+
+
+
+
+
+
+
+<div id="recovery_to_seed" data-type="sect3" data-pdf-bookmark="From recovery code to seed">
+<h3>From recovery code to seed</h3>
+
+<p>The <a data-type="indexterm" data-primary="wallets" data-secondary="recovery codes" data-tertiary="seed generation" id="wallet-recovery-bip39-seed" target="_blank" rel="noopener noreferrer"></a><a data-type="indexterm" data-primary="recovery codes" data-secondary="seed generation" id="recovery-code-bip39-seed" target="_blank" rel="noopener noreferrer"></a><a data-type="indexterm" data-primary="BIP39 recovery codes" data-secondary="seed generation" data-primary-sortas="BIP039" id="bip39-recovery-seed" target="_blank" rel="noopener noreferrer"></a><a data-type="indexterm" data-primary="entropy" data-secondary="seed generation" id="entropy-seed-generate" target="_blank" rel="noopener noreferrer"></a><a data-type="indexterm" data-primary="seeds" data-secondary="generating" id="seed-generate" target="_blank" rel="noopener noreferrer"></a><a data-type="indexterm" data-primary="key-stretching functions" id="key-stretch" target="_blank" rel="noopener noreferrer"></a>recovery code
+represents entropy with a length of 128 to 256 bits. The entropy is then
+used to derive a longer (512-bit) seed through the use of the
+<a href="https://oreil.ly/6lwbd" target="_blank" rel="noopener noreferrer">key-stretching function PBKDF2</a>. The seed produced is then used to build
+a deterministic wallet and derive its keys.</p>
+
+<p>The key-stretching function takes two
+parameters: the entropy and<a data-type="indexterm" data-primary="salt" id="id743" target="_blank" rel="noopener noreferrer"></a> a <em>salt</em>. The purpose of a salt in a
+key-stretching function is to make it difficult to build a lookup table
+enabling a brute-force attack. In the BIP39 standard, the salt has
+another purpose—​it allows the introduction of a passphrase that
+serves as an additional security factor protecting the seed, as we will
+describe in more detail in <a data-type="xref" href="#recovery_passphrase" target="_blank" rel="noopener noreferrer">“Optional passphrase in BIP39”</a>.</p>
+<div data-type="tip"><h6>Tip</h6>
+<p>The key-stretching function, with its 2,048 rounds of hashing, makes it
+slightly harder to brute-force attack the recovery code using software.
+Special-purpose hardware is not significantly affected.  For an attacker
+who needs to guess a user’s entire recovery code, the length of the code
+(128 bits at a minimum) provides more than sufficient security.  But for
+cases where an attacker might learn a small part of the user’s code,
+key-stretching adds some security by slowing down how fast an attacker
+can check different recovery code combinations.  BIP39’s parameters were
+considered weak by modern standards even when it was first published
+almost a decade ago, although that’s likely a consequence of being
+designed for compatibility with hardware signing devices with low-powered
+CPUs.  Some alternatives to BIP39 use stronger key-stretching
+parameters, such as Aezeed’s 32,768 rounds of hashing using the more
+complex Scrypt algorithm, although they may not be as convenient to run
+on hardware signing devices.</p>
+</div>
+
+<p>The process described in steps 7 through 9 continues from the process
+described previously in <a data-type="xref" href="#generating_recovery_words" target="_blank" rel="noopener noreferrer">“Generating a recovery code”</a>:</p>
+<ol start="7">
+  <li>The first parameter to the PBKDF2 key-stretching function is the
+  <em>entropy</em> produced from step 6.</li>
+
+  <li>The second parameter to the PBKDF2 key-stretching function is a
+  <em>salt</em>. The salt is composed of the string constant
+  "<code>mnemonic</code>" concatenated with an optional user-supplied
+  passphrase string.</li>
+
+  <li>PBKDF2 stretches the recovery code and salt parameters using 2,048
+  rounds of hashing with the HMAC-SHA512 algorithm, producing a 512-bit
+  value as its final output. That 512-bit value is the seed.</li>
+</ol>
+
+<p><a data-type="xref" href="#fig_5_7" target="_blank" rel="noopener noreferrer">Figure&nbsp;5-5</a> shows how a recovery code is used to generate a seed.</p>
+
+<figure><div id="fig_5_7">
+<p><img src="https://learning.oreilly.com/api/v2/epubs/urn:orm:book:9781098150082/files/assets/mbc3_0505.png" alt="" width="600" height="456"></p><h6><span>Figure 5-5. </span>From recovery code to seed.</h6>
+</div></figure>
+
+<p>Tables <a data-type="xref" data-xrefstyle="select: labelnumber" href="#bip39_128_no_pass" target="_blank" rel="noopener noreferrer">5-5</a>,
+<a data-type="xref" data-xrefstyle="select: labelnumber" href="#bip39_128_w_pass" target="_blank" rel="noopener noreferrer">5-6</a>, and
+<a data-type="xref" data-xrefstyle="select: labelnumber" href="#bip39_256_no_pass" target="_blank" rel="noopener noreferrer">5-7</a> show
+some examples of recovery codes and the seeds <a data-type="indexterm" data-primary="key-stretching functions" data-startref="key-stretch" id="id744" target="_blank" rel="noopener noreferrer"></a>they produce.</p>
+<table id="bip39_128_no_pass"><caption><span>Table 5-5. </span>128-bit entropy BIP39 recovery code, no passphrase, resulting seed</caption><tbody><tr><td><p><strong>Entropy input (128 bits)</strong></p></td><td><p><code>0c1e24e5917779d297e14d45f14e1a1a</code></p></td></tr><tr><td><p><strong>Recovery Code (12 words)</strong></p></td><td><p><code>army van defense carry jealous true garbage claim echo media make crunch</code></p></td></tr><tr><td><p><strong>Passphrase</strong></p></td><td><p>(none)</p></td></tr><tr><td><p><strong>Seed  (512 bits)</strong></p></td><td><p><code>5b56c417303faa3fcba7e57400e120a0ca83ec5a4fc9ffba757fbe63fbd77a89a1a3be4</code>
+<code>c67196f57c39a88b76373733891bfaba16ed27a813ceed498804c0570</code></p></td></tr></tbody></table>
+
+<table id="bip39_128_w_pass"><caption><span>Table 5-6. </span>128-bit entropy BIP39 recovery code, with passphrase, resulting seed</caption><tbody><tr><td><p><strong>Entropy input (128 bits)</strong></p></td><td><p><code>0c1e24e5917779d297e14d45f14e1a1a</code></p></td></tr><tr><td><p><strong>Recovery Code (12 words)</strong></p></td><td><p><code>army van defense carry jealous true garbage claim echo media make crunch</code></p></td></tr><tr><td><p><strong>Passphrase</strong></p></td><td><p>SuperDuperSecret</p></td></tr><tr><td><p><strong>Seed  (512 bits)</strong></p></td><td><p><code>3b5df16df2157104cfdd22830162a5e170c0161653e3afe6c88defeefb0818c793dbb28</code>
+<code>ab3ab091897d0715861dc8a18358f80b79d49acf64142ae57037d1d54</code></p></td></tr></tbody></table>
+<table id="bip39_256_no_pass"><caption><span>Table 5-7. </span>256-bit entropy BIP39 recovery code, no passphrase, resulting seed</caption><tbody><tr><td><p><strong>Entropy input (256 bits)</strong></p></td><td><p><code>2041546864449caff939d32d574753fe684d3c947c3346713dd8423e74abcf8c</code></p></td></tr><tr><td><p><strong>Recovery Code (24 words)</strong></p></td><td><p><code>cake apple borrow silk endorse fitness top denial coil riot stay wolf
+luggage oxygen faint major edit measure invite love trap field dilemma oblige</code></p></td></tr><tr><td><p><strong>Passphrase</strong></p></td><td><p>(none)</p></td></tr><tr><td><p><strong>Seed (512 bits)</strong></p></td><td><p><code>3269bce2674acbd188d4f120072b13b088a0ecf87c6e4cae41657a0bb78f5315b33b3</code>
+<code>a04356e53d062e55f1e0deaa082df8d487381379df848a6ad7e98798404</code></p></td></tr></tbody></table>
+
+</div>
+
+
+
+
+
+
+
+
+
+
+<div id="recovery_passphrase" data-type="sect3" data-pdf-bookmark="Optional passphrase in BIP39">
+<h3>Optional passphrase in BIP39</h3>
+
+<p>The<a data-type="indexterm" data-primary="wallets" data-secondary="recovery codes" data-tertiary="passphrases" id="wallet-recovery-bip39-passphrase" target="_blank" rel="noopener noreferrer"></a><a data-type="indexterm" data-primary="recovery codes" data-secondary="passphrases" id="recovery-code-bip39-passphrase" target="_blank" rel="noopener noreferrer"></a><a data-type="indexterm" data-primary="BIP39 recovery codes" data-secondary="passphrases" data-primary-sortas="BIP039" id="bip39-recovery-passphrase" target="_blank" rel="noopener noreferrer"></a><a data-type="indexterm" data-primary="passphrases (for recovery codes)" id="passphrase-optional" target="_blank" rel="noopener noreferrer"></a> BIP39 standard allows the use of an optional
+passphrase in the derivation of the seed. If no passphrase is used, the
+recovery code is stretched with a salt consisting of the constant string
+<code>"mnemonic"</code>, producing a specific 512-bit seed from any given recovery code.
+If a passphrase is used, the stretching function produces a <em>different</em>
+seed from that same recovery code. In fact, given a single recovery code, every
+possible passphrase leads to a different seed. Essentially, there is no
+“wrong” passphrase. All passphrases are valid and they all lead to
+different seeds, forming a vast set of possible uninitialized wallets.
+The set of possible wallets is so large (2<sup>512</sup>) that there is no
+practical possibility of brute-forcing or accidentally guessing one that
+is in use.</p>
+<div data-type="tip"><h6>Tip</h6>
+<p>There are no “wrong” passphrases in BIP39. Every passphrase leads to
+some wallet, which unless previously used will be empty.</p>
+</div>
+
+<p>The optional passphrase creates two important features:</p>
+
+<ul>
+<li>
+<p>A second factor (something memorized) that makes a recovery code useless on
+its own, protecting recovery codes from compromise by a casual thief.  For
+protection from a tech-savvy thief, you will need to use a very strong
+passphrase.</p>
+</li>
+<li>
+<p>A form of plausible deniability or “duress wallet,” where a chosen
+passphrase leads to a wallet with a small amount of funds used to
+distract an attacker from the “real” wallet that contains the majority
+of funds.</p>
+</li>
+</ul>
+
+<p>It’s important to note that the use of a passphrase also introduces the risk of loss:</p>
+
+<ul>
+<li>
+<p>If the wallet owner is incapacitated or dead and no one else knows the passphrase, the seed is useless and all the funds stored in the wallet are lost forever.</p>
+</li>
+<li>
+<p>Conversely, if the owner backs up the passphrase in the same place as the seed, it defeats the purpose of a second<a data-type="indexterm" data-primary="wallets" data-secondary="recovery codes" data-startref="wallet-recovery-bip39" id="id751" target="_blank" rel="noopener noreferrer"></a><a data-type="indexterm" data-primary="recovery codes" data-startref="recovery-code-bip39" id="id752" target="_blank" rel="noopener noreferrer"></a><a data-type="indexterm" data-primary="BIP39 recovery codes" data-primary-sortas="BIP039" data-startref="bip39-recovery" id="id753" target="_blank" rel="noopener noreferrer"></a><a data-type="indexterm" data-primary="wallets" data-secondary="recovery codes" data-tertiary="passphrases" data-startref="wallet-recovery-bip39-passphrase" id="id754" target="_blank" rel="noopener noreferrer"></a><a data-type="indexterm" data-primary="recovery codes" data-secondary="passphrases" data-startref="recovery-code-bip39-passphrase" id="id755" target="_blank" rel="noopener noreferrer"></a><a data-type="indexterm" data-primary="BIP39 recovery codes" data-secondary="passphrases" data-primary-sortas="BIP039" data-startref="bip39-recovery-passphrase" id="id756" target="_blank" rel="noopener noreferrer"></a><a data-type="indexterm" data-primary="passphrases (for recovery codes)" data-startref="passphrase-optional" id="id757" target="_blank" rel="noopener noreferrer"></a> factor.</p>
+</li>
+</ul>
+<p>
+While passphrases are very useful, they should only be used in
+combination with a carefully planned process for backup and recovery,
+considering the possibility of surviving the owner and allowing his or
+her family to recover the cryptocurrency estate.
+</p>
+</div>
+</div>
+
+
+
+
+
+
+
+
+<div id="hd_wallet_details" data-type="sect2" data-pdf-bookmark="Creating an HD Wallet from the Seed">
+<h2>Creating an HD Wallet from the Seed</h2>
+
+<p>HD wallets <a data-type="indexterm" data-primary="wallets" data-secondary="key generation" data-tertiary="HD (hierarchical deterministic)" id="wallet-keygen-hd" target="_blank" rel="noopener noreferrer"></a><a data-type="indexterm" data-primary="key generation" data-secondary="HD (hierarchical deterministic)" id="keygen-hd" target="_blank" rel="noopener noreferrer"></a><a data-type="indexterm" data-primary="HD (hierarchical deterministic) key generation" id="hd-keygen" target="_blank" rel="noopener noreferrer"></a><a data-type="indexterm" data-primary="BIP32 HD (hierarchical deterministic) key generation" data-primary-sortas="BIP032" id="bip32" target="_blank" rel="noopener noreferrer"></a><a data-type="indexterm" data-primary="seeds" data-secondary="HD wallet creation" id="seed-hdwallet" target="_blank" rel="noopener noreferrer"></a>are created from a <a data-type="indexterm" data-primary="root seeds" id="id758" target="_blank" rel="noopener noreferrer"></a>single <em>root seed</em>, which is a
+128-, 256-, or 512-bit random number. Most commonly, this seed is
+generated by or decrypted from a recovery code as detailed in the previous section.</p>
+
+<p>Every key in the HD wallet is deterministically derived from this root
+seed, which makes it possible to re-create the entire HD wallet from
+that seed in any compatible HD wallet. This makes it easy to back up,
+restore, export, and import HD wallets containing thousands or even
+millions of keys by simply transferring only the recovery code that the root
+seed is derived from. The process of creating the master keys and master chain code for an HD
+wallet is shown in <a data-type="xref" href="#HDWalletFromSeed" target="_blank" rel="noopener noreferrer">Figure&nbsp;5-6</a>.</p>
+
+<figure><div id="HDWalletFromSeed">
+<p><img src="https://learning.oreilly.com/api/v2/epubs/urn:orm:book:9781098150082/files/assets/mbc3_0506.png" alt="" width="600" height="288"></p><h6><span>Figure 5-6. </span>Creating master keys and chain code from a root seed.</h6>
+</div></figure>
+
+<p>The root seed is input into the HMAC-SHA512 algorithm and the resulting
+hash is used to create a <em>master private key</em> (<em>m</em>) and a <em>master chain
+code</em> (<em>c</em>).</p>
+
+<p>The master private key (<em>m</em>) then generates a corresponding master public
+key (<em>M</em>) using the normal elliptic curve multiplication process <em>m</em> × <em>G</em>
+that we saw in <a data-type="xref" href="https://learning.oreilly.com/library/view/mastering-bitcoin-3rd/9781098150082/ch04.html#public_key_derivation" target="_blank" rel="noopener noreferrer">“Public Keys”</a>.</p>
+
+<p>The master chain code (<em>c</em>) is used to introduce entropy in the function that
+creates child keys from parent keys, as we will see in the next section.</p>
+
+
+
+
+
+
+
+
+
+
+<div id="id74" data-type="sect3" data-pdf-bookmark="Private child key derivation">
+<h3>Private child key derivation</h3>
+
+<p>HD wallets <a data-type="indexterm" data-primary="key generation" data-secondary="HD (hierarchical deterministic)" data-tertiary="private child key derivation" id="keygen-hd-private-child" target="_blank" rel="noopener noreferrer"></a><a data-type="indexterm" data-primary="HD (hierarchical deterministic) key generation" data-secondary="private child key derivation" id="hd-keygen-private-child" target="_blank" rel="noopener noreferrer"></a><a data-type="indexterm" data-primary="private child key derivation" id="private-child" target="_blank" rel="noopener noreferrer"></a><a data-type="indexterm" data-primary="child key pair derivation" data-secondary="private keys" id="child-key-pair-private" target="_blank" rel="noopener noreferrer"></a>use a <em>child key derivation</em> (CKD)
+function to derive child keys from parent keys.</p>
+
+<p>The child key derivation functions are based on a one-way hash function
+that 
+<span>combines:</span></p>
+
+<ul>
+<li>
+<p>A parent private or public key (uncompressed key)</p>
+</li>
+<li>
+<p>A seed called a chain code (256 bits)</p>
+</li>
+<li>
+<p>An index number (32 bits)</p>
+</li>
+</ul>
+
+<p>The chain code is used to introduce deterministic random data to the
+process, so that knowing the index and a child key is not sufficient to
+derive other child keys. Knowing a child key does not make it possible
+to find its siblings unless you also have the chain code. The initial
+chain code seed (at the root of the tree) is made from the seed, while
+subsequent child chain codes are derived from each parent chain code.</p>
+
+<p>These three items (parent key, chain code, and index) are combined and
+hashed to generate children keys, as follows.</p>
+
+<p>The parent public key, chain code, and the index number are combined and
+hashed with the HMAC-SHA512 algorithm to produce a 512-bit hash. This
+512-bit hash is split into two 256-bit halves. The right-half 256 bits
+of the hash output become the chain code for the child. The left-half
+256 bits of the hash are added to the parent private key to produce the
+child private key. In <a data-type="xref" href="#CKDpriv" target="_blank" rel="noopener noreferrer">Figure&nbsp;5-7</a>, we see this illustrated with the
+index set to 0 to produce the “zero” (first by index) child of the
+parent.</p>
+
+<figure><div id="CKDpriv">
+<p><img src="https://learning.oreilly.com/api/v2/epubs/urn:orm:book:9781098150082/files/assets/mbc3_0507.png" alt="" width="600" height="348"></p><h6><span>Figure 5-7. </span>Extending a parent private key to create a child private key.</h6>
+</div></figure>
+
+<p>Changing the index allows us to extend the parent and create the other
+children in the sequence (e.g., Child 0, Child 1, Child 2, etc.). Each
+parent key can have 2,147,483,647 (2<sup>31</sup>) children (2<sup>31</sup> is half of the
+entire 2<sup>32</sup> range available because the other half is reserved for a
+special type of derivation we will talk about later in this chapter).</p>
+
+<p>Repeating the process one level down the tree, each child can in turn
+become a parent and create its own children, in an infinite number of
+generations.</p>
+</div>
+
+
+
+
+
+
+
+
+
+
+<div id="id75" data-type="sect3" data-pdf-bookmark="Using derived child keys">
+<h3>Using derived child keys</h3>
+
+<p>Child private keys are indistinguishable from nondeterministic (random)
+keys. Because the derivation function is a one-way function, the child
+key cannot be used to find the parent key. The child key also cannot be
+used to find any siblings. If you have the n<sup>th</sup> child, you cannot find
+its siblings, such as the n–1 child or the n+1 child, or any
+other children that are part of the sequence. Only the parent key and
+chain code can derive all the children. Without the child chain code,
+the child key cannot be used to derive any grandchildren either. You
+need both the child private key and the child chain code to start a new
+branch and derive grandchildren.</p>
+
+<p>So what can the child private key be used for on its own? It can be used
+to make a public key and a Bitcoin address. Then, it can be used to sign
+transactions to spend anything paid to that address.</p>
+<div data-type="tip"><h6>Tip</h6>
+<p>A child private key, the corresponding public key, and the Bitcoin
+address are all indistinguishable from keys and addresses created
+randomly. The fact that they are part of a sequence is not visible
+outside of the HD wallet function that created them. Once created, they
+operate exactly<a data-type="indexterm" data-primary="key generation" data-secondary="HD (hierarchical deterministic)" data-tertiary="private child key derivation" data-startref="keygen-hd-private-child" id="id759" target="_blank" rel="noopener noreferrer"></a><a data-type="indexterm" data-primary="HD (hierarchical deterministic) key generation" data-secondary="private child key derivation" data-startref="hd-keygen-private-child" id="id760" target="_blank" rel="noopener noreferrer"></a><a data-type="indexterm" data-primary="private child key derivation" data-startref="private-child" id="id761" target="_blank" rel="noopener noreferrer"></a><a data-type="indexterm" data-primary="child key pair derivation" data-secondary="private keys" data-startref="child-key-pair-private" id="id762" target="_blank" rel="noopener noreferrer"></a> as “normal” keys.</p>
+</div>
+</div>
+
+
+
+
+
+
+
+
+
+
+<div id="id249" data-type="sect3" data-pdf-bookmark="Extended keys">
+<h3>Extended keys</h3>
+
+<p>As
+we saw <a data-type="indexterm" data-primary="key generation" data-secondary="HD (hierarchical deterministic)" data-tertiary="extended keys" id="keygen-hd-extend" target="_blank" rel="noopener noreferrer"></a><a data-type="indexterm" data-primary="HD (hierarchical deterministic) key generation" data-secondary="extended keys" data-tertiary="explained" id="hd-keygen-extend" target="_blank" rel="noopener noreferrer"></a><a data-type="indexterm" data-primary="extended keys" data-secondary="explained" id="extend-key" target="_blank" rel="noopener noreferrer"></a>earlier, the key derivation function can be used to create
+children at any level of the tree, based on the three inputs: a key, a
+chain code, and the index of the desired child. The two essential
+ingredients are the key and chain code, and combined these are called an
+<em>extended key</em>. The term “extended key” could also be thought of as
+“extensible key” because such a key can be used to derive children.</p>
+
+<p>Extended keys are stored and represented simply as the concatenation of
+the key and chain code. There
+are two types of extended keys. An extended private key is the
+combination of a private key and chain code and can be used to derive
+child private keys (and from them, child public keys). An extended
+public key is a public key and chain code, which can be used to create
+child public keys (<em>public only</em>), as described in
+<a data-type="xref" href="https://learning.oreilly.com/library/view/mastering-bitcoin-3rd/9781098150082/ch04.html#public_key_derivation" target="_blank" rel="noopener noreferrer">“Public Keys”</a>.</p>
+
+<p>Think of an extended key as the root of a branch in the tree structure
+of the HD wallet. With the root of the branch, you can derive the rest
+of the branch. The extended private key can create a complete branch,
+whereas the extended public key can <em>only</em> create a branch of public
+keys.</p>
+
+<p>Extended keys are encoded using base58check, to easily export and import
+between different BIP32-compatible wallets. The base58check
+coding for extended keys uses a special version number that results in
+the prefix “xprv” and “xpub” when encoded in base58 characters to make
+them easily recognizable. Because the extended key contains many more
+bytes than regular addresses,
+it is also much longer than other base58check-encoded strings we have
+seen previously.</p>
+
+<p>Here’s an example of an extended <em>private</em> key, encoded in base58check:</p>
+
+<div data-testid="custom pre block"><pre data-type="programlisting">xprv9tyUQV64JT5qs3RSTJkXCWKMyUgoQp7F3hA1xzG6ZGu6u6Q9VMNjGr67Lctvy5P8oyaYAL9CA
+WrUE9i6GoNMKUga5biW6Hx4tws2six3b9c</pre></div>
+
+<p>Here’s the corresponding extended <em>public</em> key, encoded in base58check:</p>
+
+<div data-testid="custom pre block"><pre data-type="programlisting">xpub67xpozcx8pe95XVuZLHXZeG6XWXHpGq6Qv5cmNfi7cS5mtjJ2tgypeQbBs2UAR6KECeeMVKZBP
+LrtJunSDMstweyLXhRgPxdp14sk9tJPW9</pre></div>
+</div>
+
+
+
+
+
+
+
+
+
+
+<div id="public__child_key_derivation" data-type="sect3" data-pdf-bookmark="Public child key derivation">
+<h3>Public child key derivation</h3>
+
+<p>As
+mentioned  previously, <a data-type="indexterm" data-primary="key generation" data-secondary="HD (hierarchical deterministic)" data-tertiary="public child key derivation" id="keygen-hd-public-child" target="_blank" rel="noopener noreferrer"></a><a data-type="indexterm" data-primary="HD (hierarchical deterministic) key generation" data-secondary="public child key derivation" id="hd-keygen-public-child" target="_blank" rel="noopener noreferrer"></a><a data-type="indexterm" data-primary="public child key derivation" id="public-child" target="_blank" rel="noopener noreferrer"></a><a data-type="indexterm" data-primary="child key pair derivation" data-secondary="public keys" id="child-key-pair-public" target="_blank" rel="noopener noreferrer"></a>a very useful characteristic of HD wallets is the
+ability to derive public child keys from public parent keys <em>without</em>
+having the private keys. This gives us two ways to derive a child public
+key: either from the child private key or directly from the parent
+public key.</p>
+
+<p>An extended public key can be used, therefore, to derive all of the
+<em>public</em> keys (and only the public keys) in that branch of the HD wallet
+structure.</p>
+
+<p>This shortcut can be used to create public key–only
+deployments where a server or application has a copy of an extended
+public key and no private keys whatsoever. That kind of deployment can
+produce an infinite number of public keys and Bitcoin addresses but
+cannot spend any of the money sent to those addresses. Meanwhile, on
+another, more secure server, the extended private key can derive all the
+corresponding private keys to sign transactions and spend the money.</p>
+
+<p>One common application of this solution is to install an extended public
+key on a web server that serves an ecommerce application. The web server
+can use the public key derivation function to create a new Bitcoin
+address for every transaction (e.g., for a customer shopping cart). The
+web server will not have any private keys that would be vulnerable to
+theft. Without HD wallets, the only way to do this is to generate
+thousands of Bitcoin addresses on a separate secure server and then
+preload them on the ecommerce server. That approach is cumbersome and
+requires constant maintenance to ensure that the ecommerce server
+doesn’t “run out” of keys.</p>
+
+
+<p>Another common application of this solution is for
+cold-storage or hardware signing devices. In that scenario, the extended
+private key can be stored on a paper wallet or hardware device, while
+the extended public key can be kept online. The
+user can create “receive” addresses at will, while the private keys are
+safely stored offline. To spend the funds, the user can use the extended
+private key on an offline software wallet application or
+the hardware signing device. <a data-type="xref" href="#CKDpub" target="_blank" rel="noopener noreferrer">Figure&nbsp;5-8</a> illustrates the
+mechanism for extending a parent public key to derive child <a data-type="indexterm" data-primary="wallets" data-secondary="key generation" data-tertiary="HD (hierarchical deterministic)" data-startref="wallet-keygen-hd" id="id765" target="_blank" rel="noopener noreferrer"></a><a data-type="indexterm" data-primary="key generation" data-secondary="HD (hierarchical deterministic)" data-startref="keygen-hd" id="id766" target="_blank" rel="noopener noreferrer"></a><a data-type="indexterm" data-primary="HD (hierarchical deterministic) key generation" data-startref="hd-keygen" id="id767" target="_blank" rel="noopener noreferrer"></a><a data-type="indexterm" data-primary="BIP32 HD (hierarchical deterministic) key generation" data-primary-sortas="BIP032" data-startref="bip32" id="id768" target="_blank" rel="noopener noreferrer"></a><a data-type="indexterm" data-primary="seeds" data-secondary="HD wallet creation" data-startref="seed-hdwallet" id="id769" target="_blank" rel="noopener noreferrer"></a><a data-type="indexterm" data-primary="key generation" data-secondary="HD (hierarchical deterministic)" data-tertiary="public child key derivation" data-startref="keygen-hd-public-child" id="id770" target="_blank" rel="noopener noreferrer"></a><a data-type="indexterm" data-primary="HD (hierarchical deterministic) key generation" data-secondary="public child key derivation" data-startref="hd-keygen-public-child" id="id771" target="_blank" rel="noopener noreferrer"></a><a data-type="indexterm" data-primary="public child key derivation" data-startref="public-child" id="id772" target="_blank" rel="noopener noreferrer"></a><a data-type="indexterm" data-primary="child key pair derivation" data-secondary="public keys" data-startref="child-key-pair-public" id="id773" target="_blank" rel="noopener noreferrer"></a>public keys.</p>
+
+<figure><div id="CKDpub">
+<p><img src="https://learning.oreilly.com/api/v2/epubs/urn:orm:book:9781098150082/files/assets/mbc3_0508.png" alt="" width="600" height="259"></p><h6><span>Figure 5-8. </span>Extending a parent public key to create a child public key.</h6>
+</div></figure>
+</div>
+</div>
+
+
+
+
+
+
+
+
+<div id="id77" data-type="sect2" data-pdf-bookmark="Using an Extended Public Key on a Web Store">
+<h2>Using an Extended Public Key on a Web Store</h2>
+
+<p>Let’s see <a data-type="indexterm" data-primary="key generation" data-secondary="HD (hierarchical deterministic)" data-tertiary="extended keys" id="keygen-hd-extend-webstore" target="_blank" rel="noopener noreferrer"></a><a data-type="indexterm" data-primary="HD (hierarchical deterministic) key generation" data-secondary="extended keys" data-tertiary="web store example" id="hd-keygen-extend-webstore" target="_blank" rel="noopener noreferrer"></a><a data-type="indexterm" data-primary="extended keys" data-secondary="web store example" id="extend-key-webstore" target="_blank" rel="noopener noreferrer"></a><a data-type="indexterm" data-primary="web store example (extended keys)" id="webstore-extend-key" target="_blank" rel="noopener noreferrer"></a>how HD wallets are used by looking at
+Gabriel’s web store.</p>
+
+<p>Gabriel first set up his web store as a hobby, based on a simple hosted
+WordPress page. His store was quite basic with only a few pages and an
+order form with a single Bitcoin address.</p>
+
+<p>Gabriel used the first Bitcoin address generated by his regular wallet as
+the main Bitcoin address for his store.
+Customers would submit an order using the form and send payment to
+Gabriel’s published Bitcoin address, triggering an email with the order
+details for Gabriel to process. With just a few orders each week, this
+system worked well enough, even though it weakened the privacy of
+Gabriel, his clients, and the people he paid.</p>
+
+<p>However, the little web store became quite successful and attracted many
+orders from the local community. Soon, Gabriel was overwhelmed. With all
+the orders paying the same address, it became difficult to correctly
+match orders and transactions, especially when multiple orders for the
+same amount came in close together.</p>
+
+<p>The only metadata that is chosen by the receiver of a typical Bitcoin
+transaction are the amount and payment address.  There’s no subject
+or message field that can be used to hold a unique identifier invoice number.</p>
+
+<p>Gabriel’s HD wallet offers a much better solution through the ability to
+derive public child keys without knowing the private keys. Gabriel can
+load an extended public key (xpub) on his website, which can be used to
+derive a unique address for every customer order.  The unique address
+immediately improves privacy and also gives each order a unique
+identifier that can be used for tracking which invoices have been paid.</p>
+
+<p>Using the HD wallet allows Gabriel to spend the
+funds from his personal wallet application, but the xpub loaded on the website can only
+generate addresses and receive funds. This feature of HD wallets is a
+great security feature. Gabriel’s website does not contain any private
+keys and therefore any hack of it can only steal the funds Gabriel would
+have received in the future, not any funds he received in the past.</p>
+
+<p>To export the xpub from his Trezor hardware signing device, Gabriel uses
+the web-based Trezor wallet application. The Trezor device must be plugged in
+for the public keys to be exported. Note that most hardware signing devices will
+never export private keys—​those always remain on the device.</p>
+
+<p>Gabriel copies the xpub to his web store’s Bitcoin payment processing
+software, such as the widely used open source BTCPay Server.</p>
+
+
+
+
+
+
+
+
+
+
+<div id="id78" data-type="sect3" data-pdf-bookmark="Hardened child key derivation">
+<h3>Hardened child key derivation</h3>
+
+<p>The <a data-type="indexterm" data-primary="private child key derivation" data-secondary="hardened derivation" id="private-child-harden" target="_blank" rel="noopener noreferrer"></a><a data-type="indexterm" data-primary="child key pair derivation" data-secondary="hardened derivation" id="child-key-pair-harden" target="_blank" rel="noopener noreferrer"></a><a data-type="indexterm" data-primary="hardened child key derivation" id="harden-child-key" target="_blank" rel="noopener noreferrer"></a>ability to derive a branch
+of public keys from an xpub is very useful, but it comes with a
+potential risk. Access to an xpub does not give access to child private
+keys. However, because the xpub contains the chain code, if a child
+private key is known, or somehow leaked, it can be used with the chain
+code to derive all the other child private keys. A single leaked child
+private key, together with a parent chain code, reveals all the private
+keys of all the children. Worse, the child private key together with a
+parent chain code can be used to deduce the parent private key.</p>
+
+<p>To counter this risk, HD wallets provide an alternative derivation function
+called <em>hardened derivation</em>, which breaks the relationship between
+parent public key and child chain code. The hardened derivation function
+uses the parent private key to derive the child chain code, instead of
+the parent public key. This creates a “firewall” in the parent/child
+sequence, with a chain code that cannot be used to compromise a parent
+or sibling private key. The hardened derivation function looks almost
+identical to the normal child private key derivation, except that the
+parent private key is used as input to the hash function, instead of the
+parent public key, as shown in the diagram in <a data-type="xref" href="#CKDprime" target="_blank" rel="noopener noreferrer">Figure&nbsp;5-9</a>.</p>
+
+<figure><div id="CKDprime">
+<p><img src="https://learning.oreilly.com/api/v2/epubs/urn:orm:book:9781098150082/files/assets/mbc3_0509.png" alt="" width="600" height="348"></p><h6><span>Figure 5-9. </span>Hardened derivation of a child key; omits the parent public key.</h6>
+</div></figure>
+
+<p>When the hardened private derivation function is used, the resulting
+child private key and chain code are completely different from what
+would result from the normal derivation function. The resulting “branch”
+of keys can be used to produce extended public keys that are not
+vulnerable because the chain code they contain cannot be exploited to
+reveal any private keys for their siblings or parents. Hardened derivation is therefore used to create
+a “gap” in the tree above the level where extended public keys are used.</p>
+
+<p>In simple terms, if you want to use the convenience of an xpub to derive
+branches of public keys, without exposing yourself to the risk of a
+leaked chain code, you should derive it from a hardened parent rather
+than a normal parent. As a best practice, the level-1 children of the
+master keys are always derived through the hardened derivation to
+prevent compromise of the master keys.</p>
+</div>
+
+
+
+
+
+
+
+
+
+
+<div id="id79" data-type="sect3" data-pdf-bookmark="Index numbers for normal and hardened derivation">
+<h3>Index numbers for normal and hardened derivation</h3>
+
+<p>The index number <a data-type="indexterm" data-primary="index numbers for hardened derivation" id="id774" target="_blank" rel="noopener noreferrer"></a>used in the derivation function is a 32-bit integer. To
+easily distinguish between keys created through the normal derivation
+function versus keys derived through hardened derivation, this index
+number is split into two ranges. Index numbers between 0 and
+2<sup>31</sup> – 1 (0x0 to 0x7FFFFFFF) are used <em>only</em> for normal
+derivation. Index numbers between 2<sup>31</sup> and 2<sup>32</sup> – 1 (0x80000000
+to 0xFFFFFFFF) are used <em>only</em> for hardened derivation. Therefore, if
+the index number is less than 2<sup>31</sup>, the child is normal, whereas if the
+index number is equal or above 2<sup>31</sup>, the child is hardened.</p>
+
+<p>To make the index number easier to read and display, the index number
+for hardened children is displayed starting from zero, but with a prime
+symbol. The first normal child key is therefore displayed as 0, whereas
+the first hardened child (index 0x80000000) is displayed as 0<code>'</code>.
+In a sequence then, the second hardened key would have index 0x80000001
+and would be displayed as 1<code>'</code>, and so on. When you see an HD
+wallet index i<code>'</code>, that means 2<sup>31</sup>+i.  In regular ASCII text, the
+prime symbol is substituted with either a single apostrophe or the
+letter <em>h</em>.  For situations, such as in output script descriptors, where
+text may be used in a shell or other context where a single apostrophe
+has special meaning, using the letter <em>h</em> is <a data-type="indexterm" data-primary="private child key derivation" data-secondary="hardened derivation" data-startref="private-child-harden" id="id775" target="_blank" rel="noopener noreferrer"></a><a data-type="indexterm" data-primary="child key pair derivation" data-secondary="hardened derivation" data-startref="child-key-pair-harden" id="id776" target="_blank" rel="noopener noreferrer"></a><a data-type="indexterm" data-primary="hardened child key derivation" data-startref="harden-child-key" id="id777" target="_blank" rel="noopener noreferrer"></a>recommended.</p>
+</div>
+
+
+
+
+
+
+
+
+
+
+<div id="id80" data-type="sect3" data-pdf-bookmark="HD wallet key identifier (path)">
+<h3>HD wallet key identifier (path)</h3>
+
+<p>Keys in <a data-type="indexterm" data-primary="path references in HD wallets" id="id778" target="_blank" rel="noopener noreferrer"></a><a data-type="indexterm" data-primary="key generation" data-secondary="HD (hierarchical deterministic)" data-tertiary="path references" id="id779" target="_blank" rel="noopener noreferrer"></a><a data-type="indexterm" data-primary="HD (hierarchical deterministic) key generation" data-secondary="path references" id="id780" target="_blank" rel="noopener noreferrer"></a>an HD wallet are
+identified using a “path” naming convention, with each level of the tree
+separated by a slash (/) character (see <a data-type="xref" href="#table_4-8" target="_blank" rel="noopener noreferrer">Table&nbsp;5-8</a>). Private keys
+derived from the master private key start with “m.” Public keys derived
+from the master public key start with “M.” Therefore, the first child
+private key of the master private key is m/0. The first child public key
+is M/0. The second grandchild of the first child is m/0/1, and so on.</p>
+
+<p>The “ancestry” of a key is read from right to left, until you reach the
+master key from which it was derived. For example, identifier m/x/y/z
+describes the key that is the z-th child of key m/x/y, which is the y-th
+child of key m/x, which is the x-th child of m.</p>
+<table id="table_4-8"><caption><span>Table 5-8. </span>HD wallet path examples</caption><thead><tr><th>HD path</th><th>Key described</th></tr></thead><tbody><tr><td><p>m/0</p></td><td><p>The first (0) child private key from the master private key (m)</p></td></tr><tr><td><p>m/0/0</p></td><td><p>The first grandchild private key from the first child (m/0)</p></td></tr><tr><td><p>m/0'/0</p></td><td><p>The first normal grandchild private key from the first <em>hardened</em> child (m/0')</p></td></tr><tr><td><p>m/1/0</p></td><td><p>The first grandchild private key from the second child (m/1)</p></td></tr><tr><td><p>M/23/17/0/0</p></td><td><p>The first great-great-grandchild public key from the first great-grandchild from the 18th grandchild from the 24th child</p></td></tr></tbody></table>
+</div>
+
+
+
+
+
+
+
+
+
+
+<div id="id81" data-type="sect3" data-pdf-bookmark="Navigating the HD wallet tree structure">
+<h3>Navigating the HD wallet tree structure</h3>
+
+<p>The<a data-type="indexterm" data-primary="tree structure in HD wallets" id="tree-hd-wallet" target="_blank" rel="noopener noreferrer"></a><a data-type="indexterm" data-primary="key generation" data-secondary="HD (hierarchical deterministic)" data-tertiary="tree structure" id="keygen-hd-tree" target="_blank" rel="noopener noreferrer"></a><a data-type="indexterm" data-primary="HD (hierarchical deterministic) key generation" data-secondary="tree structure" id="hd-keygen-tree" target="_blank" rel="noopener noreferrer"></a> HD wallet tree structure offers tremendous flexibility. Each parent
+extended key can have 4 billion children: 2 billion normal children and
+2 billion hardened children. Each of those children can have another 4
+billion children, and so on. The tree can be as deep as you want, with
+an infinite number of generations. With all that flexibility, however,
+it becomes quite difficult to navigate this infinite tree. It is
+especially difficult to transfer HD wallets between implementations
+because the possibilities for internal organization into branches and
+subbranches are endless.</p>
+
+<p>Two BIPs offer a solution to this complexity by creating some proposed
+standards for the structure of HD wallet trees. <a data-type="indexterm" data-primary="BIP43 HD wallet tree structure" data-primary-sortas="BIP043" id="id781" target="_blank" rel="noopener noreferrer"></a>BIP43 proposes the use
+of the first hardened child index as a special identifier that signifies
+the “purpose” of the tree structure. Based on BIP43, an HD wallet
+should use only one level-1 branch of the tree, with the index number
+identifying the structure and namespace of the rest of the tree by
+defining its purpose. For example, an HD wallet using only branch
+m/i<code>'</code>/ is intended to signify a specific purpose, and that
+purpose is identified by index number “i.”</p>
+
+<p>Extending that specification, <a data-type="indexterm" data-primary="BIP44 HD wallet tree structure" data-primary-sortas="BIP044" id="bip44" target="_blank" rel="noopener noreferrer"></a>BIP44 proposes a multiaccount structure
+as “purpose” number <code>44'</code> under BIP43. All HD wallets following the
+BIP44 structure are identified by the fact that they only used one
+branch of the tree: m/44<code>'</code>/.</p>
+
+<p>BIP44 specifies the structure as consisting of five predefined tree levels:</p>
+
+<div data-testid="custom pre block"><pre data-type="programlisting">m / purpose' / coin_type' / account' / change / address_index</pre></div>
+
+<p>The first-level “purpose” is always set to <code>44'</code>. The second-level
+“coin_type” specifies the type of cryptocurrency coin, allowing for
+multicurrency HD wallets where each currency has its own subtree under
+the second level.  Bitcoin is m/44<code>'</code>/0<code>'</code> and Bitcoin Testnet is m/44<code>'</code>/1<code>'</code>.</p>
+
+<p>The third level of the tree is “account,” which allows users to
+subdivide their wallets into separate logical subaccounts for
+accounting or organizational purposes. For example, an HD wallet might
+contain two Bitcoin “accounts”: m/44<code>'</code>/0<code>'</code>/0<code>'</code>
+and m/44<code>'</code>/0<code>'</code>/1<code>'</code>. Each account is the root of
+its own subtree.</p>
+
+<p>On the
+fourth level, “change,” an HD wallet has two subtrees, one for creating
+receiving addresses and one for creating change addresses. Note that
+whereas the previous levels used hardened derivation, this level uses
+normal derivation. This is to allow this level of the tree to export
+extended public keys for use in a nonsecured environment. Usable
+addresses are derived by the HD wallet as children of the fourth level,
+making the fifth level of the tree the “address_index.” For example, the
+third receiving address for payments in the primary account
+would be M/44<code>'</code>/0<code>'</code>/0<code>'</code>/0/2. <a data-type="xref" href="#table_4-9" target="_blank" rel="noopener noreferrer">Table&nbsp;5-9</a> shows
+a few more examples.</p>
+<table id="table_4-9"><caption><span>Table 5-9. </span>BIP44 HD wallet structure examples</caption><thead><tr><th>HD path</th><th>Key described</th></tr></thead><tbody><tr><td><p>M/44<code>'</code>/0<code>'</code>/0<code>'</code>/0/2</p></td><td><p>The third receiving public key for the primary Bitcoin account</p></td></tr><tr><td><p>M/44<code>'</code>/0<code>'</code>/3<code>'</code>/1/14</p></td><td><p>The fifteenth change-address public key for the fourth Bitcoin account</p></td></tr><tr><td><p>m/44<code>'</code>/2<code>'</code>/0<code>'</code>/0/1</p></td><td><p>The second private key in the Litecoin main account, for signing transactions</p></td></tr></tbody></table>
+
+<p>Many people <a data-type="indexterm" data-primary="BIP44 HD wallet tree structure" data-primary-sortas="BIP044" data-startref="bip44" id="id782" target="_blank" rel="noopener noreferrer"></a>focus on securing their bitcoins against theft and other
+attacks, but one of the leading causes of lost bitcoins—​perhaps <em>the</em>
+leading cause—​is data loss.  If the keys and other essential data
+required to spend your bitcoins is lost, those bitcoins will forever be
+unspendable.  Nobody can get them back for you.  In this chapter, we
+looked at the systems that modern wallet applications use to help you
+prevent losing that data.  Remember, however, that it’s up to you to
+actually use the systems available to make good backups and <a data-type="indexterm" data-primary="key generation" data-secondary="HD (hierarchical deterministic)" data-tertiary="extended keys" data-startref="keygen-hd-extend-webstore" id="id783" target="_blank" rel="noopener noreferrer"></a><a data-type="indexterm" data-primary="HD (hierarchical deterministic) key generation" data-secondary="extended keys" data-tertiary="web store example" data-startref="hd-keygen-extend-webstore" id="id784" target="_blank" rel="noopener noreferrer"></a><a data-type="indexterm" data-primary="extended keys" data-secondary="web store example" data-startref="extend-key-webstore" id="id785" target="_blank" rel="noopener noreferrer"></a><a data-type="indexterm" data-primary="web store example (extended keys)" data-startref="webstore-extend-key" id="id786" target="_blank" rel="noopener noreferrer"></a><a data-type="indexterm" data-primary="tree structure in HD wallets" data-startref="tree-hd-wallet" id="id787" target="_blank" rel="noopener noreferrer"></a><a data-type="indexterm" data-primary="key generation" data-secondary="HD (hierarchical deterministic)" data-tertiary="tree structure" data-startref="keygen-hd-tree" id="id788" target="_blank" rel="noopener noreferrer"></a><a data-type="indexterm" data-primary="HD (hierarchical deterministic) key generation" data-secondary="tree structure" data-startref="hd-keygen-tree" id="id789" target="_blank" rel="noopener noreferrer"></a>regularly
+test them.</p>
+</div>
+</div>
+</div>
+</div></article></section></main></div></div>
+  <span></span> <!-- for IntersectionObserver -->
+  
+  
+  
+  
+
+
+<style id="note-styling">
+    .note {
+      position: absolute;
+      z-index: 10;
+      border: none;
+      outline: none;
+      font-family: inherit;
+      font-size: inherit;
+      padding: 5px;
+      min-width: 32px;
+      min-height: 32px;
+    }
+    .note:focus {
+      z-index: 11;
+    }
+    .note[type="0"] {
+      background-color: #fff740;
+      color: #2c2c2d;
+    }
+    .note[type="0"]::placeholder {
+      color: #868226;
+    }
+    .note[type="1"] {
+      background-color: #feff9c;
+      color: #2c2c2d;
+    }
+    .note[type="1"]::placeholder {
+      color: #6d6d3d;
+    }
+    .note[type="2"] {
+      background-color: #ff65a3;
+      color: #2c2c2d;
+    }
+    .note[type="2"]::placeholder {
+      color: #65263f;
+    }
+    .note[type="3"] {
+      background-color: #ff7eb9;
+      color: #2c2c2d;
+    }
+    .note[type="3"]::placeholder {
+      color: #562b3f;
+    }
+    .note[type="4"] {
+      background-color: #7afcff;
+      color: #295c5d;
+    }
+    .note[type="4"]::placeholder {
+      color: #377677;
+    }</style><div id="chapters-container">
+      <style>
+        #chapters {
+          display: grid;
+          grid-template-columns: 1fr 1fr;
+          margin: 2ch 0;
+        }
+        #chapters a {
+          cursor: pointer;
+        }
+        #chapters a[href=""] {
+          opacity: 0.5;
+          pointer-events: none;
+          color: inherit;
+        }
+        #chapters a:first-child {
+          justify-self: start;
+        }
+        #chapters a:last-child {
+          justify-self: end;
+        }
+      </style>
+      <hr>
+      <div id="chapters">
+        <a href="" title="move to the previous chapter (Ctrl/Command + PageUp)">Previous Chapter</a>
+        <a href="https://learning.oreilly.com/library/view/mastering-bitcoin-3rd/9781098150082/ch06.html" title="move to the next chapter (Ctrl/Command + PageDown)">Next Chapter</a>
+      </div>
+    </div></body><style>body {
+      font-size:  19px;
+      font-family: Georgia, 'Times New Roman', serif;
+      width: 600px;
+    }
+    p {
+      text-align: justify
+    }
+    .page {
+      line-height: 28.5px;
+      column-count: unset;
+    }
+    h1, h2, h3 {
+      line-height: initial;
+    }</style></html>

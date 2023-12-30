@@ -1,0 +1,664 @@
+<!DOCTYPE html>
+<html><head>
+  <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+  <base target="_blank">
+  <style>
+/* latin */
+@font-face {
+  font-family: 'Comic Neue';
+  font-style: normal;
+  font-weight: 400;
+  src: url(fonts/4UaHrEJDsxBrF37olUeD96rp57F2IwM.woff2) format('woff2');
+  unicode-range: U+0000-00FF, U+0131, U+0152-0153, U+02BB-02BC, U+02C6, U+02DA, U+02DC, U+0304, U+0308, U+0329, U+2000-206F, U+2074, U+20AC, U+2122, U+2191, U+2193, U+2212, U+2215, U+FEFF, U+FFFD;
+}
+/* latin */
+@font-face {
+  font-family: 'Lexend Deca';
+  font-style: normal;
+  font-weight: 400;
+  src: url(fonts/K2FifZFYk-dHSE0UPPuwQ7CrD94i-NCKm-U48M1wqxnDirZPl3v-.woff2) format('woff2');
+  unicode-range: U+0000-00FF, U+0131, U+0152-0153, U+02BB-02BC, U+02C6, U+02DA, U+02DC, U+0304, U+0308, U+0329, U+2000-206F, U+2074, U+20AC, U+2122, U+2191, U+2193, U+2212, U+2215, U+FEFF, U+FFFD;
+}
+/* latin */
+@font-face {
+  font-family: 'Poppins';
+  font-style: normal;
+  font-weight: 400;
+  src: url(fonts/pxiEyp8kv8JHgFVrJJfecnFHGPc.woff2) format('woff2');
+  unicode-range: U+0000-00FF, U+0131, U+0152-0153, U+02BB-02BC, U+02C6, U+02DA, U+02DC, U+0304, U+0308, U+0329, U+2000-206F, U+2074, U+20AC, U+2122, U+2191, U+2193, U+2212, U+2215, U+FEFF, U+FFFD;
+}
+
+:root {
+  --fg: #000; /* foreground  */
+  --bg: #fff; /* background  */
+  --bd: #000; /* border  */
+  --lk: #006fa5; /* link */
+  --lkv: #d33bf0; /* link visited */
+  --hg: #ffff81; /* highlight  */
+}
+html {
+  overflow: overlay;
+}
+body {
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+  margin: 30px auto 0 auto;
+  padding: 10px;
+  position: relative;
+
+  color: var(--fg);
+  border-color: var(--bd);
+  background-color: var(--bg);
+}
+body[data-mode$="dark"] {
+  --lk: #0096de;
+}
+body[data-mode="light"] {
+  color-scheme: light;
+  --fg: #222;
+  --bd: #222;
+  --bg: whitesmoke;
+}
+body[data-mode="dark"] {
+  color-scheme: dark;
+  --fg: #eee;
+  --bd: #eee;
+  --bg: #333;
+}
+body[data-mode="sepia"] {
+  color-scheme: light;
+  --fg: #5b4636;
+  --bd: #5b4636;
+  --bg: #f4ecd8;
+}
+body[data-mode="solarized-light"] {
+  color-scheme: light;
+  --fg: #586e75;
+  --bd: #586e75;
+  --bg: #fdf6e3;
+}
+body[data-mode="nord-light"] {
+  color-scheme: light;
+  --fg: #2e3440;
+  --bd: #2e3440;
+  --bg: #e5e9f0;
+}
+body[data-mode="groove-dark"] {
+  color-scheme: dark;
+  --fg: #cec4ac;
+  --bd: #cec4ac;
+  --bg: #282828;
+}
+body[data-mode="solarized-dark"] {
+  color-scheme: dark;
+  --fg: #839496;
+  --bd: #839496;
+  --bg: #002b36;
+}
+body[data-mode="nord-dark"] {
+  color-scheme: dark;
+  --fg: #e5e9f0;
+  --bd: #e5e9f0;
+  --bg: #2e3440;
+}
+
+@media print {
+  body[data-mode] {
+    --fg: #000;
+    --bd: #000;
+    --bg: #fff;
+
+    width: unset;
+    padding: 0;
+    margin: 0;
+  }
+}
+body[data-loaded=true] {
+  
+}
+img {
+  max-width: 100%;
+  height: auto;
+}
+img:not([width])[src$=".svg"] {
+  max-width: 100px;
+}
+body[data-images=false] canvas,
+body[data-images=false] svg,
+body[data-images=false] img {
+  display: none;
+}
+svg:not([width]):not([height]) {
+  max-width: 25vmin;
+}
+a {
+  color: var(--lk);
+  text-decoration: none;
+}
+a:visited {
+  color: var(--lkv);
+}
+
+hr {
+  background-color: var(--bd);
+  height: 1px;
+  border: 0;
+}
+#reader-domain {
+  font-family: Helvetica, Arial, sans-serif;
+  text-decoration: none;
+  border-bottom-color: currentcolor;
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  width: 100%;
+  display: inline-block;
+  direction: ltr;
+}
+#reader-domain > span:first-child {
+  font-size: 1.1em;
+}
+#reader-domain > span:last-child {
+  font-size: 0.8em;
+}
+#reader-title {
+  font-size: 1.6em;
+  line-height: 1.25em;
+  width: 100%;
+  margin: 20px 0;
+  padding: 0;
+}
+#reader-credits,
+#doi,
+#published-time,
+#reader-estimated-time {
+  font-size: 0.85em;
+  line-height: 1.48em;
+  margin: 0 0 10px 0;
+  padding: 0;
+}
+#reader-credits:not(:empty)::after {
+  content: ' ⋮ ';
+}
+#published-time:not(:empty)::before {
+  content: ' ⋮ ';
+}
+#doi-json {
+  overflow: hidden;
+}
+#doi-json code {
+  overflow: auto;
+  max-height: 400px;
+}
+#published-time:empty,
+#reader-credits:empty {
+  display: none;
+}
+mark.hghlght {
+  background-color: var(--hg);
+}
+body:not([data-columns="1"]) .page :is(h1, h2) {
+  column-span: all;
+  background-color: rgba(125, 125, 125, 0.1);
+  padding: 10px;
+}
+.hidden {
+  display: none;
+}
+</style>
+  <style id="user-css">body {
+  padding-bottom: 64px;
+}
+pre {
+  white-space: pre-wrap;
+}
+pre code {
+  background-color: #eff0f1;
+  color: #393318;
+  font-family: monospace;
+  display: block;
+  padding: 5px 10px;
+}
+body[data-mode="dark"] pre code {
+  background-color: #585858;
+  color: #e8e8e8;
+}
+
+/* CSS for sans-serif fonts */
+body[data-font=sans-serif] {}
+/* CSS for serif fonts */
+body[data-font=serif] {}
+
+/* CSS for "sepia" theme */
+body[data-mode=sepia] {}
+/* CSS for "light" theme */
+body[data-mode=light] {}
+/* CSS for "dark" theme */
+body[data-mode=dark] {}</style>
+<title>B. Errata to the Bitcoin Whitepaper</title><title>B. Errata to the Bitcoin Whitepaper :: Reader View</title></head>
+<body tabindex="1" data-images="true" data-mode="groove-dark" data-font="serif" data-columns="1" data-loaded="true">
+  <span></span> <!-- for IntersectionObserver -->
+  <a id="reader-domain" href="https://learning.oreilly.com/library/view/mastering-bitcoin-3rd/9781098150082/app02.html">
+    <span>learning.oreilly.com</span>
+    <span>/library/view/mastering-bitcoin-3rd/9781098150082/app02.html</span>
+  </a>
+  <h1 dir="auto" id="reader-title">B. Errata to the Bitcoin Whitepaper</h1>
+  <span dir="auto" id="reader-credits"></span>
+  <span dir="auto" id="reader-estimated-time">10-12 minutes</span>
+  <span dir="auto" id="published-time"></span>
+  <hr>
+  <div id="readability-page-1" class="page"><div id="sbo-rt-content" data-type="appendix" epub:type="appendix" data-pdf-bookmark="Appendix B. Errata to the Bitcoin Whitepaper">
+
+
+
+<p>This <a data-type="indexterm" data-primary="Bitcoin whitepaper" data-secondary="errata" id="bitcoin-whitepaper-errata" target="_blank" rel="noopener noreferrer"></a><a data-type="indexterm" data-primary="whitepaper (Bitcoin)" data-secondary="errata" id="whitepaper-errata" target="_blank" rel="noopener noreferrer"></a>appendix contains a description of known problems in Satoshi Nakamoto’s paper, “Bitcoin:
+A Peer-to-Peer Electronic Cash System,” as well as notes on terminology
+changes and how Bitcoin’s implementation differs from that described in
+the paper.</p>
+
+<p>This document was originally published by a coauthor of this book in
+2016; it is reproduced here with updates.  The names of
+sections in this errata correspond to the names of the
+sections in Nakamoto’s original paper.</p>
+
+
+
+
+
+
+<div id="id420" data-type="sect1" data-pdf-bookmark="Abstract">
+<h2>Abstract</h2>
+<blockquote>
+<p>“The longest chain not only serves as proof of the sequence of events
+witnessed, but proof that it came from the largest pool of CPU power.”</p></blockquote>
+
+<ul>
+<li>
+<p><strong>Implementation detail:</strong> If each link in the chain (called “blocks”
+in Bitcoin) was built using the same amount of <em>proof of work</em> (PoW), the
+longest chain would be the one backed by the largest pool of
+computational power. However, Bitcoin was implemented in such a way that
+the amount of PoW can vary between blocks, so it became important not to
+check for the “the longest chain” but rather “the chain demonstrating
+the most PoW”; this is often shortened to “most-work chain.”</p>
+
+<p>The
+<a href="https://oreil.ly/XYZzx" target="_blank" rel="noopener noreferrer">change</a>
+from checking for the longest chain to checking for the most-work chain
+occurred in July 2010, long after Bitcoin’s initial release:</p>
+
+<div data-testid="custom pre block"><pre data-type="programlisting" data-code-language="diff"><code>-    if (pindexNew-&gt;nHeight &gt; nBestHeight)</code><code></code>
+<code>+    if (pindexNew-&gt;bnChainWork &gt; bnBestChainWork)</code><code></code></pre></div>
+</li>
+</ul>
+
+<ul>
+<li>
+<p><strong>Terminology change:</strong> General CPUs were used to generate the PoW for
+the earliest Bitcoin blocks, but PoW generation today is mostly performed
+by specialist Application Specific Integrated Circuits (ASICs), so
+instead of saying “CPU power” it is perhaps more correct to say
+“computational power” or, simply, “hash rate” for the hashing used
+in generating the PoW.</p>
+</li>
+</ul>
+<blockquote>
+<p>“As long as a majority of CPU power is controlled by nodes that are not
+cooperating to attack the network, they’ll generate the longest chain
+and outpace attackers.”</p></blockquote>
+
+<ul>
+<li>
+<p><strong>Terminology change:</strong> The term “nodes” today is used to refer to
+full validation nodes, which are programs that enforce all the rules of
+the system. Programs (and hardware) that extend the chain today are
+called “miners” based on Nakamoto’s analogy to gold miners in section
+6 of the paper. Nakamoto expected all miners to be nodes but the
+software he released did not require all nodes to be miners. In the
+original software, a simple menu item in the node GUI allowed toggling
+the mining function on or off.</p>
+
+<p>Today it is the case that the overwhelming number of nodes are not
+miners and that many individuals who own mining hardware do not use it
+with their own nodes (and even those that do mine with their own nodes
+often mine for short periods of time on top of newly discovered blocks
+without ensuring their node considers the new block valid). The early
+parts of the paper where “nodes” is mostly used without modification
+refer to mining using a full validation node; the later parts of the
+paper which refer to “network nodes” is mainly about what nodes can do
+even if they aren’t mining.</p>
+</li>
+<li>
+<p><strong>Post-publication discovery:</strong> When a new block is produced, the miner
+who produces that block can begin working on its sequel immediately but
+all other miners are unaware of the new block and cannot begin working
+on it until it has propagated across the
+network to them. This gives miners who produce many blocks an edge over
+miners who produce fewer blocks, and this can be exploited in what’s
+known as the <em>selfish mining attack</em> to allow an attacker with around
+30% of total network hash rate to make other miners less profitable,
+perhaps driving them into following the attacking miner’s policy. So
+instead of saying “a majority of CPU power is controlled by nodes that
+are not cooperating to attack the network,” it is perhaps more correct
+to say “as long as nodes cooperating to attack the network control less
+than about 30% of the network.”</p>
+</li>
+</ul>
+</div>
+
+
+
+
+
+
+<div id="id294" data-type="sect1" data-pdf-bookmark="Transactions">
+<h2>Transactions</h2>
+<blockquote>
+<p>“We define<a data-type="indexterm" data-primary="transactions" data-secondary="errata in Bitcoin whitepaper" id="transaction-errata" target="_blank" rel="noopener noreferrer"></a> an electronic coin as a chain of digital signatures. Each
+owner transfers the coin to the next by digitally signing a hash of the
+previous transaction and the public key of the next owner and adding
+these to the end of the coin.”</p></blockquote>
+
+<ul>
+<li>
+<p><strong>Implementation detail:</strong> Bitcoin implements a more general version of
+this system where digital signatures are not used directly but rather a
+“deterministic expression” is used instead. Just as a signature that
+matches a known public key can be used to enable a payment, the data
+that satisfies a known expression can also enable a payment.
+Generically, the expression that must be satisfied in Bitcoin in order
+to spend a coin is known as an “encumbrance.” Almost all encumbrances
+in Bitcoin to date require providing at least one signature. So instead
+of saying “a chain of digital signatures,” it is more correct to say
+“a chain of encumbrances.” Given that transactions often have more
+than one input and more than one output, the structure is not very
+chain-like; it’s more accurately described as a directed acyclic <a data-type="indexterm" data-primary="transactions" data-secondary="errata in Bitcoin whitepaper" data-startref="transaction-errata" id="id1444" target="_blank" rel="noopener noreferrer"></a>graph
+(DAG).</p>
+</li>
+</ul>
+</div>
+
+
+
+
+
+
+<div id="id295" data-type="sect1" data-pdf-bookmark="Proof of Work">
+<h2>Proof of Work</h2>
+<blockquote>
+<p>“…​we<a data-type="indexterm" data-primary="proof-of-work algorithm" data-secondary="errata in Bitcoin whitepaper" id="proof-errata" target="_blank" rel="noopener noreferrer"></a> implement the proof-of-work by incrementing a nonce in the block
+until a value is found that gives the block’s hash the required zero
+bits.”</p></blockquote>
+
+<ul>
+<li>
+<p><strong>Implementation detail:</strong> Adam Back’s Hashcash implementation requires
+finding a hash with the required number of leading zero bits. Bitcoin
+treats the hash as an integer and requires that it be less than a
+specified integer, which effectively allows a fractional number of bits
+to be specified.</p>
+</li>
+</ul>
+<blockquote>
+<p>“Proof-of-work is essentially one-CPU-one-vote.”</p></blockquote>
+
+<ul>
+<li>
+<p><strong>Important note:</strong> The vote here is not on the rules of the system but
+merely on the ordering of the transactions in order to provide
+assurances that an “electronic coin” cannot be easily double spent.
+This is described in more detail in section 11 of the paper where it
+says, “We consider the scenario of an attacker trying to generate an
+alternate chain faster than the honest chain. Even if this is
+accomplished, it does not throw the system open to arbitrary changes,
+such as creating value out of thin air or taking money that never
+belonged to the attacker. Nodes are not going to accept an invalid
+transaction as payment, and honest nodes will never accept a block
+containing them.”</p>
+</li>
+</ul>
+<blockquote>
+<p>“…​proof-of-work difficulty is determined by a moving average targeting an
+average number of blocks per hour.”</p></blockquote>
+
+<ul>
+<li>
+<p><strong>Implementation detail:</strong> A moving average is not used. Instead, every
+2,016th block has its reported generation time compared to the
+generation time for an earlier block, and the difference between them is
+used to calculate the average used for adjustment.</p>
+
+<p>Further, the average implemented in Bitcoin targets an average number of
+blocks per two weeks (not per hour as might be implied by the text).
+Other implemented rules may further slow adjustments, such as a rule
+that the adjustment cannot increase block production speed by more than
+300% per period, nor slow it by more <a data-type="indexterm" data-primary="proof-of-work algorithm" data-secondary="errata in Bitcoin whitepaper" data-startref="proof-errata" id="id1445" target="_blank" rel="noopener noreferrer"></a>than 75%.</p>
+</li>
+</ul>
+</div>
+
+
+
+
+
+
+<div id="id237" data-type="sect1" data-pdf-bookmark="Reclaiming Disk Space">
+<h2>Reclaiming Disk Space</h2>
+<blockquote>
+<p>“Once the <a data-type="indexterm" data-primary="disk space, reclaiming" id="id1446" target="_blank" rel="noopener noreferrer"></a><a data-type="indexterm" data-primary="reclaiming disk space" id="id1447" target="_blank" rel="noopener noreferrer"></a><a data-type="indexterm" data-primary="blocks" data-secondary="reclaiming disk space" id="id1448" target="_blank" rel="noopener noreferrer"></a>latest transaction in a coin is buried under enough blocks, the
+spent transactions before it can be discarded to save disk space.”</p></blockquote>
+
+<ul>
+<li>
+<p><strong>Possible post-publication discovery:</strong> Although the merkle tree
+structure described in this section can prove a transaction was included
+in a particular block, there is currently no way in Bitcoin to prove
+that a transaction has not been spent except to process all subsequent
+data in the blockchain. This means the method described here cannot be
+universally used for reclaiming disk space among all nodes, as all new
+nodes will need to process all transactions.</p>
+</li>
+</ul>
+</div>
+
+
+
+
+
+
+<div id="id296" data-type="sect1" data-pdf-bookmark="Simplified Payment Verification">
+<h2>Simplified Payment Verification</h2>
+<blockquote>
+<p>“One strategy<a data-type="indexterm" data-primary="payment verification" data-secondary="errata in Bitcoin whitepaper" id="id1449" target="_blank" rel="noopener noreferrer"></a><a data-type="indexterm" data-primary="verifying" data-secondary="payment" data-tertiary="errata in Bitcoin whitepaper" id="id1450" target="_blank" rel="noopener noreferrer"></a> to protect against this would be to accept alerts from
+network nodes when they detect an invalid block, prompting the user’s
+software to download the full block and alerted transactions to confirm
+the inconsistency.”</p></blockquote>
+
+<ul>
+<li>
+<p><strong>Important Note:</strong> Although software has been produced that implements
+some parts of this section and calls that Simplified Payment
+Verification (SPV), none of these programs currently accepts alerts from
+network nodes (full validation nodes) when invalid blocks have been
+detected. This has placed bitcoins in so-called SPV wallets at risk in
+the past.</p>
+</li>
+</ul>
+</div>
+
+
+
+
+
+
+<div id="id297" data-type="sect1" data-pdf-bookmark="Privacy">
+<h2>Privacy</h2>
+<blockquote>
+<p>“Some linking<a data-type="indexterm" data-primary="privacy" data-secondary="errata in Bitcoin whitepaper" id="id1451" target="_blank" rel="noopener noreferrer"></a> is still unavoidable with multi-input transactions, which
+necessarily reveal that their inputs were owned by the same owner.”</p></blockquote>
+
+<ul>
+<li>
+<p><strong>Post-publication invention:</strong> It isn’t clear that different inputs
+in the same transaction have the same owner if owners often mix their
+inputs with
+inputs belonging to other owners. For example, there’s no public
+difference between Alice and Bob each contributing one of their inputs
+toward paying Charlie and Dan than there is between just Alice
+contributing two of her inputs toward paying Charlie and Dan.</p>
+
+<p>This technique is known today as
+<a href="https://oreil.ly/UBEJX" target="_blank" rel="noopener noreferrer">CoinJoin</a>, and software implementing
+it has been in use since 2015.</p>
+</li>
+</ul>
+</div>
+
+
+
+
+
+
+<div id="id298" data-type="sect1" data-pdf-bookmark="Calculations">
+<h2>Calculations</h2>
+<blockquote>
+<p>“The receiver <a data-type="indexterm" data-primary="calculations" data-secondary="errata in Bitcoin whitepaper" id="id1452" target="_blank" rel="noopener noreferrer"></a>generates a new key pair and gives the public key to the
+sender shortly before signing. This prevents the sender from preparing a
+chain of blocks ahead of time by working on it continuously until he is
+lucky enough to get far enough ahead, then executing the transaction at
+that moment.”</p></blockquote>
+
+<ul>
+<li>
+<p><strong>Post-publication discovery:</strong> Nothing about the receiver generating a
+public key shortly before the spender signs a transaction prevents the
+spender from preparing a chain of blocks ahead of time. Early Bitcoin
+user Hal Finney discovered this attack and
+<a href="https://oreil.ly/kg_Xe" target="_blank" rel="noopener noreferrer">described
+it</a>: “Suppose the attacker is generating blocks occasionally. In each
+block he generates, he includes a transfer from address A to address B,
+both of which he controls.</p>
+
+<p>“To cheat you, when he generates a block, he doesn’t broadcast it.
+Instead, he runs down to your store and makes a payment to your address
+C with his address A. You wait a few seconds, don’t hear anything, and
+transfer the goods. He broadcasts his block now, and his transaction
+will take precedence over yours.”</p>
+
+<p>The attack works for any number of confirmations, and is sometimes named
+the Finney Attack.</p>
+</li>
+</ul>
+<hr>
+
+<p><strong>Disclaimer:</strong> The author of this document was not the first person to
+identify any of the problems described here—he has merely collected them
+into a single document.</p>
+
+<p><strong>License:</strong> This errata document is released under the
+<a href="https://oreil.ly/xZeBR" target="_blank" rel="noopener noreferrer">CC0</a> 1.0 Universal
+Public Domain Dedication</p>
+
+<p>For updates made <a data-type="indexterm" data-primary="Bitcoin whitepaper" data-secondary="errata" data-startref="bitcoin-whitepaper-errata" id="id1453" target="_blank" rel="noopener noreferrer"></a><a data-type="indexterm" data-primary="whitepaper (Bitcoin)" data-secondary="errata" data-startref="whitepaper-errata" id="id1454" target="_blank" rel="noopener noreferrer"></a>after the publication of this book, please see the
+<a href="https://oreil.ly/ygExa" target="_blank" rel="noopener noreferrer">Original
+document</a>.</p>
+</div>
+</div></div>
+  <span></span> <!-- for IntersectionObserver -->
+  
+  
+  
+  
+
+
+<style id="note-styling">
+    .note {
+      position: absolute;
+      z-index: 10;
+      border: none;
+      outline: none;
+      font-family: inherit;
+      font-size: inherit;
+      padding: 5px;
+      min-width: 32px;
+      min-height: 32px;
+    }
+    .note:focus {
+      z-index: 11;
+    }
+    .note[type="0"] {
+      background-color: #fff740;
+      color: #2c2c2d;
+    }
+    .note[type="0"]::placeholder {
+      color: #868226;
+    }
+    .note[type="1"] {
+      background-color: #feff9c;
+      color: #2c2c2d;
+    }
+    .note[type="1"]::placeholder {
+      color: #6d6d3d;
+    }
+    .note[type="2"] {
+      background-color: #ff65a3;
+      color: #2c2c2d;
+    }
+    .note[type="2"]::placeholder {
+      color: #65263f;
+    }
+    .note[type="3"] {
+      background-color: #ff7eb9;
+      color: #2c2c2d;
+    }
+    .note[type="3"]::placeholder {
+      color: #562b3f;
+    }
+    .note[type="4"] {
+      background-color: #7afcff;
+      color: #295c5d;
+    }
+    .note[type="4"]::placeholder {
+      color: #377677;
+    }</style><div id="chapters-container">
+      <style>
+        #chapters {
+          display: grid;
+          grid-template-columns: 1fr 1fr;
+          margin: 2ch 0;
+        }
+        #chapters a {
+          cursor: pointer;
+        }
+        #chapters a[href=""] {
+          opacity: 0.5;
+          pointer-events: none;
+          color: inherit;
+        }
+        #chapters a:first-child {
+          justify-self: start;
+        }
+        #chapters a:last-child {
+          justify-self: end;
+        }
+      </style>
+      <hr>
+      <div id="chapters">
+        <a href="" title="move to the previous chapter (Ctrl/Command + PageUp)">Previous Chapter</a>
+        <a href="https://learning.oreilly.com/library/view/mastering-bitcoin-3rd/9781098150082/app03.html" title="move to the next chapter (Ctrl/Command + PageDown)">Next Chapter</a>
+      </div>
+    </div></body><style>body {
+      font-size:  19px;
+      font-family: Georgia, 'Times New Roman', serif;
+      width: 600px;
+    }
+    p {
+      text-align: justify
+    }
+    .page {
+      line-height: 28.5px;
+      column-count: unset;
+    }
+    h1, h2, h3 {
+      line-height: initial;
+    }</style></html>
